@@ -1727,6 +1727,42 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "CountItMVC.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CountItMVC.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CountItMVC.Domain.dll": {}
+        }
+      },
+      "CountItMVC.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "CountItMVC.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CountItMVC.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CountItMVC.Infrastructure.dll": {}
+        }
+      },
+      "CountItMVS.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "CountItMVC.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CountItMVS.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CountItMVS.Application.dll": {}
+        }
       }
     }
   },
@@ -6088,10 +6124,27 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "CountItMVC.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CountItMVC.Domain/CountItMVC.Domain.csproj",
+      "msbuildProject": "../CountItMVC.Domain/CountItMVC.Domain.csproj"
+    },
+    "CountItMVC.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../CountItMVC.Infrastructure/CountItMVC.Infrastructure.csproj",
+      "msbuildProject": "../CountItMVC.Infrastructure/CountItMVC.Infrastructure.csproj"
+    },
+    "CountItMVS.Application/1.0.0": {
+      "type": "project",
+      "path": "../CountItMVS.Application/CountItMVS.Application.csproj",
+      "msbuildProject": "../CountItMVS.Application/CountItMVS.Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CountItMVC.Infrastructure >= 1.0.0",
+      "CountItMVS.Application >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.7",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.7",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.7",
@@ -6129,7 +6182,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
+            },
+            "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj": {
+              "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
