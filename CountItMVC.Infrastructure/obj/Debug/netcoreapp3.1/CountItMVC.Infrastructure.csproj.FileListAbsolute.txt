@@ -1,0 +1,15 @@
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.deps.json
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.dll
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.pdb
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Domain.dll
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.AssemblyInfo.cs
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csproj.CopyComplete
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.dll
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.pdb
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.runtimeconfig.json
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.runtimeconfig.dev.json
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.genruntimeconfig.cache
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csproj.CoreCompileInputs.cache

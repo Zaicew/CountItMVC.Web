@@ -1,0 +1,9 @@
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\bin\Debug\netcoreapp3.1\CountItMVC.Domain.deps.json
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\bin\Debug\netcoreapp3.1\CountItMVC.Domain.dll
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\bin\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.AssemblyInfoInputs.cache
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.AssemblyInfo.cs
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.dll
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.csprojAssemblyReference.cache
