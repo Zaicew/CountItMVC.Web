@@ -2786,6 +2786,19 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "CountItMVC.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "CountItMVC.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CountItMVC.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CountItMVC.Application.dll": {}
+        }
+      },
       "CountItMVC.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2810,19 +2823,6 @@
         },
         "runtime": {
           "bin/placeholder/CountItMVC.Infrastructure.dll": {}
-        }
-      },
-      "CountItMVS.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "CountItMVC.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CountItMVS.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CountItMVS.Application.dll": {}
         }
       }
     }
@@ -8978,6 +8978,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "CountItMVC.Application/1.0.0": {
+      "type": "project",
+      "path": "../CountItMVS.Application/CountItMVC.Application.csproj",
+      "msbuildProject": "../CountItMVS.Application/CountItMVC.Application.csproj"
+    },
     "CountItMVC.Domain/1.0.0": {
       "type": "project",
       "path": "../CountItMVC.Domain/CountItMVC.Domain.csproj",
@@ -8987,17 +8992,12 @@
       "type": "project",
       "path": "../CountItMVC.Infrastructure/CountItMVC.Infrastructure.csproj",
       "msbuildProject": "../CountItMVC.Infrastructure/CountItMVC.Infrastructure.csproj"
-    },
-    "CountItMVS.Application/1.0.0": {
-      "type": "project",
-      "path": "../CountItMVS.Application/CountItMVS.Application.csproj",
-      "msbuildProject": "../CountItMVS.Application/CountItMVS.Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CountItMVC.Application >= 1.0.0",
       "CountItMVC.Infrastructure >= 1.0.0",
-      "CountItMVS.Application >= 1.0.0",
       "DocumentFormat.OpenXml >= 2.12.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.7",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.7",
@@ -9009,24 +9009,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zaicew\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
+      "projectUniqueName": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
       "projectName": "CountItMVC.Web",
-      "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
-      "packagesPath": "C:\\Users\\Zaicew\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\obj\\",
+      "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
+      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+      "outputPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Zaicew\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9037,12 +9041,13 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
+            "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
+              "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
             },
-            "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj": {
-              "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj"
+            "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj": {
+              "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj"
             }
           }
         }
@@ -9055,6 +9060,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "DocumentFormat.OpenXml": {
             "target": "Package",
@@ -9107,7 +9113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

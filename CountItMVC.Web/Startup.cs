@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CountItMVC.Infrastructure;
+using CountItMVC.Application.Interfaces;
+using CountItMVC.Application.Services;
+
 
 namespace CountItMVC.Web
 {
@@ -34,6 +37,9 @@ namespace CountItMVC.Web
                 .AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddTransient<IItemService, ItemService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

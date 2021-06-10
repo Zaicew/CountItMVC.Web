@@ -10,3 +10,15 @@ C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVS.Application\obj\Debug\net
 C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.csproj.CopyComplete
 C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.dll
 C:\Users\Zaicew\source\repos\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.pdb
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\bin\Debug\netcoreapp3.1\CountItMVS.Application.deps.json
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\bin\Debug\netcoreapp3.1\CountItMVS.Application.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\bin\Debug\netcoreapp3.1\CountItMVS.Application.pdb
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\bin\Debug\netcoreapp3.1\CountItMVC.Domain.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\bin\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.csprojAssemblyReference.cache
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.AssemblyInfoInputs.cache
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.AssemblyInfo.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.csproj.CopyComplete
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\obj\Debug\netcoreapp3.1\CountItMVS.Application.pdb

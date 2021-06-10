@@ -1,24 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj": {}
+    "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
+    "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
+        "projectUniqueName": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
         "projectName": "CountItMVC.Domain",
-        "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
-        "packagesPath": "C:\\Users\\Zaicew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\obj\\",
+        "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zaicew\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -29,6 +32,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +44,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -55,25 +60,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
+    "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj",
+        "projectUniqueName": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj",
         "projectName": "CountItMVC.Infrastructure",
-        "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Zaicew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\obj\\",
+        "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zaicew\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -84,9 +92,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
-                "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj"
+              "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
+                "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj"
               }
             }
           }
@@ -99,6 +108,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -134,25 +144,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj": {
+    "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
+        "projectUniqueName": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
         "projectName": "CountItMVC.Web",
-        "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
-        "packagesPath": "C:\\Users\\Zaicew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Web\\obj\\",
+        "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zaicew\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -163,12 +176,13 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
+              "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
+                "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
               },
-              "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj": {
-                "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj"
+              "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj": {
+                "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj"
               }
             }
           }
@@ -181,6 +195,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "DocumentFormat.OpenXml": {
               "target": "Package",
@@ -233,25 +248,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj": {
+    "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj",
-        "projectName": "CountItMVS.Application",
-        "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\CountItMVS.Application.csproj",
-        "packagesPath": "C:\\Users\\Zaicew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVS.Application\\obj\\",
+        "projectUniqueName": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj",
+        "projectName": "CountItMVC.Application",
+        "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Zaicew\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -262,9 +280,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
-                "projectPath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj"
+              "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
+                "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj"
               }
             }
           }
@@ -277,6 +296,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -292,7 +312,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

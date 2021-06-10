@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CountItMVC.Application/1.0.0": {
+        "dependencies": {
+          "CountItMVC.Domain": "1.0.0"
+        },
+        "runtime": {
+          "CountItMVC.Application.dll": {}
+        }
+      },
+      "CountItMVC.Domain/1.0.0": {
+        "runtime": {
+          "CountItMVC.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CountItMVC.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CountItMVC.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

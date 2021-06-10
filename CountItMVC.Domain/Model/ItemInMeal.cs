@@ -9,5 +9,11 @@ namespace CountItMVC.Domain.Model
         public new int Id { get; set; }
         public double HowManyGramsCurrentProduct { get; set; }
         public virtual ICollection<Meal> Meals { get; set; }
+
+        public ItemInMeal(Item item, double weight) : base(item)
+        {
+            this.HowManyGramsCurrentProduct = weight;
+        }
+
     }
 }

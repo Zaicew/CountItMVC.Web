@@ -14,5 +14,22 @@ namespace CountItMVC.Domain.Model
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<ItemTag> ItemsTags { get; set; }
+
+        public Item()
+        {
+
+        }
+
+        public Item(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+        public Item(Item item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+        }
     }
+
 }

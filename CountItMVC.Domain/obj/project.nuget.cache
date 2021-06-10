@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wYDVWRb8u4nl+PJ9kBxMH40zkithGwyQ/Mf9/eqdDkT+6CDJKguyBfo8bT9m+LGV+jXiA+tVrXBycZx9kFhcGA==",
+  "dgSpecHash": "6Vaf5SXUZnnPyyua3fC3ptIgsRZIGXwhFE8ycyZcQhwx+PDtMU0a8gmQY9P3B2zRa207LULRaa2R5kYh6NK7aw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zaicew\\source\\repos\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
+  "projectFilePath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
