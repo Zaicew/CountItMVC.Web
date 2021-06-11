@@ -13,7 +13,10 @@ namespace CountItMVC.Domain.Model
         public double TotalWeight { get; set; }
         public bool IsVisible { get; set; }
         public int ItemInMealId { get; set; }
-        public virtual ItemInMeal ItemInMeal { get; set; }
+        //public virtual ItemInMeal ItemInMeal { get; set; }
+        public virtual ICollection<ItemInMeal> ItemsInMeals { get; set; }
+        public virtual ICollection<MealDay> MealsDays { get; set; }
+
 
         //public virtual ICollection<ItemInMeal> ItemsInMeal { get; set; }
     }

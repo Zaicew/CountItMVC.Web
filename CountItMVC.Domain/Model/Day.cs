@@ -13,9 +13,7 @@ namespace CountItMVC.Domain.Model
         public double TotalProtein { get; set; }
         public double TotalCarbs { get; set; }
         public double TotalWeightInGram { get; set; }
-
-        public Meal[] mealList = new Meal[5];
-
+        public virtual ICollection<MealDay> MealsDays { get; set; }
         public virtual ICollection<DayTag> DaysTags { get; set; }
     }
 }

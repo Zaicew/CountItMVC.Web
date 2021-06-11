@@ -4,16 +4,15 @@ using System.Reflection.Metadata;
 
 namespace CountItMVC.Domain.Model
 {
-    public class ItemInMeal : Item
+    public class ItemInMeal
     {
-        public new int Id { get; set; }
         public double HowManyGramsCurrentProduct { get; set; }
-        public virtual ICollection<Meal> Meals { get; set; }
 
-        public ItemInMeal(Item item, double weight) : base(item)
-        {
-            this.HowManyGramsCurrentProduct = weight;
-        }
+        public int ItemId { get; set; }
+        public Item Item { get; set; }
+
+        public int MealId { get; set; }
+        public Meal Meal { get; set; }
 
     }
 }
