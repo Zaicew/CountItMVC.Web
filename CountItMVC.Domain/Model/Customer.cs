@@ -13,6 +13,7 @@ namespace CountItMVC.Domain.Model
 
         public virtual ICollection<ContactDetail> ContactDetails { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Day> Days { get; set; }
 
 
         //(1) how to make 1vs1 relation in DB:

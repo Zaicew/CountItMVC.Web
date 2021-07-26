@@ -24,8 +24,6 @@ namespace CountItMVC.Infrastructure
         public DbSet<CategoryTag> CategoryTag { get; set; }
         public DbSet<DayTag> DayTag { get; set; }
         public DbSet<ItemTag> ItemTag { get; set; }
-        public DbSet<MealDay> MealsDay { get; set; }
-
 
 
         public Context(DbContextOptions options) : base(options)
@@ -44,40 +42,16 @@ namespace CountItMVC.Infrastructure
 
 
 
-            //many vs many relations 
-
-            //meals vs days
-            builder.Entity<MealDay>()
-                .HasKey(it => new { it.MealId, it.DayID });
-            builder.Entity<MealDay>()
-                .HasOne<Meal>(it => it.Meal)
-                .WithMany(i => i.MealsDays)
-                .HasForeignKey(it => it.MealId);
-            builder.Entity<MealDay>()
-                .HasOne<Day>(it => it.Day)
-                .WithMany(i => i.MealsDays)
-                .HasForeignKey(it => it.DayID);
-
-            // items in meal 
-            builder.Entity<ItemInMeal>()
-                .HasKey(it => new { it.MealId, it.ItemId });
-            builder.Entity<ItemInMeal>()
-                .HasOne<Meal>(it => it.Meal)
-                .WithMany(i => i.ItemsInMeals)
-                .HasForeignKey(it => it.MealId);
-            builder.Entity<ItemInMeal>()
-                .HasOne<Item>(it => it.Item)
-                .WithMany(i => i.ItemsInMeals)
-                .HasForeignKey(it => it.ItemId);
-
-
+            //many vs many relations (all tags)
             //itemtag
             builder.Entity<ItemTag>()
                 .HasKey(it => new {it.ItemId, it.TagId});
+
             builder.Entity<ItemTag>()
                 .HasOne<Item>(it => it.Item)
                 .WithMany(i => i.ItemsTags)
                 .HasForeignKey(it => it.ItemId);
+
             builder.Entity<ItemTag>()
                 .HasOne<Tag>(it => it.Tag)
                 .WithMany(i => i.ItemsTags)
@@ -86,10 +60,12 @@ namespace CountItMVC.Infrastructure
             //daytag
             builder.Entity<DayTag>()
                 .HasKey(it => new {it.DayId, it.TagId});
+
             builder.Entity<DayTag>()
                 .HasOne<Day>(it => it.Day)
                 .WithMany(i => i.DaysTags)
                 .HasForeignKey(it => it.DayId);
+
             builder.Entity<DayTag>()
                 .HasOne<Tag>(it => it.Tag)
                 .WithMany(i => i.DaysTags)
@@ -98,10 +74,12 @@ namespace CountItMVC.Infrastructure
             //categorytag
             builder.Entity<CategoryTag>()
                 .HasKey(it => new {it.CategoryId, it.TagId});
+
             builder.Entity<CategoryTag>()
                 .HasOne<Category>(it => it.Category)
                 .WithMany(i => i.CategoriesTags)
                 .HasForeignKey(it => it.CategoryId);
+
             builder.Entity<CategoryTag>()
                 .HasOne<Tag>(it => it.Tag)
                 .WithMany(i => i.CategoriesTags)
