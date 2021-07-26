@@ -10,6 +10,5 @@ namespace CountItMVC.Domain.Interface
         IQueryable<Item> GetItemsByCategoryId(int typeId);
         Item GetItemById(int itemId);
         IQueryable<Tag> GetAllTags();
-        IQueryable<Category> GetAllCategories();
     }
 }

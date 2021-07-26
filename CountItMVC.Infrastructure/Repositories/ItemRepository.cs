@@ -44,13 +44,8 @@ namespace CountItMVC.Infrastructure.Repositories
 
         public IQueryable<Tag> GetAllTags()
         {
-            var output = _context.Tags;
-            return output;
-        }
 
-        public IQueryable<Category> GetAllCategories()
-        {
-            var output = _context.Categories;
+            var output = _context.Tags;
             return output;
         }
     }

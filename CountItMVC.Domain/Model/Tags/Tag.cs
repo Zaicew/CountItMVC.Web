@@ -9,9 +9,9 @@ namespace CountItMVC.Domain.Model
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<CategoryTag> CategoriesTags { get; set; }
-        public virtual ICollection<ItemTag> ItemsTags { get; set; }
-        public virtual ICollection<DayTag> DaysTags { get; set; }
+        public virtual ICollection<CategoryTag> CategoryTags { get; set; }
+        public virtual ICollection<ItemTag> ItemTags { get; set; }
+        public virtual ICollection<DayTag> DayTags { get; set; }
 
     }
 }

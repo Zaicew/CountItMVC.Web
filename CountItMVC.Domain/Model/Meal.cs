@@ -13,7 +13,7 @@ namespace CountItMVC.Domain.Model
                 double result = 0;
                 foreach(var item in ItemsInMeal)
                 {
-                    result += item.KcalPerHundredGrams * item.HowManyGramsCurrentProduct;
+                    result += item.Item.KcalPerHundredGrams * item.HowManyGramsCurrentProduct;
                 }
                 return result;
             }
@@ -26,7 +26,7 @@ namespace CountItMVC.Domain.Model
                 double result = 0;
                 foreach (var item in ItemsInMeal)
                 {
-                    result += item.FatPerHundredGrams * item.HowManyGramsCurrentProduct;
+                    result += item.Item.FatPerHundredGrams * item.HowManyGramsCurrentProduct;
                 }
                 return result;
             }
@@ -38,7 +38,7 @@ namespace CountItMVC.Domain.Model
                 double result = 0;
                 foreach (var item in ItemsInMeal)
                 {
-                    result += item.ProteinPerHundredGrams * item.HowManyGramsCurrentProduct;
+                    result += item.Item.ProteinPerHundredGrams * item.HowManyGramsCurrentProduct;
                 }
                 return result;
             }
@@ -50,7 +50,7 @@ namespace CountItMVC.Domain.Model
                 double result = 0;
                 foreach (var item in ItemsInMeal)
                 {
-                    result += item.CarbPerHundredGrams * item.HowManyGramsCurrentProduct;
+                    result += item.Item.CarbPerHundredGrams * item.HowManyGramsCurrentProduct;
                 }
                 return result;
             }
@@ -73,7 +73,5 @@ namespace CountItMVC.Domain.Model
 
         public virtual ICollection<ItemInMeal> ItemsInMeal { get; set; }
 
-        //public int ItemInMealId { get; set; }
-        //public virtual ItemInMeal ItemInMeal { get; set; }
     }
 }

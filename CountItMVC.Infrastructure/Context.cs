@@ -54,7 +54,7 @@ namespace CountItMVC.Infrastructure
 
             builder.Entity<ItemTag>()
                 .HasOne<Tag>(it => it.Tag)
-                .WithMany(i => i.ItemsTags)
+                .WithMany(i => i.ItemTags)
                 .HasForeignKey(it => it.TagId);
 
             //daytag
@@ -68,7 +68,7 @@ namespace CountItMVC.Infrastructure
 
             builder.Entity<DayTag>()
                 .HasOne<Tag>(it => it.Tag)
-                .WithMany(i => i.DaysTags)
+                .WithMany(i => i.DayTags)
                 .HasForeignKey(it => it.TagId);
 
             //categorytag
@@ -82,7 +82,7 @@ namespace CountItMVC.Infrastructure
 
             builder.Entity<CategoryTag>()
                 .HasOne<Tag>(it => it.Tag)
-                .WithMany(i => i.CategoriesTags)
+                .WithMany(i => i.CategoryTags)
                 .HasForeignKey(it => it.TagId);
         }
     }

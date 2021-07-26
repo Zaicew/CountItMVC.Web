@@ -176,25 +176,15 @@ namespace CountItMVC.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("TotalCarbs")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalFat")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalKcal")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalProtein")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalWeightInGram")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Days");
                 });
@@ -227,10 +217,6 @@ namespace CountItMVC.Infrastructure.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("FatPerHundredGrams")
                         .HasColumnType("float");
 
@@ -248,8 +234,31 @@ namespace CountItMVC.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Items");
+                });
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Item");
+            modelBuilder.Entity("CountItMVC.Domain.Model.ItemInMeal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("HowManyGramsCurrentProduct")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MealId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("MealId");
+
+                    b.ToTable("ItemInMeals");
                 });
 
             modelBuilder.Entity("CountItMVC.Domain.Model.ItemTag", b =>
@@ -274,30 +283,15 @@ namespace CountItMVC.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("DayId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsVisible")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ItemInMealId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalCarb")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalFat")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalKcal")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalProtein")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalWeight")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ItemInMealId");
+                    b.HasIndex("DayId");
 
                     b.ToTable("Meals");
                 });
@@ -532,16 +526,6 @@ namespace CountItMVC.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CountItMVC.Domain.Model.ItemInMeal", b =>
-                {
-                    b.HasBaseType("CountItMVC.Domain.Model.Item");
-
-                    b.Property<double>("HowManyGramsCurrentProduct")
-                        .HasColumnType("float");
-
-                    b.HasDiscriminator().HasValue("ItemInMeal");
-                });
-
             modelBuilder.Entity("CountItMVC.Domain.Model.Address", b =>
                 {
                     b.HasOne("CountItMVC.Domain.Model.Customer", "Customer")
@@ -560,7 +544,7 @@ namespace CountItMVC.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("CountItMVC.Domain.Model.Tag", "Tag")
-                        .WithMany("CategoriesTags")
+                        .WithMany("CategoryTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -590,6 +574,15 @@ namespace CountItMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CountItMVC.Domain.Model.Day", b =>
+                {
+                    b.HasOne("CountItMVC.Domain.Model.Customer", "Customer")
+                        .WithMany("Days")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CountItMVC.Domain.Model.DayTag", b =>
                 {
                     b.HasOne("CountItMVC.Domain.Model.Day", "Day")
@@ -599,7 +592,7 @@ namespace CountItMVC.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("CountItMVC.Domain.Model.Tag", "Tag")
-                        .WithMany("DaysTags")
+                        .WithMany("DayTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -614,6 +607,21 @@ namespace CountItMVC.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CountItMVC.Domain.Model.ItemInMeal", b =>
+                {
+                    b.HasOne("CountItMVC.Domain.Model.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CountItMVC.Domain.Model.Meal", "Meal")
+                        .WithMany("ItemsInMeal")
+                        .HasForeignKey("MealId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CountItMVC.Domain.Model.ItemTag", b =>
                 {
                     b.HasOne("CountItMVC.Domain.Model.Item", "Item")
@@ -623,7 +631,7 @@ namespace CountItMVC.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("CountItMVC.Domain.Model.Tag", "Tag")
-                        .WithMany("ItemsTags")
+                        .WithMany("ItemTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -631,9 +639,9 @@ namespace CountItMVC.Infrastructure.Migrations
 
             modelBuilder.Entity("CountItMVC.Domain.Model.Meal", b =>
                 {
-                    b.HasOne("CountItMVC.Domain.Model.ItemInMeal", "ItemInMeal")
-                        .WithMany("Meals")
-                        .HasForeignKey("ItemInMealId")
+                    b.HasOne("CountItMVC.Domain.Model.Day", "Day")
+                        .WithMany()
+                        .HasForeignKey("DayId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

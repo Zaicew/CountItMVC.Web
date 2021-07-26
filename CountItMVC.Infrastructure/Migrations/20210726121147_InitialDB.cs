@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CountItMVC.Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,24 +84,6 @@ namespace CountItMVC.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Days",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTime = table.Column<DateTime>(nullable: false),
-                    TotalKcal = table.Column<double>(nullable: false),
-                    TotalFat = table.Column<double>(nullable: false),
-                    TotalProtein = table.Column<double>(nullable: false),
-                    TotalCarbs = table.Column<double>(nullable: false),
-                    TotalWeightInGram = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Days", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,9 +229,7 @@ namespace CountItMVC.Infrastructure.Migrations
                     FatPerHundredGrams = table.Column<double>(nullable: false),
                     ProteinPerHundredGrams = table.Column<double>(nullable: false),
                     CarbPerHundredGrams = table.Column<double>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    HowManyGramsCurrentProduct = table.Column<double>(nullable: true)
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -337,6 +317,26 @@ namespace CountItMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Days",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Days", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Days_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CategoryTag",
                 columns: table => new
                 {
@@ -354,30 +354,6 @@ namespace CountItMVC.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CategoryTag_Tags_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DayTag",
-                columns: table => new
-                {
-                    DayId = table.Column<int>(nullable: false),
-                    TagId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DayTag", x => new { x.DayId, x.TagId });
-                    table.ForeignKey(
-                        name: "FK_DayTag_Days_DayId",
-                        column: x => x.DayId,
-                        principalTable: "Days",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_DayTag_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
                         principalColumn: "Id",
@@ -409,26 +385,72 @@ namespace CountItMVC.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DayTag",
+                columns: table => new
+                {
+                    DayId = table.Column<int>(nullable: false),
+                    TagId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DayTag", x => new { x.DayId, x.TagId });
+                    table.ForeignKey(
+                        name: "FK_DayTag_Days_DayId",
+                        column: x => x.DayId,
+                        principalTable: "Days",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DayTag_Tags_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Meals",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalKcal = table.Column<double>(nullable: false),
-                    TotalFat = table.Column<double>(nullable: false),
-                    TotalProtein = table.Column<double>(nullable: false),
-                    TotalCarb = table.Column<double>(nullable: false),
-                    TotalWeight = table.Column<double>(nullable: false),
                     IsVisible = table.Column<bool>(nullable: false),
-                    ItemInMealId = table.Column<int>(nullable: false)
+                    DayId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Meals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Meals_Items_ItemInMealId",
-                        column: x => x.ItemInMealId,
+                        name: "FK_Meals_Days_DayId",
+                        column: x => x.DayId,
+                        principalTable: "Days",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemInMeals",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HowManyGramsCurrentProduct = table.Column<double>(nullable: false),
+                    ItemId = table.Column<int>(nullable: false),
+                    MealId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemInMeals", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItemInMeals_Items_ItemId",
+                        column: x => x.ItemId,
                         principalTable: "Items",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemInMeals_Meals_MealId",
+                        column: x => x.MealId,
+                        principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -499,9 +521,24 @@ namespace CountItMVC.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Days_CustomerId",
+                table: "Days",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DayTag_TagId",
                 table: "DayTag",
                 column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemInMeals_ItemId",
+                table: "ItemInMeals",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemInMeals_MealId",
+                table: "ItemInMeals",
+                column: "MealId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Items_CategoryId",
@@ -514,9 +551,9 @@ namespace CountItMVC.Infrastructure.Migrations
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meals_ItemInMealId",
+                name: "IX_Meals_DayId",
                 table: "Meals",
-                column: "ItemInMealId");
+                column: "DayId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -552,10 +589,10 @@ namespace CountItMVC.Infrastructure.Migrations
                 name: "DayTag");
 
             migrationBuilder.DropTable(
-                name: "ItemTag");
+                name: "ItemInMeals");
 
             migrationBuilder.DropTable(
-                name: "Meals");
+                name: "ItemTag");
 
             migrationBuilder.DropTable(
                 name: "Providers");
@@ -570,19 +607,22 @@ namespace CountItMVC.Infrastructure.Migrations
                 name: "ContactDetailTypes");
 
             migrationBuilder.DropTable(
-                name: "Customers");
-
-            migrationBuilder.DropTable(
-                name: "Days");
-
-            migrationBuilder.DropTable(
-                name: "Tags");
+                name: "Meals");
 
             migrationBuilder.DropTable(
                 name: "Items");
 
             migrationBuilder.DropTable(
+                name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "Days");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
         }
     }
 }
