@@ -7,8 +7,10 @@ namespace CountItMVC.Domain.Interface
     {
         void DeleteItem(int itemId);
         int AddItem(Item item);
+        IQueryable<Item> GetAllItems();
         IQueryable<Item> GetItemsByCategoryId(int typeId);
         Item GetItemById(int itemId);
         IQueryable<Tag> GetAllTags();
+
     }
 }

@@ -30,9 +30,9 @@ namespace CountItMVC.Infrastructure.Repositories
             return item.Id;
         }
 
-        public IQueryable<Item> GetItemsByCategoryId(int typeId)
+        public IQueryable<Item> GetItemsByCategoryId(int categoryId)
         {
-            var output = _context.Items.Where(c => c.CategoryId == typeId);
+            var output = _context.Items.Where(c => c.CategoryId == categoryId);
             return output;
         }
 
@@ -47,6 +47,11 @@ namespace CountItMVC.Infrastructure.Repositories
 
             var output = _context.Tags;
             return output;
+        }
+
+        public IQueryable<Item> GetAllItems()
+        {
+            return _context.Items;
         }
     }
 }

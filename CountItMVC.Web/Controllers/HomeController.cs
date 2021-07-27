@@ -29,27 +29,6 @@ namespace CountItMVC.Web.Controllers
             return View();
         }
 
-    //public IActionResult Nowy()
-    //{
-    //    List<Item> Items = new List<Item>();
-    //        //{
-
-    //        //    new Item()
-    //        //        new Item(1, "Name1"),
-    //        //        new Item() { Id = 2, Name = "Name2" },
-    //        //        new Item() { Id = 3, Name = "Name3" },
-    //        //        new Item() { Id = 4, Name = "Name4" },
-    //        //        new Item() { Id = 5, Name = "Name5" }
-    //        //    }; Why it is not working? :D
-
-    //        Items.Add(new Item() { Id = 1, Name = "name1" });
-    //        Items.Add(new Item() { Id = 2, Name = "name2" });
-    //        Items.Add(new Item() { Id = 3, Name = "name3" });
-    //        Items.Add(new Item() { Id = 4, Name = "name4" });
-
-    //        return View(Items);
-    //}
-
     public IActionResult Privacy()
         {
             return View();
