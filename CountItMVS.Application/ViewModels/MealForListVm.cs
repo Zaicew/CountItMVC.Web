@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class MealForListVm
+    public class MealForListVm : IMapFrom<Customer>
     {
         public int Id { get; set; }
         public double TotalKcal { get; set; }

@@ -1,4 +1,6 @@
-﻿using CountItMVC.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
@@ -12,6 +14,7 @@ namespace CountItMVC.Application.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepo;
+        private readonly IMapper _mapper;
 
         public int AddCustomer(NewCustomerVm customer)
         {
@@ -20,38 +23,23 @@ namespace CountItMVC.Application.Services
 
         public ListCustomerForListVm GetAllCusomersForList()
         {
-            ListCustomerForListVm result = new ListCustomerForListVm();
-            var customers = _customerRepo.GetAllCustomers();
-            foreach (var item in customers)
+            var customers = _customerRepo.GetAllCustomers().ProjectTo<CustomerForListVM>(_mapper.ConfigurationProvider).ToList();
+            var customerList = new ListCustomerForListVm()
             {
-                var custVm = new CustomerDetailsVm()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    NationalId = item.NationalId,
-                    isActive = item.isActive
-
-                };
-                result.Customers.Add(custVm);
-            }
-            result.Count = result.Customers.Count;
-            return result;
+                Customers = customers,
+                Count = customers.Count
+            };
+            return customerList;
         }
 
         public CustomerDetailsVm GetCustomerDetails(int customerId)
         {
             var customer = _customerRepo.GetCustomer(customerId);
-            var result = new CustomerDetailsVm()
-            {
-                Id = customer.Id,
-                Name = customer.Name,
-                NationalId = customer.NationalId,
-                isActive = customer.isActive
-            };
-            var costConInfo = customer.CustomerContactInformation;
-            result.Addresses = new List<AddressForListVm>();
-            result.PhoneNumbers = new List<ContactDetailListVm>();
-            result.Emails = new List<ContactDetailListVm>();
+            var customerVm = _mapper.Map<CustomerDetailsVm>(customer);
+
+            customerVm.Addresses = new List<AddressForListVm>();
+            customerVm.PhoneNumbers = new List<ContactDetailListVm>();
+            customerVm.Emails = new List<ContactDetailListVm>();
 
             foreach(var address in customer.Addresses)
             {
@@ -65,18 +53,18 @@ namespace CountItMVC.Application.Services
                     BuildingNumber = address.BuildingNumber,
                     FlatNumber = address.FlatNumber
                 };
-                result.Addresses.Add(add);
+                customerVm.Addresses.Add(add);
             }
 
-            foreach(var item in customer.ContactDetails)
-            {
-                var contactDetails = new ContactDetailListVm()
-                {
+            //foreach(var item in customer.Emails)
+            //{
+            //    var contactDetails = new ContactDetailListVm()
+            //    {
 
-                };
-            }
+            //    };
+            //}
 
-            return result;
+            return customerVm;
         }
     }
 }

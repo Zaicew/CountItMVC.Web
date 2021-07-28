@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "5QW6c/cveWH61OGHKPTqTa+bvnV21nWM9Fi9KKOtxDu07W2eOk97PL+ltGGhs0X2js5sVSMoMnPJmG0E6gWDdw==",
+  "dgSpecHash": "5X/YWazh8IwAJMh/dTRSsK5/l98tWm8axAF7PdIVZWTQr1uJRmRILn/+R36CrDOte0q7DJ23OL9x5niOfwiJiw==",
   "success": true,
   "projectFilePath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVS.Application\\CountItMVC.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Daniel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

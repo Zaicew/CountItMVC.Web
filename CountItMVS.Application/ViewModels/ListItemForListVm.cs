@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class ListItemForListVm
+    public class ListItemForListVm : IMapFrom<Customer>
     {
         public List<ItemsForListVm> Items { get; set; }
         public int Count { get; set; }

@@ -7,14 +7,15 @@ using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class CategoryForListVm : IMapFrom<Category>
+    public class CustomerForListVM : IMapFrom<Customer>
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string NationalId { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Category, CategoryForListVm>();
+            profile.CreateMap<Customer, CustomerForListVM>();
         }
     }
 }

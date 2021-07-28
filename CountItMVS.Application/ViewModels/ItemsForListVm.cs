@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AutoMapper;
+using CountItMVC.Application.Mapping;
+using CountItMVC.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class ItemsForListVm
+    public class ItemsForListVm : IMapFrom<Item>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -13,5 +16,10 @@ namespace CountItMVC.Application.ViewModels
         public double ProteinPerHundredGrams { get; set; }
         public double CarbPerHundredGrams { get; set; }
         public int CategoryId { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Item, ItemsForListVm>();
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class DayDetailVm
+    public class DayDetailVm : IMapFrom<Customer>
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -17,5 +17,7 @@ namespace CountItMVC.Application.ViewModels
         public int CustomerId { get; set; }
 
         public MealForListVm[] mealList = new MealForListVm[5];
+
+
     }
 }
