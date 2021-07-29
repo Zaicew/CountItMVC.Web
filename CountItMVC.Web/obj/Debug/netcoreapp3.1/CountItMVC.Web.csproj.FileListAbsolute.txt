@@ -878,3 +878,7 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreap
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\CountItMVC.Application.pdb
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\CountItMVC.Web.csproj.AssemblyReference.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\CountItMVC.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index_test.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ViewCustomer_test.cshtml.g.cs

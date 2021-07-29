@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20210726113942_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20210726115954_InitialCreateT.cs" />
     <Compile Remove="Migrations\20210726115954_InitialCreateT.Designer.cs" />
+    <Compile Remove="Migrations\20210726121147_InitialDB.cs" />
+    <Compile Remove="Migrations\20210726121147_InitialDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +29,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CountItMVC.Domain\CountItMVC.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CountItMVC.Domain\CountItMVC.Domain.csproj" />
+    <ProjectReference Include="..\CountItMVC.Infrastructure\CountItMVC.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -14,7 +14,9 @@ using Microsoft.Extensions.Hosting;
 using CountItMVC.Infrastructure;
 using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.Services;
-
+using System.Reflection;
+using CountItMVC.Domain.Interface;
+using CountItMVC.Infrastructure.Repositories;
 
 namespace CountItMVC.Web
 {
@@ -38,7 +40,20 @@ namespace CountItMVC.Web
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IDayService, DayService>();
+            services.AddTransient<IItemInMealService, ItemInMealService>();
             services.AddTransient<IItemService, ItemService>();
+            services.AddTransient<IMealService, MealService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IContactDetailRepository, ContactDetailRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IDayRepository, DayRepository>();
+            services.AddTransient<IItemInMealRepository, ItemInMealRepository>();
+            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<IMealRepository, MealRepository>();
 
         }
 
@@ -67,8 +82,12 @@ namespace CountItMVC.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "nowy",
+                    pattern: "{controller=Customer}/{action=ViewCustomer_test}/{customerId}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

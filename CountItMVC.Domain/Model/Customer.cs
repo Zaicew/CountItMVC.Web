@@ -12,8 +12,7 @@ namespace CountItMVC.Domain.Model
         public bool isActive { get; set; }
 
 
-        public virtual ICollection<ContactDetail> PhoneNumbers { get; set; }
-        public virtual ICollection<ContactDetail> Emails { get; set; }
+        public virtual ICollection<ContactDetail> ContactDetails { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Day> Days { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using CountItMVC.Application.Interfaces;
+﻿using AutoMapper;
+using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using System;
@@ -10,6 +11,14 @@ namespace CountItMVC.Application.Services
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepo;
+        private readonly IMapper _mapper;
+
+        public ItemService(IItemRepository itemRepo, IMapper mapper)
+        {
+            _itemRepo = itemRepo;
+            _mapper = mapper;
+        }
+
         public int AddItem(NewItemVm item)
         {
             throw new NotImplementedException();

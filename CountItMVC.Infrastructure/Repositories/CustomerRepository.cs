@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CountItMVC.Infrastructure.Repositories
 {
-    class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly Context _context;
         public CustomerRepository(Context context)
@@ -47,6 +47,29 @@ namespace CountItMVC.Infrastructure.Repositories
         public Customer GetCustomer(int customerId)
         {
             return _context.Customers.Find(customerId);
+        }
+
+        public int AddAddressToCustomer(int customerId, ContactDetail emailAddress)
+        {
+            var customer = _context.Customers.Find(customerId);
+            if (emailAddress.ContactDetailType.Name == "Email")
+            {
+                customer.ContactDetails.Add(emailAddress);
+                return emailAddress.Id;
+            }
+
+            return -1;
+        }
+        public int AddPhoneNumberToCustomer(int customerId, ContactDetail phoneNumber)
+        {
+            var customer = _context.Customers.Find(customerId);
+            if (phoneNumber.ContactDetailType.Name == "PhoneNumber")
+            {
+                customer.ContactDetails.Add(phoneNumber);
+                return phoneNumber.Id;
+            }
+
+            return -1;
         }
     }
 }

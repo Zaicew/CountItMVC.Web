@@ -137,6 +137,9 @@ namespace CountItMVC.Infrastructure.Migrations
                     b.Property<string>("NationalId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
@@ -179,7 +182,7 @@ namespace CountItMVC.Infrastructure.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

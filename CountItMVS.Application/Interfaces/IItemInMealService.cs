@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CountItMVC.Application.Interfaces
 {
-    class IItemInMealService
+    public interface IItemInMealService
     {
     }
 }

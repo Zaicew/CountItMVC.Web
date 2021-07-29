@@ -230,7 +230,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -288,6 +288,9 @@
             "projectReferences": {
               "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj": {
                 "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Domain\\CountItMVC.Domain.csproj"
+              },
+              "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj": {
+                "projectPath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Infrastructure\\CountItMVC.Infrastructure.csproj"
               }
             }
           }

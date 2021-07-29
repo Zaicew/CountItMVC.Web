@@ -5,7 +5,7 @@ using CountItMVC.Domain.Model;
 
 namespace CountItMVC.Infrastructure.Repositories
 {
-    class DayRepository : IDayRepository
+    public class DayRepository : IDayRepository
     {
         private readonly Context _context;
         public DayRepository(Context context)

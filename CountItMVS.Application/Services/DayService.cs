@@ -1,4 +1,5 @@
-﻿using CountItMVC.Application.Interfaces;
+﻿using AutoMapper;
+using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
@@ -11,6 +12,14 @@ namespace CountItMVC.Application.Services
     public class DayService : IDayService
     {
         private readonly IDayRepository _dayRepo;
+        private readonly IMapper _mapper;
+
+        public DayService(IDayRepository dayRepo, IMapper mapper)
+        {
+            _dayRepo = dayRepo;
+            _mapper = mapper;
+        }
+
         public DayDetailVm AddDay(Day day)
         {
             _dayRepo.AddDay(day);
