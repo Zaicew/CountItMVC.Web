@@ -182,7 +182,6 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\bin\Debug\netcorea
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.csproj.AssemblyReference.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.AssemblyInfoInputs.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.AssemblyInfo.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.csproj.CoreCompileInputs.cache

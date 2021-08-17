@@ -69,6 +69,46 @@ namespace CountItMVC.Application.Services
 
             return customerListVm;
         }
+        public ListCustomerForListVm GetAllActiveCusomersForList()
+        {
+            var customers = _customerRepo.GetAllActiveCustomers();
+            var customerListVm = new ListCustomerForListVm();
+            customerListVm.Customers = new List<CustomerForListVm>();
+            foreach(var item in customers)
+            {
+                var customerVm = new CustomerForListVm()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    NationalId = item.NationalId,
+                    IsActive = item.isActive
+                };
+                customerListVm.Customers.Add(customerVm);
+            }
+            customerListVm.Count = customerListVm.Customers.Count();
+
+            return customerListVm;
+        }
+        public ListCustomerForListVm GetAllInActiveCusomersForList()
+        {
+            var customers = _customerRepo.GetAllDeactivatedCustomers();
+            var customerListVm = new ListCustomerForListVm();
+            customerListVm.Customers = new List<CustomerForListVm>();
+            foreach(var item in customers)
+            {
+                var customerVm = new CustomerForListVm()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    NationalId = item.NationalId,
+                    IsActive = item.isActive
+                };
+                customerListVm.Customers.Add(customerVm);
+            }
+            customerListVm.Count = customerListVm.Customers.Count();
+
+            return customerListVm;
+        }
 
         public CustomerDetailsVm GetCustomerDetails_test(int customerId)
         {
@@ -176,5 +216,7 @@ namespace CountItMVC.Application.Services
             }
             return customerVm;
         }
+
+
     }
 }

@@ -85,6 +85,15 @@ namespace CountItMVC.Web
                     name: "nowy",
                     pattern: "{controller=Customer}/{action=ViewCustomer_test}/{customerId}");
                 endpoints.MapControllerRoute(
+                    name: "allCustomers",
+                    pattern: "{controller=Customer}/{action=ViewAllCustomers}");
+                endpoints.MapControllerRoute(
+                    name: "allCustomers",
+                    pattern: "{controller=Customer}/{action=ViewAllActiveCustomers}");
+                endpoints.MapControllerRoute(
+                    name: "allCustomers",
+                    pattern: "{controller=Customer}/{action=ViewAllInActiveCustomers}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 

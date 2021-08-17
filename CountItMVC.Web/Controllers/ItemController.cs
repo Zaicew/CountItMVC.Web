@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CountItMVC.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,19 @@ namespace CountItMVC.Web.Controllers
 {
     public class ItemController : Controller
     {
+        private readonly IItemService _itemService;
+        public ItemController(IItemService itemService)
+        {
+            _itemService = itemService;
+        }
+
+
+        public IActionResult ShowAllItems()
+        {
+            var items = _itemService.GetAllItemsForList();
+            return View(items);
+        }
+
         //public IActionResult Index()
         //{
         //    var model = itemService.GetAllItemsForList();

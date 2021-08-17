@@ -79,5 +79,21 @@ namespace CountItMVC.Web.Controllers
             var customerModel = _customerService.GetCustomerDetails_test(customerId);
             return View(customerModel);
         }
+
+        public IActionResult ViewAllCustomers()
+        {
+            var customers = _customerService.GetAllCusomersForList();
+            return View(customers);
+        }
+        public IActionResult ViewAllActiveCustomers()
+        {
+            var customers = _customerService.GetAllActiveCusomersForList();
+            return View(customers);
+        }
+        public IActionResult ViewAllInActiveCustomers()
+        {
+            var customers = _customerService.GetAllInActiveCusomersForList();
+            return View(customers);
+        }
     }
 }

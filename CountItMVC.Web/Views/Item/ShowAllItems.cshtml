@@ -1,0 +1,71 @@
+﻿@model CountItMVC.Application.ViewModels.ListItemForListVm
+
+@{
+    ViewData["Title"] = "ShowAllItems";
+}
+
+<h1>ShowAllItems</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].KcalPerHundredGrams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].FatPerHundredGrams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].ProteinPerHundredGrams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].CarbPerHundredGrams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Items[0].CategoryId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KcalPerHundredGrams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatPerHundredGrams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProteinPerHundredGrams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarbPerHundredGrams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
