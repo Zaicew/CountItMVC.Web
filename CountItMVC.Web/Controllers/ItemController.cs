@@ -22,6 +22,12 @@ namespace CountItMVC.Web.Controllers
             return View(items);
         }
 
+        public IActionResult ShowDetailsOfChoosenItem(int itemId)
+        {
+            var item = _itemService.GetItemById(itemId);
+            return View(item);
+        }
+
         //public IActionResult Index()
         //{
         //    var model = itemService.GetAllItemsForList();

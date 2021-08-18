@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CountItMVC.Application.ViewModels
 {
-    public class ItemDetailVm : IMapFrom<Customer>
+    public class ItemDetailVm : IMapFrom<Item>
     {
         public int Id { get; set; }
         public string Name { get; set; }

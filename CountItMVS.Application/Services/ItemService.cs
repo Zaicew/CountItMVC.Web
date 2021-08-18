@@ -52,11 +52,12 @@ namespace CountItMVC.Application.Services
             return result;
         }
 
+        
         public ItemDetailVm GetItemById(int itemId)
         {
             var item = _itemRepo.GetItemById(itemId);
             ItemDetailVm result = new ItemDetailVm();
-            result.Id = item.Id;
+            result.Id = itemId;
             result.Name = item.Name;
             result.CategoryId = item.CategoryId;
             result.KcalPerHundredGrams = item.KcalPerHundredGrams;
@@ -66,5 +67,6 @@ namespace CountItMVC.Application.Services
 
             return result;
         }
+
     }
 }
