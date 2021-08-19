@@ -46,7 +46,7 @@ namespace CountItMVC.Infrastructure.Repositories
 
         public Customer GetCustomer(int customerId)
         {
-            return _context.Customers.Find(customerId);
+            return _context.Customers.FirstOrDefault(i => i.Id == customerId);
         }
 
         public int AddAddressToCustomer(int customerId, ContactDetail emailAddress)

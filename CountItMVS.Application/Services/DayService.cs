@@ -37,10 +37,11 @@ namespace CountItMVC.Application.Services
             return dayVm;
         }
 
-        public ListDayDetailVm GetAllDays()
+        public ListDayDetailVm GetAllDaysForList()
         {
             var days = _dayRepo.GetAllDays();
             var result = new ListDayDetailVm();
+            
             foreach (var item in days)
             {
                 var dayVm = new DayDetailVm()
@@ -53,9 +54,9 @@ namespace CountItMVC.Application.Services
                     TotalProtein = item.TotalProtein,
                     TotalFat = item.TotalFat,
                     CustomerId = item.CustomerId,
-                    mealList = new MealForListVm[5] 
+                    //mealList = new MealForListVm[5] 
             };
-                dayVm.mealList = CreateMealListVmForCurrentDay(item);
+                //dayVm.mealList = CreateMealListVmForCurrentDay(item);
                 result.Days.Add(dayVm);
             }
             result.Count = result.Days.Count;
@@ -109,3 +110,40 @@ namespace CountItMVC.Application.Services
         }
     }
 }
+
+
+//private DayDetailVm CreateDayDetailVm(Day day)
+//{
+//    MealForListVm[] meals = new MealForListVm[5];
+//    int i = 0;
+//    foreach (var item in day.mealList)
+//    {
+//        var mealVm = new MealForListVm()
+//        {
+//            Id = item.Id,
+//            TotalKcal = item.TotalKcal,
+//            TotalCarb = item.TotalCarb,
+//            TotalProtein = item.TotalProtein,
+//            TotalFat = item.TotalFat,
+//            TotalWeight = item.TotalWeight,
+//            IsVisible = item.IsVisible,
+//            DayId = item.DayId
+//        };
+//        meals[i] = mealVm;
+//        i++;
+//    }
+//    DayDetailVm dayVm = new DayDetailVm()
+//    {
+//        Id = day.Id,
+//        Date = day.Date,
+//        TotalKcal = day.TotalKcal,
+//        TotalCarbs = day.TotalCarbs,
+//        TotalProtein = day.TotalProtein,
+//        TotalFat = day.TotalFat,
+//        TotalWeightInGram = day.TotalWeightInGram,
+//        CustomerId = day.CustomerId,
+//        mealList = meals
+//    };
+
+//    return dayVm;
+//}

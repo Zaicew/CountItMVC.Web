@@ -1,0 +1,77 @@
+﻿@model CountItMVC.Application.ViewModels.ListDayDetailVm
+
+@{
+    ViewData["Title"] = "ViewAllDays";
+}
+
+<h1>ViewAllDays</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].TotalKcal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].TotalFat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].TotalProtein)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].TotalCarbs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].TotalWeightInGram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Days[0].CustomerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Days) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalKcal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalFat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalProtein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCarbs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalWeightInGram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

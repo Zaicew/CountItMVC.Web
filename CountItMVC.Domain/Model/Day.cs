@@ -13,13 +13,13 @@ namespace CountItMVC.Domain.Model
             get
             {
                 double result = 0;
-                foreach (var item in mealList)
-                {
-                    if (item.IsVisible)
-                    {
-                        result += item.TotalKcal;
-                    }
-                }
+                //foreach (var item in mealList)
+                //{
+                //    if (item.IsVisible)
+                //    {
+                //        result += item.TotalKcal;
+                //    }
+                //}
                 return result;
             }
         }
@@ -28,13 +28,13 @@ namespace CountItMVC.Domain.Model
             get
             {
                 double result = 0;
-                foreach (var item in mealList)
-                {
-                    if (item.IsVisible)
-                    {
-                        result += item.TotalFat;
-                    }
-                }
+                //foreach (var item in mealList)
+                //{
+                //    if (item.IsVisible)
+                //    {
+                //        result += item.TotalFat;
+                //    }
+                //}
                 return result;
             }
         }
@@ -43,13 +43,13 @@ namespace CountItMVC.Domain.Model
             get
             {
                 double result = 0;
-                foreach (var item in mealList)
-                {
-                    if (item.IsVisible)
-                    {
-                        result += item.TotalProtein;
-                    }
-                }
+                //foreach (var item in mealList)
+                //{
+                //    if (item.IsVisible)
+                //    {
+                //        result += item.TotalProtein;
+                //    }
+                //}
                 return result;
             }
         }
@@ -58,13 +58,13 @@ namespace CountItMVC.Domain.Model
             get
             {
                 double result = 0;
-                foreach (var item in mealList)
-                {
-                    if (item.IsVisible)
-                    {
-                        result += item.TotalCarb;
-                    }
-                }
+                //foreach (var item in mealList)
+                //{
+                //    if (item.IsVisible)
+                //    {
+                //        result += item.TotalCarb;
+                //    }
+                //}
                 return result;
             }
         }
@@ -75,10 +75,10 @@ namespace CountItMVC.Domain.Model
                 double result = 0;
                 foreach (var item in mealList)
                 {
-                    if (item.IsVisible)
-                    {
-                        result += item.TotalWeight;
-                    }
+                    //if (item.IsVisible)
+                    //{
+                        //result += item.TotalWeight;
+                    //}
                 }
                 return result;
             }

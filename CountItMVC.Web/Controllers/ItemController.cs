@@ -16,16 +16,26 @@ namespace CountItMVC.Web.Controllers
         }
 
 
-        public IActionResult ShowAllItems()
+        public IActionResult ViewAllItems()
         {
             var items = _itemService.GetAllItemsForList();
             return View(items);
         }
 
-        public IActionResult ShowDetailsOfChoosenItem(int itemId)
+        [HttpGet("{itemId}")]
+        [Route("Item/ViewItem/{itemId}")]
+        public IActionResult ViewItem(int itemId)
         {
             var item = _itemService.GetItemById(itemId);
             return View(item);
+        }
+
+        [HttpGet("{categoryId}")]
+        [Route("Item/ViewAllItemsFromCategory/{categoryId}")]
+        public IActionResult ViewAllItemsFromCategory(int categoryId)
+        {
+            var items = _itemService.GettAllItemsFromCategory(categoryId);
+            return View(items);
         }
 
         //public IActionResult Index()

@@ -82,14 +82,14 @@ namespace CountItMVC.Web
             app.UseEndpoints(endpoints =>
             {
 
-                endpoints.MapControllerRoute(
-                    name: "itemDetails",
-                    pattern: "Item/ShowDetailsOfChoosenItem/{*id}",
-                    defaults: new { controller = "Item", action = "ShowDetailsOfChoosenItem" });
-                endpoints.MapControllerRoute(
-                    name: "customerDetails",
-                    pattern: "Customer/ViewCustomer/{*id}",
-                    defaults: new { controller = "Customer", action = "ViewCustomer" });
+                //endpoints.MapControllerRoute(
+                //    name: "itemDetails",
+                //    pattern: "Item/ShowDetailsOfChoosenItem/{*id}",
+                //    defaults: new { controller = "Item", action = "ShowDetailsOfChoosenItem" });
+                //endpoints.MapControllerRoute(
+                //    name: "customerDetails",
+                //    pattern: "Customer/ViewCustomer/{*id}",
+                //    defaults: new { controller = "Customer", action = "ViewCustomer" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

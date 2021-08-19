@@ -11,7 +11,7 @@ namespace CountItMVC.Application.Interfaces
     {
         DayDetailVm AddDay(Day day);
         DayDetailVm GetDayById(int id);
-        ListDayDetailVm GetAllDays();
+        ListDayDetailVm GetAllDaysForList();
 
     }
 }

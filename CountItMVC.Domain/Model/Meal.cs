@@ -5,6 +5,10 @@ namespace CountItMVC.Domain.Model
 {
     public class Meal
     {
+        public Meal()
+        {
+            IsVisible = true;
+        }
         public int Id { get; set; }
         public double TotalKcal
         {

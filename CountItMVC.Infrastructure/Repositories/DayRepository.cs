@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
@@ -46,5 +47,11 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             return _context.Days.FirstOrDefault(p => p.Id == dayId);
         }
+        //check if below works properly
+        public ICollection<Day> GetAllDaysFromCurrentCustomer(int customerId)
+        {
+            return _context.Customers.Find(customerId).Days;
+        }
+
     }
 }

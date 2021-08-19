@@ -38,7 +38,7 @@ namespace CountItMVC.Infrastructure.Repositories
 
         public Item GetItemById(int itemId)
         {
-            var output = _context.Items.Find(itemId);
+            var output = _context.Items.FirstOrDefault(i => i.Id == itemId);
             return output;
         }
 
@@ -53,5 +53,6 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             return _context.Items;
         }
+
     }
 }

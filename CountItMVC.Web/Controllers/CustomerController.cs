@@ -20,7 +20,8 @@ namespace CountItMVC.Web.Controllers
             return View(model);
         }
 
-        
+        [HttpGet("{customerId}")]
+        [Route("customer/ViewCustomer/{customerId}")]
         public IActionResult ViewCustomer(int customerId)        
         {
             var customerModel = _customerService.GetCustomerDetails_test(customerId);
