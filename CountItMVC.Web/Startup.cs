@@ -17,6 +17,7 @@ using CountItMVC.Application.Services;
 using System.Reflection;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Infrastructure.Repositories;
+using CountItMVC.Application;
 
 namespace CountItMVC.Web
 {
@@ -37,24 +38,12 @@ namespace CountItMVC.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<Context>();
+
+            services.AddApplication();
+            services.AddInfrastructure();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
-
-            services.AddTransient<ICategoryService, CategoryService>();
-            services.AddTransient<ICustomerService, CustomerService>();
-            services.AddTransient<IDayService, DayService>();
-            services.AddTransient<IItemInMealService, ItemInMealService>();
-            services.AddTransient<IItemService, ItemService>();
-            services.AddTransient<IMealService, MealService>();
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddTransient<ICategoryRepository, CategoryRepository>();
-            services.AddTransient<IContactDetailRepository, ContactDetailRepository>();
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
-            services.AddTransient<IDayRepository, DayRepository>();
-            services.AddTransient<IItemInMealRepository, ItemInMealRepository>();
-            services.AddTransient<IItemRepository, ItemRepository>();
-            services.AddTransient<IMealRepository, MealRepository>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

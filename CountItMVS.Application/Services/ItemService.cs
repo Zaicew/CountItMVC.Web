@@ -5,6 +5,7 @@ using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Application.Services
@@ -27,17 +28,24 @@ namespace CountItMVC.Application.Services
         {
             throw new NotImplementedException();
         }
-        public ListItemForListVm GetAllItemsForList()
+        public ListItemForListVm GetAllItemsForList(int pageSize, int pageNo, string searchString)
         {
-            var items = _itemRepo.GetAllItems();
-            ListItemForListVm result = new ListItemForListVm();
-            result.Items = new List<ItemsForListVm>();
-            foreach(var item in items)
+            var items = _itemRepo.GetAllItems().Where(p => p.Name.StartsWith(searchString));
+            var itemsToShow = items.Skip(pageSize * (pageNo-1)).Take(pageSize).ToList();
+            ListItemForListVm result = new ListItemForListVm()
+            {
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Items = new List<ItemsForListVm>(),
+                Count = items.Count()
+            };
+            //result.Items = new List<ItemsForListVm>();
+            foreach(var item in itemsToShow)
             {
                 var itemVm = CreateItemView(item);
                 result.Items.Add(itemVm);
             }
-            result.Count = result.Items.Count;
             return result;
         }        
         public ItemDetailVm GetItemById(int itemId)
@@ -77,7 +85,7 @@ namespace CountItMVC.Application.Services
                 KcalPerHundredGrams = item.KcalPerHundredGrams,
                 CarbPerHundredGrams = item.CarbPerHundredGrams,
                 ProteinPerHundredGrams = item.ProteinPerHundredGrams,
-                FatPerHundredGrams = item.FatPerHundredGrams,
+                FatPerHundredGrams = item.FatPerHundredGrams
             };
             return itemVm;
         }

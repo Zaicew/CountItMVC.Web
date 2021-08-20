@@ -15,10 +15,24 @@ namespace CountItMVC.Web.Controllers
             _itemService = itemService;
         }
 
-
+        [HttpGet]
         public IActionResult ViewAllItems()
         {
-            var items = _itemService.GetAllItemsForList();
+            var items = _itemService.GetAllItemsForList(2, 1, "");
+            return View(items);
+        }
+        [HttpPost]
+        public IActionResult ViewAllItems(int pageSize, int? pageNo, string searchString )
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = String.Empty;
+            }
+            var items = _itemService.GetAllItemsForList(pageSize, pageNo.Value, searchString);
             return View(items);
         }
 
