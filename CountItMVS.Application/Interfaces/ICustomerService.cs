@@ -9,9 +9,8 @@ namespace CountItMVC.Application.Interfaces
     {
         int AddCustomer(NewCustomerVm customer);
         ListCustomerForListVm GetAllCusomersForList(int pageSize, int pageNo, string searchString);
-        ListCustomerForListVm GetAllActiveCusomersForList();
-        ListCustomerForListVm GetAllInActiveCusomersForList();
-        //CustomerDetailsVm GetCustomerDetails(int customerId);
+        ListCustomerForListVm GetAllActiveCusomersForList(int pageSize, int pageNo, string searchString);
+        ListCustomerForListVm GetAllInActiveCusomersForList(int pageSize, int pageNo, string searchString);
         CustomerDetailsVm GetCustomerDetails_test(int customerId);
         int AddPhoneNumberToCustomer(int customerId, ContactDetailListVm contactInformation);
         int AddEmailToCustomer(int customerId, ContactDetailListVm contactInformation);

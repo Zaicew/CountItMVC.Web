@@ -18,10 +18,24 @@ namespace CountItMVC.Web.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult ViewAllCategories()
         {
-            var categories = _categoryService.ViewAllCategoriesForList();
+            var categories = _categoryService.ViewAllCategoriesForList(2,1,"");
+            return View(categories);
+        }
+        [HttpPost]
+        public IActionResult ViewAllCategories(int pageSize, int? pageNo, string searchString)
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var categories = _categoryService.ViewAllCategoriesForList(pageSize, pageNo.Value, searchString);
             return View(categories);
         }
         [HttpGet("categoryId")]

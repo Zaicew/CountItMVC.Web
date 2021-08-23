@@ -15,3 +15,4 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcor
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.csproj.CoreCompileInputs.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Domain\obj\Debug\netcoreapp3.1\CountItMVC.Domain.csproj.AssemblyReference.cache

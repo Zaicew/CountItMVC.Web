@@ -23,22 +23,18 @@ namespace CountItMVC.Application.Services
             _contactDetailRepo = contactDetailRepo;
             _mapper = mapper;
         }
-
         public int AddCustomer(NewCustomerVm customer)
         {
             throw new NotImplementedException();
         }
-
         public int AddEmailToCustomer(int customerId, ContactDetailListVm contactInformation)
         {
             throw new NotImplementedException();
         }
-
         public int AddPhoneNumberToCustomer(int customerId, ContactDetailListVm contactInformation)
         {
             throw new NotImplementedException();
         }
-
         public ListCustomerForListVm GetAllCusomersForList_mapper()
         {
             var customers = _customerRepo.GetAllCustomers().ProjectTo<CustomerForListVm>(_mapper.ConfigurationProvider).ToList();
@@ -66,50 +62,47 @@ namespace CountItMVC.Application.Services
                 customerListVm.Customers.Add(CreateCustomerView(item));
             }
             return customerListVm;
-        }
-
-        
-        public ListCustomerForListVm GetAllActiveCusomersForList()
+        }        
+        public ListCustomerForListVm GetAllActiveCusomersForList(int pageSize, int pageNo, string searchString)
         {
-            var customers = _customerRepo.GetAllActiveCustomers();
-            var customerListVm = new ListCustomerForListVm();
-            customerListVm.Customers = new List<CustomerForListVm>();
-            foreach(var item in customers)
+            var customers = _customerRepo.GetAllActiveCustomers().Where(p => p.Name.StartsWith(searchString));
+            var customersToShow = customers.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+            var customerListVm = new ListCustomerForListVm()
             {
-                var customerVm = new CustomerForListVm()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    NationalId = item.NationalId,
-                    IsActive = item.isActive
-                };
-                customerListVm.Customers.Add(customerVm);
+                CurrentPage = pageNo,
+                PageSize = pageSize,
+                SearchString = searchString,
+                Customers = new List<CustomerForListVm>(),
+                Count = customers.Count()
+            };
+            customerListVm.Customers = new List<CustomerForListVm>();
+            foreach(var item in customersToShow)
+            {
+                var custVm = CreateCustomerView(item);
+                customerListVm.Customers.Add(custVm);
             }
-            customerListVm.Count = customerListVm.Customers.Count();
 
             return customerListVm;
         }
-        public ListCustomerForListVm GetAllInActiveCusomersForList()
+        public ListCustomerForListVm GetAllInActiveCusomersForList(int pageSize, int pageNo, string searchString)
         {
-            var customers = _customerRepo.GetAllDeactivatedCustomers();
-            var customerListVm = new ListCustomerForListVm();
-            customerListVm.Customers = new List<CustomerForListVm>();
-            foreach(var item in customers)
+            var customers = _customerRepo.GetAllDeactivatedCustomers().Where(p => p.Name.StartsWith(searchString));
+            var customersToShow = customers.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+            var customerListVm = new ListCustomerForListVm()
             {
-                var customerVm = new CustomerForListVm()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    NationalId = item.NationalId,
-                    IsActive = item.isActive
-                };
-                customerListVm.Customers.Add(customerVm);
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Customers = new List<CustomerForListVm>(),
+                Count = customers.Count()
+            };
+            foreach(var item in customersToShow)
+            {
+                var custVm = CreateCustomerView(item);
+                customerListVm.Customers.Add(custVm);
             }
-            customerListVm.Count = customerListVm.Customers.Count();
-
             return customerListVm;
         }
-
         public CustomerDetailsVm GetCustomerDetails_test(int customerId)
         {
             var customer = _customerRepo.GetCustomer(customerId);

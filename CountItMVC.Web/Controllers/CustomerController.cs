@@ -47,15 +47,44 @@ namespace CountItMVC.Web.Controllers
             var customers = _customerService.GetAllCusomersForList(pageSize, pageNo.Value, searchString);
             return View(customers);
         }
-
+        [HttpGet]
         public IActionResult ViewAllActiveCustomers()
         {
-            var customers = _customerService.GetAllActiveCusomersForList();
+            var customers = _customerService.GetAllActiveCusomersForList(2, 1, "");
             return View(customers);
         }
+        [HttpPost]
+        public IActionResult ViewAllActiveCustomers(int pageSize, int? pageNo, string searchString)
+        {
+            if (!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var customers = _customerService.GetAllActiveCusomersForList(pageSize, pageNo.Value, searchString);
+            return View(customers);
+        }
+        [HttpGet]
         public IActionResult ViewAllInActiveCustomers()
         {
-            var customers = _customerService.GetAllInActiveCusomersForList();
+            var customers = _customerService.GetAllInActiveCusomersForList(2, 1, "");
+            return View(customers);
+        }
+        [HttpPost]
+        public IActionResult ViewAllInActiveCustomers(int pageSize, int? pageNo, string searchString)
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var customers = _customerService.GetAllInActiveCusomersForList(pageSize, pageNo.Value, searchString);
             return View(customers);
         }
     }

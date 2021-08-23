@@ -7,7 +7,7 @@ namespace CountItMVC.Application.Interfaces
 {
     public interface ICategoryService
     {
-        ListCategoryForListVm ViewAllCategoriesForList();
+        ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString);
         CategoryForListVm ViewCategory(int categoryId);
     }
 }

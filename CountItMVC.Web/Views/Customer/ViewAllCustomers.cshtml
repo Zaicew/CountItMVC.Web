@@ -15,7 +15,6 @@
         <input type="submit" value="Search"/>
     </div>
     <div class="row">
-
         <table class="table">
             <thead>
                 <tr>
@@ -63,7 +62,7 @@
     <div class="row">
         <table>
             <tr>
-                @for (int i = 1; i<(Math.Ceiling(Model.Count/(double)Model.PageSize)) + 1; i++)
+                @for (int i = 1; i < Math.Ceiling(Model.Count / (double)Model.PageSize) + 1; i++)
             {
                 <td>
                     @if(i!=Model.CurrentPage)

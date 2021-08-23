@@ -4,51 +4,90 @@
     ViewData["Title"] = "ViewAllInActiveCustomers";
 }
 
-<h1>ViewAllCustomers</h1>
+<h1>Deactivated customers</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customers[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customers[0].NationalId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customers[0].IsActive)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Customers)
-        {
+<form asp-action="ViewAllInActiveCustomers" asp-controller="Customer" method="post">
+    <div class="row">
+        <input type="text" asp-for="SearchString" name="searchString" id="searchString" />
+        <input type="submit" value="Search" />
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customers[0].Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customers[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customers[0].NationalId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customers[0].IsActive)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Customers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NationalId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NationalId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                @for (int i = 1; i < (Math.Ceiling(Model.Count / (double)Model.PageSize)) + 1; i++)
+                {
+                    <td>
+                        @if (i != Model.CurrentPage)
+                        {
+                            <a href="javascript:PagerClick(@i)">@i</a>
+                        }
+                        else
+                        {
+                            <span>@i</span>
+                        }
+                    </td>
+                }
             </tr>
-        }
-    </tbody>
-</table>
+        </table>
+        <input type="hidden" name="pageNo" id="pageNo" />
+        <input type="hidden" name="pageSize" id="pageSize" value="2" />
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    function PagerClick(ViewAllInActiveCustomers) {
+        document.getElementById("pageNo").value = ViewAllInActiveCustomers;
+        document.forms[0].submit();
+    }
+    </script>
+}

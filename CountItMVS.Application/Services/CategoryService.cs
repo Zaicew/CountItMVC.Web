@@ -5,6 +5,7 @@ using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Application.Services
@@ -20,16 +21,22 @@ namespace CountItMVC.Application.Services
             _mapper = mapper;
         }
 
-        public ListCategoryForListVm ViewAllCategoriesForList()
+        public ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString)
         {
-            var categories = _categoryRepo.GetAllCategories();
-            var result = new ListCategoryForListVm();
-            result.Categories = new List<CategoryForListVm>();
-            foreach(var item in categories)
+            var categories = _categoryRepo.GetAllCategories().Where(p => p.Name.StartsWith(searchString));
+            var categoriesToShow = categories.Skip(pageSize * (pageNo - 1)).Take(pageSize);
+            var result = new ListCategoryForListVm()
+            {
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Categories = new List<CategoryForListVm>(),
+                Counter = categories.Count()
+            };
+            foreach(var item in categoriesToShow)
             {
                 result.Categories.Add(GetCategoryViewModel(item));
             }
-            result.Counter = result.Categories.Count;
             return result;
         }
 
