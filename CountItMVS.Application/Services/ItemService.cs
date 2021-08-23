@@ -40,7 +40,6 @@ namespace CountItMVC.Application.Services
                 Items = new List<ItemsForListVm>(),
                 Count = items.Count()
             };
-            //result.Items = new List<ItemsForListVm>();
             foreach(var item in itemsToShow)
             {
                 var itemVm = CreateItemView(item);

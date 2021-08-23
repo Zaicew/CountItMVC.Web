@@ -8,7 +8,7 @@ namespace CountItMVC.Application.Interfaces
     public interface ICustomerService
     {
         int AddCustomer(NewCustomerVm customer);
-        ListCustomerForListVm GetAllCusomersForList();
+        ListCustomerForListVm GetAllCusomersForList(int pageSize, int pageNo, string searchString);
         ListCustomerForListVm GetAllActiveCusomersForList();
         ListCustomerForListVm GetAllInActiveCusomersForList();
         //CustomerDetailsVm GetCustomerDetails(int customerId);

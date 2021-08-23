@@ -14,11 +14,11 @@ namespace CountItMVC.Web.Controllers
         {
             _customerService = customerService;
         }
-        public IActionResult Index_test()
-        {
-            var model = _customerService.GetAllCusomersForList();
-            return View(model);
-        }
+        //public IActionResult Index_test()
+        //{
+        //    var model = _customerService.GetAllCusomersForList();
+        //    return View(model);
+        //}
 
         [HttpGet("{customerId}")]
         [Route("customer/ViewCustomer/{customerId}")]
@@ -27,12 +27,27 @@ namespace CountItMVC.Web.Controllers
             var customerModel = _customerService.GetCustomerDetails_test(customerId);
             return View(customerModel);
         }
-
+        [HttpGet]
         public IActionResult ViewAllCustomers()
         {
-            var customers = _customerService.GetAllCusomersForList();
+            var customers = _customerService.GetAllCusomersForList(2, 1, "");
             return View(customers);
         }
+        [HttpPost]
+        public IActionResult ViewAllCustomers(int pageSize, int? pageNo, string searchString)
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString is null)
+            {
+                searchString = String.Empty;
+            }
+            var customers = _customerService.GetAllCusomersForList(pageSize, pageNo.Value, searchString);
+            return View(customers);
+        }
+
         public IActionResult ViewAllActiveCustomers()
         {
             var customers = _customerService.GetAllActiveCusomersForList();

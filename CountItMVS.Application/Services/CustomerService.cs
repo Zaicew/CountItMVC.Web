@@ -49,26 +49,26 @@ namespace CountItMVC.Application.Services
             };
             return customerList;
         }
-        public ListCustomerForListVm GetAllCusomersForList()
+        public ListCustomerForListVm GetAllCusomersForList(int pageSize, int pageNo, string searchString)
         {
-            var customers = _customerRepo.GetAllCustomers();
-            var customerListVm = new ListCustomerForListVm();
-            customerListVm.Customers = new List<CustomerForListVm>();
-            foreach(var item in customers)
+            var customers = _customerRepo.GetAllCustomers().Where(p => p.Name.StartsWith(searchString));
+            var customersToShow = customers.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+            var customerListVm = new ListCustomerForListVm()
             {
-                var customerVm = new CustomerForListVm()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    NationalId = item.NationalId,
-                    IsActive = item.isActive
-                };
-                customerListVm.Customers.Add(customerVm);
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Customers = new List<CustomerForListVm>(),
+                Count = customers.Count()
+            };
+            foreach(var item in customersToShow)
+            {
+                customerListVm.Customers.Add(CreateCustomerView(item));
             }
-            customerListVm.Count = customerListVm.Customers.Count();
-
             return customerListVm;
         }
+
+        
         public ListCustomerForListVm GetAllActiveCusomersForList()
         {
             var customers = _customerRepo.GetAllActiveCustomers();
@@ -216,7 +216,16 @@ namespace CountItMVC.Application.Services
             }
             return customerVm;
         }
-
-
+        private CustomerForListVm CreateCustomerView(Customer customer)
+        {
+            var custVm = new CustomerForListVm()
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                NationalId = customer.NationalId,
+                IsActive = customer.isActive
+            };
+            return custVm;
+        }
     }
 }
