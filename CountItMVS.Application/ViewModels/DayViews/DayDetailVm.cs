@@ -23,7 +23,8 @@ namespace CountItMVC.Application.ViewModels
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Day, DayDetailVm>();
+            profile.CreateMap<Day, DayDetailVm>()
+                .ForMember(c => c.mealList, opt => opt.Ignore());
         }
 
     }

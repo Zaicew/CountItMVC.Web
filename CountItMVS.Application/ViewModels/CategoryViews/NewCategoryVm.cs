@@ -14,7 +14,7 @@ namespace CountItMVC.Application.ViewModels
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Category, NewCategoryVm>();
+            profile.CreateMap<NewCategoryVm, Category>();
         }
     }
 }

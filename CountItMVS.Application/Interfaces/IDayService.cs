@@ -9,9 +9,8 @@ namespace CountItMVC.Application.Interfaces
 {
     public interface IDayService
     {
-        DayDetailVm AddDay(Day day);
+        int AddDay(NewDayVm model);
         DayDetailVm GetDayById(int id);
         ListDayDetailVm GetAllDaysForList();
-
     }
 }

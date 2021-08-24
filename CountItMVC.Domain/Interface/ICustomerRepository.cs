@@ -14,6 +14,7 @@ namespace CountItMVC.Domain.Interface
         bool DeactiveCustomer(int customerId);
         bool ActiveCustomer(int customerId);
         Customer GetCustomer(int customerId);
+        int AddCustomer(Customer customer);
         //CustomerDetailsVm GetCustomerDetails(int customerId);
     }
 }

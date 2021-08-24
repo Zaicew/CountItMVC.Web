@@ -2,6 +2,7 @@
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Infrastructure.Repositories
@@ -18,6 +19,11 @@ namespace CountItMVC.Infrastructure.Repositories
         public ICollection<Meal> GetAllMealsFromDay(int dayId)
         {
             return _context.Days.Find(dayId).mealList;
+        }
+
+        public IQueryable<Meal> GetAllMeals()
+        {
+            return _context.Meals;
         }
     }
 }

@@ -23,9 +23,12 @@ namespace CountItMVC.Application.Services
             _contactDetailRepo = contactDetailRepo;
             _mapper = mapper;
         }
-        public int AddCustomer(NewCustomerVm customer)
+        public int AddCustomer(NewCustomerVm customerVm)
         {
-            throw new NotImplementedException();
+            var customer = _mapper.Map<Customer>(customerVm);
+            customer.isActive = true;
+            var id = _customerRepo.AddCustomer(customer);
+            return id;
         }
         public int AddEmailToCustomer(int customerId, ContactDetailListVm contactInformation)
         {

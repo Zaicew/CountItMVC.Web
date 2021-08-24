@@ -9,5 +9,6 @@ namespace CountItMVC.Application.Interfaces
     {
         ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString);
         CategoryForListVm ViewCategory(int categoryId);
+        int AddCategory(NewCategoryVm model);
     }
 }

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Application.Services
@@ -20,48 +22,46 @@ namespace CountItMVC.Application.Services
             _mapper = mapper;
         }
 
-        public DayDetailVm AddDay(Day day)
+        public int AddDay(NewDayVm model)
         {
+            var day = _mapper.Map<Day>(model);
             _dayRepo.AddDay(day);
-            var dayVm = new DayDetailVm()
-            {
-                Id = day.Id,
-                Date = day.Date,
-                TotalWeightInGram = day.TotalWeightInGram,
-                TotalKcal = day.TotalKcal,
-                TotalCarbs = day.TotalCarbs,
-                TotalProtein = day.TotalProtein,
-                TotalFat = day.TotalFat,
-                CustomerId = day.CustomerId,
-            };
-            return dayVm;
+            return day.Id;
         }
 
-        public ListDayDetailVm GetAllDaysForList()
+        public ListDayDetailVm GetAllDaysForList()        
         {
-            var days = _dayRepo.GetAllDays();
-            var result = new ListDayDetailVm();
-            
-            foreach (var item in days)
+            var days = _dayRepo.GetAllDays().ProjectTo<DayDetailVm>(_mapper.ConfigurationProvider).ToList();
+            var dayList = new ListDayDetailVm()
             {
-                var dayVm = new DayDetailVm()
-                {
-                    Id = item.Id,
-                    Date = item.Date,
-                    TotalWeightInGram = item.TotalWeightInGram,
-                    TotalKcal = item.TotalKcal,
-                    TotalCarbs = item.TotalCarbs,
-                    TotalProtein = item.TotalProtein,
-                    TotalFat = item.TotalFat,
-                    CustomerId = item.CustomerId,
-                    //mealList = new MealForListVm[5] 
+                Days = days,
+                Count = days.Count()
             };
-                //dayVm.mealList = CreateMealListVmForCurrentDay(item);
-                result.Days.Add(dayVm);
-            }
-            result.Count = result.Days.Count;
 
-            return result;
+            return dayList;
+            //var days = _dayRepo.GetAllDays();
+            //var result = new ListDayDetailVm();
+            
+            //foreach (var item in days)
+            //{
+            //    var dayVm = new DayDetailVm()
+            //    {
+            //        Id = item.Id,
+            //        Date = item.Date,
+            //        TotalWeightInGram = item.TotalWeightInGram,
+            //        TotalKcal = item.TotalKcal,
+            //        TotalCarbs = item.TotalCarbs,
+            //        TotalProtein = item.TotalProtein,
+            //        TotalFat = item.TotalFat,
+            //        CustomerId = item.CustomerId,
+            //        //mealList = new MealForListVm[5] 
+            //};
+            //    //dayVm.mealList = CreateMealListVmForCurrentDay(item);
+            //    result.Days.Add(dayVm);
+            //}
+            //result.Count = result.Days.Count;
+
+            //return result;
         }
 
 

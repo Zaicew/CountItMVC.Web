@@ -1,4 +1,5 @@
 ﻿using CountItMVC.Application.Interfaces;
+using CountItMVC.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ namespace CountItMVC.Web.Controllers
         {
             _itemService = itemService;
         }
-
+        public IActionResult Index()
+        {
+            return RedirectToAction("ViewAllItems");
+        }
         [HttpGet]
         public IActionResult ViewAllItems()
         {
@@ -50,6 +54,18 @@ namespace CountItMVC.Web.Controllers
         {
             var items = _itemService.GettAllItemsFromCategory(categoryId);
             return View(items);
+        }
+
+        [HttpGet]
+        public IActionResult AddItem()
+        {
+            return View(new NewItemVm());
+        }
+        [HttpPost]
+        public IActionResult AddItem(NewItemVm model)
+        {
+            _itemService.AddItem(model);
+            return View(model);
         }
 
         //public IActionResult Index()

@@ -14,7 +14,7 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public int AddCategory(Category category)
         {
-            if(!_context.Categories.Contains(category))
+            if(_context.Categories.FirstOrDefault(c => c.Name == category.Name) is null)
             {
                 _context.Categories.Add(category);
                 _context.SaveChanges();

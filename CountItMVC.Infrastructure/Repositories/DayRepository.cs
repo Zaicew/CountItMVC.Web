@@ -15,13 +15,9 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public int AddDay(Day day)
         {
-            if(!_context.Days.Contains(day))
-            {
                 _context.Days.Add(day);
                 _context.SaveChanges();
                 return day.Id;
-            }
-            return -1;
         }
 
         public void DeleteDay(int dayId)

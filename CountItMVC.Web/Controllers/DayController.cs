@@ -1,4 +1,5 @@
-﻿using CountItMVC.Application.Interfaces;
+﻿using AutoMapper;
+using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -16,20 +17,23 @@ namespace CountItMVC.Web.Controllers
         {
             _dayService = dayService;
         }
-
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult ViewAllDays()
-        {
-            
             var result = _dayService.GetAllDaysForList();
             return View(result);
+        }        
+        [HttpGet]
+        public IActionResult AddDay()
+        {
+            return View(new NewDayVm());
+        }
+        [HttpPost]
+        public IActionResult AddDay(NewDayVm model)
+        {
+            var id = _dayService.AddDay(model);
+            return RedirectToAction("Index");
         }
 
-     
 
     }
 }

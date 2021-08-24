@@ -20,9 +20,11 @@ namespace CountItMVC.Application.Services
             _itemRepo = itemRepo;
             _mapper = mapper;
         }
-        public int AddItem(NewItemVm item)
+        public int AddItem(NewItemVm itemVm)
         {
-            throw new NotImplementedException();
+            var item = _mapper.Map<Item>(itemVm);
+            var id = _itemRepo.AddItem(item);
+            return id;
         }
         public int ChangeCategoryForItem(ChangeCategoryForItemVm category)
         {

@@ -1,4 +1,5 @@
 ﻿using CountItMVC.Application.Interfaces;
+using CountItMVC.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -87,6 +88,18 @@ namespace CountItMVC.Web.Controllers
             var customers = _customerService.GetAllInActiveCusomersForList(pageSize, pageNo.Value, searchString);
             return View(customers);
         }
+        [HttpGet]
+        public IActionResult AddCustomer()
+        {
+            return View(new NewCustomerVm());
+        }
+        [HttpPost]
+        public IActionResult AddCustomer(NewCustomerVm model)
+         {
+            var id = _customerService.AddCustomer(model);
+            return RedirectToAction("ViewAllCustomers");
+        }
+
     }
 }
 

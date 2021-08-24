@@ -20,7 +20,12 @@ namespace CountItMVC.Application.Services
             _categoryRepo = categoryRepo;
             _mapper = mapper;
         }
-
+        public int AddCategory(NewCategoryVm model)
+        {
+            var category = _mapper.Map<Category>(model);
+            _categoryRepo.AddCategory(category);
+            return category.Id;
+        }
         public ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString)
         {
             var categories = _categoryRepo.GetAllCategories().Where(p => p.Name.StartsWith(searchString));
@@ -39,7 +44,6 @@ namespace CountItMVC.Application.Services
             }
             return result;
         }
-
         public CategoryForListVm ViewCategory(int categoryId)
         {
             var category = _categoryRepo.GetCategoryById(categoryId);
@@ -47,7 +51,6 @@ namespace CountItMVC.Application.Services
             result = GetCategoryViewModel(category);
             return result;
         }
-
         private CategoryForListVm GetCategoryViewModel(Category category)
         {
             var categoryVm = new CategoryForListVm()
