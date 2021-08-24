@@ -8,5 +8,6 @@ namespace CountItMVC.Application.Interfaces
     public interface IMealService
     {
         ListMealForListVm GetAllMealsForList(int pageNo, int pageSize);
+        int AddMeal(NewMealVm meal);
     }
 }

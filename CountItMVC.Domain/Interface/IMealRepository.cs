@@ -9,5 +9,6 @@ namespace CountItMVC.Domain.Interface
     public interface IMealRepository
     {
         IQueryable<Meal> GetAllMeals();
+        int AddMeal(Meal meal);
     }
 }

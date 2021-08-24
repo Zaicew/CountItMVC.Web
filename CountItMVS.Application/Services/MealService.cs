@@ -22,6 +22,13 @@ namespace CountItMVC.Application.Services
             _mapper = mapper;
         }
 
+        public int AddMeal(NewMealVm mealVm)
+        {
+            var meal = _mapper.Map<Meal>(mealVm);
+            var id = _mealRepo.AddMeal(meal);
+            return id;
+        }
+
         public ListMealForListVm GetAllMealsForList(int pageNo, int pageSize)
         {
             var meals = _mealRepo.GetAllMeals();

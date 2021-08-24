@@ -1,4 +1,5 @@
 ﻿using CountItMVC.Application.Interfaces;
+using CountItMVC.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,19 @@ namespace CountItMVC.Web.Controllers
             }
             var meals = _mealService.GetAllMealsForList(pageSize, pageNo.Value);
             return View(meals);
+        }
+
+        [HttpGet]
+        public IActionResult AddMeal()
+        {
+            return View(new NewMealVm());
+        }
+
+        [HttpPost]
+        public IActionResult AddMeal(NewMealVm model)
+        {
+            _mealService.AddMeal(model);
+            return View(model);
         }
     }
 }

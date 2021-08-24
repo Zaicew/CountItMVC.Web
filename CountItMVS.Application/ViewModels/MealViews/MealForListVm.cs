@@ -1,4 +1,5 @@
-﻿using CountItMVC.Application.Mapping;
+﻿using AutoMapper;
+using CountItMVC.Application.Mapping;
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,10 @@ namespace CountItMVC.Application.ViewModels
         public double TotalWeight { get; set; }
         public bool IsVisible { get; set; }
         public int DayId { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<Meal, MealForListVm>();
+        }
     }
 }
