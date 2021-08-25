@@ -189,3 +189,4 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcorea
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.pdb
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.genruntimeconfig.cache
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Test\obj\Debug\netcoreapp3.1\CountItMVC.Test.csproj.AssemblyReference.cache

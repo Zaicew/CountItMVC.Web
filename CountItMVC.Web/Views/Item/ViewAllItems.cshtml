@@ -37,11 +37,12 @@
                         @Html.DisplayNameFor(model => model.Items[0].CarbPerHundredGrams)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Items[0].CategoryId)
+                        @Html.DisplayNameFor(model => model.Items[0].CategoryName)
                     </th>
-                    <th></th>
                 </tr>
+
             </thead>
+            <!--<input type="hidden" name="CategoryId" id="CategoryId" />-->
             <tbody>
                 @foreach (var item in Model.Items)
                 {
@@ -65,7 +66,7 @@
                             @Html.DisplayFor(modelItem => item.CarbPerHundredGrams)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CategoryId)
+                            @Html.DisplayFor(modelItem => item.CategoryName)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

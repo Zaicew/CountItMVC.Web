@@ -13,12 +13,14 @@ namespace CountItMVC.Application.Services
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepo;
+        private readonly ICategoryRepository _categoryRepo;
         private readonly IMapper _mapper;
 
-        public ItemService(IItemRepository itemRepo, IMapper mapper)
+        public ItemService(IItemRepository itemRepo, IMapper mapper, ICategoryRepository categoryRepo)
         {
             _itemRepo = itemRepo;
             _mapper = mapper;
+            _categoryRepo = categoryRepo;
         }
         public int AddItem(NewItemVm itemVm)
         {
@@ -33,6 +35,7 @@ namespace CountItMVC.Application.Services
         public ListItemForListVm GetAllItemsForList(int pageSize, int pageNo, string searchString)
         {
             var items = _itemRepo.GetAllItems().Where(p => p.Name.StartsWith(searchString));
+            var categories = _categoryRepo.GetAllCategories();
             var itemsToShow = items.Skip(pageSize * (pageNo-1)).Take(pageSize).ToList();
             ListItemForListVm result = new ListItemForListVm()
             {
@@ -44,7 +47,8 @@ namespace CountItMVC.Application.Services
             };
             foreach(var item in itemsToShow)
             {
-                var itemVm = CreateItemView(item);
+                var categoryName = categories.FirstOrDefault(c => c.Id == item.CategoryId).Name;
+                var itemVm = CreateItemView(item, categoryName);
                 result.Items.Add(itemVm);
             }
             return result;
@@ -66,17 +70,19 @@ namespace CountItMVC.Application.Services
         public ListItemForListVm GettAllItemsFromCategory(int categoryId)
         {
             var items = _itemRepo.GetItemsByCategoryId(categoryId);
+            var categories = _categoryRepo.GetAllCategories();
             ListItemForListVm result = new ListItemForListVm();
             result.Items = new List<ItemsForListVm>();
             foreach(var item in items)
             {
-                var itemVm = CreateItemView(item);
+                var categoryName = categories.FirstOrDefault(c => c.Id == item.Id).Name;
+                var itemVm = CreateItemView(item, categoryName);
                 result.Items.Add(itemVm);
             }
             result.Count = result.Items.Count;
             return result;
         }
-        private ItemsForListVm CreateItemView(Item item)
+        private ItemsForListVm CreateItemView(Item item, string categoryName)
         {
             var itemVm = new ItemsForListVm()
             {
@@ -86,7 +92,8 @@ namespace CountItMVC.Application.Services
                 KcalPerHundredGrams = item.KcalPerHundredGrams,
                 CarbPerHundredGrams = item.CarbPerHundredGrams,
                 ProteinPerHundredGrams = item.ProteinPerHundredGrams,
-                FatPerHundredGrams = item.FatPerHundredGrams
+                FatPerHundredGrams = item.FatPerHundredGrams,
+                CategoryName = categoryName
             };
             return itemVm;
         }

@@ -16,10 +16,12 @@ namespace CountItMVC.Application.ViewModels
         public double ProteinPerHundredGrams { get; set; }
         public double CarbPerHundredGrams { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Item, ItemDetailVm>();
+            profile.CreateMap<Item, ItemDetailVm>()
+                .ForMember(c => c.CategoryId, opt => opt.Ignore());
         }
     }
 }
