@@ -26,7 +26,7 @@ namespace CountItMVC.Application.Services
         public int AddCustomer(NewCustomerVm customerVm)
         {
             var customer = _mapper.Map<Customer>(customerVm);
-            customer.isActive = true;
+            customer.IsActive = true;
             var id = _customerRepo.AddCustomer(customer);
             return id;
         }
@@ -114,7 +114,7 @@ namespace CountItMVC.Application.Services
                 Id = customer.Id,
                 Name = customer.Name,
                 NationalId = customer.NationalId,
-                isActive = customer.isActive
+                isActive = customer.IsActive
             };
 
             customerVmNoMapper.Addresses = new List<AddressForListVm>();
@@ -219,9 +219,21 @@ namespace CountItMVC.Application.Services
                 Id = customer.Id,
                 Name = customer.Name,
                 NationalId = customer.NationalId,
-                IsActive = customer.isActive
+                IsActive = customer.IsActive
             };
             return custVm;
+        }
+        public NewCustomerVm GetCusomersForEdit(int id)
+        {
+            var customer = _customerRepo.GetCustomer(id);
+            var customerVm = _mapper.Map<NewCustomerVm>(customer);
+            return customerVm;
+        }
+
+        public void UpdateCustomer(NewCustomerVm model)
+        {
+            var customer = _mapper.Map<Customer>(model);
+            _customerRepo.updateCustomer(customer);
         }
     }
 }

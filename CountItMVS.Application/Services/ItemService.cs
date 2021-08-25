@@ -3,6 +3,7 @@ using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,18 @@ namespace CountItMVC.Application.Services
         }
         public int AddItem(NewItemVm itemVm)
         {
+            var categories = _categoryRepo.GetAllCategories();
             var item = _mapper.Map<Item>(itemVm);
             var id = _itemRepo.AddItem(item);
             return id;
+            //itemVm.Categories = new List<SelectListItem>();
+            //var selectList = new List<SelectListItem>();
+            //foreach(var cat in categories)
+            //{
+            //    selectList.Add(new SelectListItem { Value = cat.Id.ToString(), Text = cat.Name });
+            //}
+            //itemVm.Categories = selectList;           
+
         }
         public int ChangeCategoryForItem(ChangeCategoryForItemVm category)
         {
@@ -56,14 +66,16 @@ namespace CountItMVC.Application.Services
         public ItemDetailVm GetItemById(int itemId)
         {
             var item = _itemRepo.GetItemById(itemId);
-            ItemDetailVm result = new ItemDetailVm();
-            result.Id = itemId;
-            result.Name = item.Name;
-            result.CategoryId = item.CategoryId;
-            result.KcalPerHundredGrams = item.KcalPerHundredGrams;
-            result.CarbPerHundredGrams = item.CarbPerHundredGrams;
-            result.ProteinPerHundredGrams = item.ProteinPerHundredGrams;
-            result.FatPerHundredGrams = item.FatPerHundredGrams;
+            ItemDetailVm result = new ItemDetailVm
+            {
+                Id = itemId,
+                Name = item.Name,
+                CategoryId = item.CategoryId,
+                KcalPerHundredGrams = item.KcalPerHundredGrams,
+                CarbPerHundredGrams = item.CarbPerHundredGrams,
+                ProteinPerHundredGrams = item.ProteinPerHundredGrams,
+                FatPerHundredGrams = item.FatPerHundredGrams
+            };
 
             return result;
         }
@@ -71,9 +83,11 @@ namespace CountItMVC.Application.Services
         {
             var items = _itemRepo.GetItemsByCategoryId(categoryId);
             var categories = _categoryRepo.GetAllCategories();
-            ListItemForListVm result = new ListItemForListVm();
-            result.Items = new List<ItemsForListVm>();
-            foreach(var item in items)
+            ListItemForListVm result = new ListItemForListVm
+            {
+                Items = new List<ItemsForListVm>()
+            };
+            foreach (var item in items)
             {
                 var categoryName = categories.FirstOrDefault(c => c.Id == item.Id).Name;
                 var itemVm = CreateItemView(item, categoryName);

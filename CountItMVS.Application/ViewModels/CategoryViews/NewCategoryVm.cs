@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CountItMVC.Application.Mapping;
 using CountItMVC.Domain.Model;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +16,14 @@ namespace CountItMVC.Application.ViewModels
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewCategoryVm, Category>();
+        }
+    }
+
+    public class NewCategoryValidation : AbstractValidator<NewCategoryVm>
+    {
+        public NewCategoryValidation()
+        {
+            RuleFor(x => x.Name).Length(3, 255);
         }
     }
 }

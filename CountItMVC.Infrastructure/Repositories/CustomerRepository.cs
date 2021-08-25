@@ -18,18 +18,18 @@ namespace CountItMVC.Infrastructure.Repositories
         public bool ActiveCustomer(int customerId)
         {
             var customer = _context.Customers.Find(customerId);
-            customer.isActive = true;
+            customer.IsActive = true;
             return true;
         }
         public bool DeactiveCustomer(int customerId)
         {
             var customer = _context.Customers.Find(customerId);
-            customer.isActive = false;
+            customer.IsActive = false;
             return false;
         }
         public IQueryable<Customer> GetAllActiveCustomers()
         {
-            return _context.Customers.Where(p => p.isActive == true);
+            return _context.Customers.Where(p => p.IsActive == true);
         }
         public IQueryable<Customer> GetAllCustomers()
         {
@@ -37,7 +37,7 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public IQueryable<Customer> GetAllDeactivatedCustomers()
         {
-            return _context.Customers.Where(p => p.isActive == false);
+            return _context.Customers.Where(p => p.IsActive == false);
         }
         public Customer GetCustomer(int customerId)
         {
@@ -75,6 +75,15 @@ namespace CountItMVC.Infrastructure.Repositories
                 return customer.Id;
             //}
             //return -1;
+        }
+
+        public void updateCustomer(Customer customer)
+        {
+            _context.Attach(customer);
+            _context.Entry(customer).Property("Name").IsModified = true;
+            _context.Entry(customer).Property("NationalId").IsModified = true;
+            _context.Entry(customer).Property("IsActive").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }

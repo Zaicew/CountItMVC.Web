@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "pT2ktbE1/RxzyUEi21aDuTU/JAWQ1P1ilZ+eKmeDRWe/nJ66OYrYVqoOWxThIMDBcVVEhLsr++O2dnQtpRjmyw==",
+  "dgSpecHash": "HfWtZRS823I3REzC8BnJE4By5MOIQWhUM3Nmlmogwo92w2/sn1QaZGIrCiC+D2Q2FGB6pDPvF3Nu5RzT1xCoAg==",
   "success": true,
   "projectFilePath": "D:\\VisualStudioProjects\\GitHub\\CountItMVC.Web\\CountItMVC.Web\\CountItMVC.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\documentformat.openxml\\2.12.0\\documentformat.openxml.2.12.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.3\\fluentvalidation.aspnetcore.10.3.3.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.3\\fluentvalidation.dependencyinjectionextensions.10.3.3.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.7\\microsoft.aspnetcore.cryptography.internal.3.1.7.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.7\\microsoft.aspnetcore.cryptography.keyderivation.3.1.7.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.7\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.7.nupkg.sha512",

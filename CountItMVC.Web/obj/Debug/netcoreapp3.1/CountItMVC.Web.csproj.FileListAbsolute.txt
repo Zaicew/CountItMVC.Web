@@ -897,3 +897,7 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreap
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Item\AddItem.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Meal\Index.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Meal\AddMeal.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Customer\EditCustomer.cshtml.g.cs

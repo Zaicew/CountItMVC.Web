@@ -14,7 +14,7 @@ namespace CountItMVC.Application.Interfaces
         CustomerDetailsVm GetCustomerDetails_test(int customerId);
         int AddPhoneNumberToCustomer(int customerId, ContactDetailListVm contactInformation);
         int AddEmailToCustomer(int customerId, ContactDetailListVm contactInformation);
-
-
+        NewCustomerVm GetCusomersForEdit(int id);
+        void UpdateCustomer(NewCustomerVm model);
     }
 }

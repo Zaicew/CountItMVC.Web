@@ -18,6 +18,9 @@ using System.Reflection;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Infrastructure.Repositories;
 using CountItMVC.Application;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using CountItMVC.Application.ViewModels;
 
 namespace CountItMVC.Web
 {
@@ -43,7 +46,12 @@ namespace CountItMVC.Web
             services.AddInfrastructure();
 
             services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
             services.AddRazorPages();
+
+            services.AddTransient<IValidator<NewCustomerVm>, NewCustomerValidation>();
+            services.AddTransient<IValidator<NewCategoryVm>, NewCategoryValidation>();
+            services.AddTransient<IValidator<NewItemVm>, NewItemValidation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

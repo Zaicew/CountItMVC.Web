@@ -95,8 +95,20 @@ namespace CountItMVC.Web.Controllers
         }
         [HttpPost]
         public IActionResult AddCustomer(NewCustomerVm model)
-         {
+        {
             var id = _customerService.AddCustomer(model);
+            return RedirectToAction("ViewAllCustomers");
+        }
+        [HttpGet]
+        public IActionResult EditCustomer(int id)
+        {
+            var customer = _customerService.GetCusomersForEdit(id);
+            return View(customer);
+        }
+        [HttpPost]
+        public IActionResult EditCustomer(NewCustomerVm model)
+        {
+            _customerService.UpdateCustomer(model);
             return RedirectToAction("ViewAllCustomers");
         }
 
