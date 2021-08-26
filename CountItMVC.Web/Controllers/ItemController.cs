@@ -1,6 +1,7 @@
 ﻿using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace CountItMVC.Web.Controllers
     public class ItemController : Controller
     {
         private readonly IItemService _itemService;
-        public ItemController(IItemService itemService)
+        private readonly ICategoryService _categoryService;
+        public ItemController(IItemService itemService, ICategoryService categoryService)
         {
             _itemService = itemService;
+            _categoryService = categoryService;
         }
         public IActionResult Index()
         {
@@ -59,13 +62,22 @@ namespace CountItMVC.Web.Controllers
         [HttpGet]
         public IActionResult AddItem()
         {
-            return View(new NewItemVm());
+            var categories = _categoryService.GetAllCategories();
+            ViewBag.categories = new SelectList(categories, "Id", "Name");
+            //var model = new NewItemVm()
+            //{
+            //    Categories = new List<SelectListItem>()};
+            //foreach (var cat in categories)
+            //{
+            //    model.Categories.Add(new SelectListItem(cat.Name, cat.Id.ToString()));
+            //}
+            return View();
         }
         [HttpPost]
         public IActionResult AddItem(NewItemVm model)
         {
             _itemService.AddItem(model);
-            return View(model);
+            return RedirectToAction("ViewAllItems");
         }
         [HttpGet]
         public IActionResult EditItem(int id)

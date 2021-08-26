@@ -26,7 +26,12 @@ namespace CountItMVC.Application.Services
             _categoryRepo.AddCategory(category);
             return category.Id;
         }
-        public NewCategoryVm GetCustomerForEdit(int id)
+        public IQueryable<Category> GetAllCategories()
+        {
+            var categories = _categoryRepo.GetAllCategories();
+            return categories;
+        }
+        public NewCategoryVm GetCategoryForEdit(int id)
         {
             var category = _categoryRepo.GetCategoryById(id);
             var categoryVm = _mapper.Map<NewCategoryVm>(category);

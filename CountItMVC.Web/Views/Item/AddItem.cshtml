@@ -38,14 +38,14 @@
                 <input asp-for="CarbPerHundredGrams" class="form-control" />
                 <span asp-validation-for="CarbPerHundredGrams" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                    @Html.DropDownList(Model.AllCategories)
-                </div>*@
             <div class="form-group">
+                <input type="hidden" asp-for="CategoryId" id="txt" />
                 <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.CategoryId
+           , ViewBag.categories as SelectList, "Select Category"
+           ,new { @onChange = "selectedtext(this)", @class = "form-control" })
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -56,32 +56,16 @@
     <a asp-action="ViewAllItems">Back to List</a>
 </div>
 
-@*<tr>
-    <td> Model Data</td>
-   
-    <td>@Html.DropDownList("FromModel", Model.Categories)</td>
-</tr>*@
-
-<tr>
-    @*<td> Populating With Hardcoded Data</td>
-    <td>
-        @Html.DropDownList("MySkills", new List<SelectListItem>
-        {
-           new SelectListItem{ Text="ASP.NET MVC", Value = "1" },
-           new SelectListItem{ Text="ASP.NET WEB API", Value = "2" },
-           new SelectListItem{ Text="ENTITY FRAMEWORK", Value = "3" },
-           new SelectListItem{ Text="DOCUSIGN", Value = "4" },
-           new SelectListItem{ Text="ORCHARD CMS", Value = "5" },
-           new SelectListItem{ Text="JQUERY", Value = "6" },
-           new SelectListItem{ Text="ZENDESK", Value = "7" },
-           new SelectListItem{ Text="LINQ", Value = "8" },
-           new SelectListItem{ Text="C#", Value = "9" },
-           new SelectListItem{ Text="GOOGLE ANALYTICS", Value = "10" },
-        })
-    </td>
-</tr>*@
-
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        
+        <script>
+            function selectedtext(ddlitem) {
+                var selvalue = ddlitem.value;
+                var seltext =  ddlitem.options[ddlitem.selectedIndex].innerHTML;
+                $('#txt').val(selvalue);
+            }
+        </script>
+        
+        }
 }

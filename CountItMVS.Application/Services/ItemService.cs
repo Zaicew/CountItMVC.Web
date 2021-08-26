@@ -28,20 +28,13 @@ namespace CountItMVC.Application.Services
             var item = _mapper.Map<Item>(model);
             _itemRepo.UpdateItem(item);
         }
-
         public int AddItem(NewItemVm itemVm)
         {
             var categories = _categoryRepo.GetAllCategories();
             var item = _mapper.Map<Item>(itemVm);
             var id = _itemRepo.AddItem(item);
             return id;
-            //itemVm.Categories = new List<SelectListItem>();
-            //var selectList = new List<SelectListItem>();
-            //foreach(var cat in categories)
-            //{
-            //    selectList.Add(new SelectListItem { Value = cat.Id.ToString(), Text = cat.Name });
-            //}
-            //itemVm.Categories = selectList;           
+   
 
         }
         public int ChangeCategoryForItem(ChangeCategoryForItemVm category)
@@ -85,14 +78,12 @@ namespace CountItMVC.Application.Services
 
             return result;
         }
-
         public NewItemVm GetItemForEdit(int id)
         {
             var item = _itemRepo.GetItemById(id);
             var itemVm = _mapper.Map<NewItemVm>(item);
             return itemVm;
         }
-
         public ListItemForListVm GettAllItemsFromCategory(int categoryId)
         {
             var items = _itemRepo.GetItemsByCategoryId(categoryId);
@@ -110,7 +101,6 @@ namespace CountItMVC.Application.Services
             result.Count = result.Items.Count;
             return result;
         }
-
         private ItemsForListVm CreateItemView(Item item, string categoryName)
         {
             var itemVm = new ItemsForListVm()

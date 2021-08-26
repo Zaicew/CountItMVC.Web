@@ -5,6 +5,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Application.ViewModels
@@ -18,11 +19,12 @@ namespace CountItMVC.Application.ViewModels
         public double ProteinPerHundredGrams { get; set; }
         public double CarbPerHundredGrams { get; set; }
         public int CategoryId { get; set; }
-        //public IEnumerable<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> Categories { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewItemVm, Item>().ReverseMap();
+            profile.CreateMap<NewItemVm, Item>().ReverseMap()
+                .ForMember(c=>c.Categories, opt => opt.Ignore());
         }
     }
 

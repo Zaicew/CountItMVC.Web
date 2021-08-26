@@ -60,7 +60,7 @@ namespace CountItMVC.Web.Controllers
         [HttpGet]
         public IActionResult EditCategory(int id)
         {
-            var category = _categoryService.GetCustomerForEdit(id);
+            var category = _categoryService.GetCategoryForEdit(id);
             return View(category);
         }
         [HttpPost]
