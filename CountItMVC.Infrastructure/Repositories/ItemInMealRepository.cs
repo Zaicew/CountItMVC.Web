@@ -14,14 +14,12 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             _context = context;
         }
-
         public int AddItemToMeal(ItemInMeal item)
         {
                 _context.ItemInMeals.Add(item);
                 _context.SaveChanges();
                 return item.Id;
         }
-
         public int RemoveItemFromMeal(ItemInMeal item)
         {
             var itemInMeal = _context.ItemInMeals.Find(item); 
@@ -33,12 +31,10 @@ namespace CountItMVC.Infrastructure.Repositories
             }
             return -1;
         }
-
         public IQueryable<ItemInMeal> GetAllItemsInMeals()
         {
             return _context.ItemInMeals;
         }
-
         public ItemInMeal GetItemInMeal(int id)
         {
             return _context.ItemInMeals.Find(id);

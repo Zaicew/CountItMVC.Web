@@ -57,5 +57,17 @@ namespace CountItMVC.Web.Controllers
             var id = _categoryService.AddCategory(model);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult EditCategory(int id)
+        {
+            var category = _categoryService.GetCustomerForEdit(id);
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult EditCategory(NewCategoryVm model)
+        {
+            _categoryService.UpdateCategory(model);
+            return RedirectToAction("Index");
+        }
     }
 }

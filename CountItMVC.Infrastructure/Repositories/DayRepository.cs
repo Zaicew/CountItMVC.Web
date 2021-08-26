@@ -19,7 +19,6 @@ namespace CountItMVC.Infrastructure.Repositories
                 _context.SaveChanges();
                 return day.Id;
         }
-
         public void DeleteDay(int dayId)
         {
             var item = _context.Days.Find(dayId);
@@ -29,12 +28,10 @@ namespace CountItMVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
-
         public IQueryable<Day> GetAllDays()
         {
             return _context.Days;
         }
-
         public IQueryable<Tag> GetAllTags()
         {
             return _context.Tags;
@@ -48,6 +45,10 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             return _context.Customers.Find(customerId).Days;
         }
-
+        public void UpdateDay(Day day)
+        {
+            _context.Attach(day);
+            _context.Entry(day).Property("Date").IsModified = true;
+                }
     }
 }

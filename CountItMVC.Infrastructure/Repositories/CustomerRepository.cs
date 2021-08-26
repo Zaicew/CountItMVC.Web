@@ -65,7 +65,6 @@ namespace CountItMVC.Infrastructure.Repositories
 
             return -1;
         }
-
         public int AddCustomer(Customer customer)
         {
             //if(_context.Customers.FirstOrDefault(c => c.NationalId == customer.NationalId) is null)
@@ -76,8 +75,7 @@ namespace CountItMVC.Infrastructure.Repositories
             //}
             //return -1;
         }
-
-        public void updateCustomer(Customer customer)
+        public void UpdateCustomer(Customer customer)
         {
             _context.Attach(customer);
             _context.Entry(customer).Property("Name").IsModified = true;

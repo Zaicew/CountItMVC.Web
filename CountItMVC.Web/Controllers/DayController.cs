@@ -21,7 +21,7 @@ namespace CountItMVC.Web.Controllers
         {
             var result = _dayService.GetAllDaysForList();
             return View(result);
-        }        
+        }
         [HttpGet]
         public IActionResult AddDay()
         {
@@ -31,6 +31,18 @@ namespace CountItMVC.Web.Controllers
         public IActionResult AddDay(NewDayVm model)
         {
             var id = _dayService.AddDay(model);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult EditDay(int id)
+        {
+            var day = _dayService.GetDayForEdit(id);
+            return View(day);
+        }
+        [HttpPost]
+        public IActionResult EditDay(NewDayVm model)
+        {
+            _dayService.UpdateDay(model);
             return RedirectToAction("Index");
         }
 

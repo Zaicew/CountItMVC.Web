@@ -20,7 +20,7 @@ namespace CountItMVC.Application.ViewModels
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewMealVm, Meal>();
+            profile.CreateMap<NewMealVm, Meal>().ReverseMap();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace CountItMVC.Application.ViewModels
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewDayVm, Day>()
-                .ForMember(c => c.mealList, opt => opt.Ignore());
+                .ForMember(c => c.mealList, opt => opt.Ignore()).ReverseMap();
         }
     }
 }

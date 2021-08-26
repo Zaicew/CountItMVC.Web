@@ -67,6 +67,18 @@ namespace CountItMVC.Web.Controllers
             _itemService.AddItem(model);
             return View(model);
         }
+        [HttpGet]
+        public IActionResult EditItem(int id)
+        {
+            var item = _itemService.GetItemForEdit(id);
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult EditItem(NewItemVm model)
+        {
+            _itemService.UpdateItem(model);
+            return RedirectToAction("ViewAllItems");
+        }
 
         //public IActionResult Index()
         //{

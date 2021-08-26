@@ -22,7 +22,7 @@ namespace CountItMVC.Application.ViewModels
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewItemVm, Item>();
+            profile.CreateMap<NewItemVm, Item>().ReverseMap();
         }
     }
 

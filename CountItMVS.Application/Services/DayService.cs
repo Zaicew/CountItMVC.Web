@@ -21,14 +21,12 @@ namespace CountItMVC.Application.Services
             _dayRepo = dayRepo;
             _mapper = mapper;
         }
-
         public int AddDay(NewDayVm model)
         {
             var day = _mapper.Map<Day>(model);
             _dayRepo.AddDay(day);
             return day.Id;
         }
-
         public ListDayDetailVm GetAllDaysForList()        
         {
             var days = _dayRepo.GetAllDays().ProjectTo<DayDetailVm>(_mapper.ConfigurationProvider).ToList();
@@ -63,29 +61,25 @@ namespace CountItMVC.Application.Services
 
             //return result;
         }
-
-
         public DayDetailVm GetDayById(int id)
         {
             var day = _dayRepo.GetDayById(id);
-            var dayVm = new DayDetailVm()
-            {
-                Id = day.Id,
-                Date = day.Date,
-                TotalWeightInGram = day.TotalWeightInGram,
-                TotalKcal = day.TotalKcal,
-                TotalCarbs = day.TotalCarbs,
-                TotalProtein = day.TotalProtein,
-                TotalFat = day.TotalFat,
-                CustomerId = day.CustomerId,
-                mealList = new MealForListVm[5]
-            };
-
-            dayVm.mealList = CreateMealListVmForCurrentDay(day);
+            var dayVm = _mapper.Map<DayDetailVm>(day);
 
             return dayVm;
         }
+        public NewDayVm GetDayForEdit(int id)
+        {
+            var day = _dayRepo.GetDayById(id);
+            var dayVm = _mapper.Map<NewDayVm>(day);
 
+            return dayVm;
+        }
+        public void UpdateDay(NewDayVm model)
+        {
+            var day = _mapper.Map<Day>(model);
+            _dayRepo.UpdateDay(day);
+        }
         private MealForListVm[] CreateMealListVmForCurrentDay(Day day)
         {
             var result = new MealForListVm[5];

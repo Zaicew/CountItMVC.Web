@@ -22,26 +22,28 @@ namespace CountItMVC.Infrastructure.Repositories
             }
             return -1;
         }
-
         public void DeleteCategory(int categoryId)
         {
             _context.Categories.Remove(_context.Categories.FirstOrDefault(p => p.Id == categoryId));
             _context.SaveChanges();
         }
-
         public IQueryable<Category> GetAllCategories()
         {
             return _context.Categories;
         }
-
         public IQueryable<Tag> GetAllTags()
         {
             return _context.Tags;
         }
-
         public Category GetCategoryById(int categoryId)
         {
             return _context.Categories.FirstOrDefault(p => p.Id == categoryId);
+        }
+        public void UpdateCategory(Category category)
+        {
+            _context.Attach(category);
+            _context.Entry(category).Property("Name").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }

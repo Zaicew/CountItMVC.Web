@@ -46,6 +46,18 @@ namespace CountItMVC.Application.Services
             return result;
         }
 
+        public NewMealVm GetMealForEdit(int id)
+        {
+            var meal = _mealRepo.GetMeal(id);
+            var mealVm = _mapper.Map<NewMealVm>(meal);
+            return mealVm;
+        }
+        public void UpdateMeal(NewMealVm model)
+        {
+            var meal = _mapper.Map<Meal>(model);
+            _mealRepo.UpdateMeal(meal);
+        }
+
         private MealForListVm CreateMealVm(Meal meal)
         {
             var mealVm = new MealForListVm()

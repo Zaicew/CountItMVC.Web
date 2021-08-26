@@ -7,7 +7,7 @@
 <h1>Items</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddItem">Create New</a>
 </p>
 <form asp-action="ViewAllItems" asp-controller="Item" method="post">
     <div class="row">
@@ -69,7 +69,7 @@
                             @Html.DisplayFor(modelItem => item.CategoryName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Edit", "EditItem", new {  id=item.Id }) |
                             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                         </td>

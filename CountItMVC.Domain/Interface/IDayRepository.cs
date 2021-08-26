@@ -13,5 +13,6 @@ namespace CountItMVC.Domain.Interface
         IQueryable<Day> GetAllDays();
         Day GetDayById(int dayId);
         IQueryable<Tag> GetAllTags();
+        void UpdateDay(Day day);
     }
 }

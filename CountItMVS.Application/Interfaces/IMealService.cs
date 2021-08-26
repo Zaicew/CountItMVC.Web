@@ -9,5 +9,7 @@ namespace CountItMVC.Application.Interfaces
     {
         ListMealForListVm GetAllMealsForList(int pageNo, int pageSize);
         int AddMeal(NewMealVm meal);
+        NewMealVm GetMealForEdit(int id);
+        void UpdateMeal(NewMealVm model);
     }
 }

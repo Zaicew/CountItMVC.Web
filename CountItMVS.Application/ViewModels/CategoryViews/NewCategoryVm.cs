@@ -15,7 +15,7 @@ namespace CountItMVC.Application.ViewModels
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewCategoryVm, Category>();
+            profile.CreateMap<NewCategoryVm, Category>().ReverseMap();
         }
     }
 

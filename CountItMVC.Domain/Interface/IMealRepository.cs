@@ -10,5 +10,7 @@ namespace CountItMVC.Domain.Interface
     {
         IQueryable<Meal> GetAllMeals();
         int AddMeal(Meal meal);
+        Meal GetMeal(int id);
+        void UpdateMeal(Meal meal);
     }
 }

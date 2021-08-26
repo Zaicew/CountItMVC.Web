@@ -13,6 +13,6 @@ namespace CountItMVC.Domain.Interface
         IQueryable<Category> GetAllCategories();
         Category GetCategoryById(int categoryId);
         IQueryable<Tag> GetAllTags();
-
+        void UpdateCategory(Category category);
     }
 }

@@ -233,7 +233,7 @@ namespace CountItMVC.Application.Services
         public void UpdateCustomer(NewCustomerVm model)
         {
             var customer = _mapper.Map<Customer>(model);
-            _customerRepo.updateCustomer(customer);
+            _customerRepo.UpdateCustomer(customer);
         }
     }
 }

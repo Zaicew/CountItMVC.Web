@@ -12,5 +12,7 @@ namespace CountItMVC.Application.Interfaces
         int ChangeCategoryForItem(ChangeCategoryForItemVm category);
         ItemDetailVm GetItemById(int itemId);
         ListItemForListVm GettAllItemsFromCategory(int categoryId);
+        NewItemVm GetItemForEdit(int id);
+        void UpdateItem(NewItemVm model);
     }
 }

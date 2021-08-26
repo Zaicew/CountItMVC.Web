@@ -50,5 +50,18 @@ namespace CountItMVC.Web.Controllers
             _mealService.AddMeal(model);
             return View(model);
         }
+        [HttpGet]
+        public IActionResult EditMeal(int id)
+        {
+            var meal = _mealService.GetMealForEdit(id);
+            return View(meal);
+        }
+
+        [HttpPost]
+        public IActionResult EditMeal(NewMealVm model)
+        {
+            _mealService.UpdateMeal(model);
+            return RedirectToAction("Index");
+        }
     }
 }

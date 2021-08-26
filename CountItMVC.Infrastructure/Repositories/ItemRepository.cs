@@ -28,6 +28,17 @@ namespace CountItMVC.Infrastructure.Repositories
             _context.SaveChanges();
             return item.Id;
         }
+        public void UpdateItem(Item item)
+        {
+            _context.Attach(item);
+            _context.Entry(item).Property("Name").IsModified = true;
+            _context.Entry(item).Property("KcalPerHundredGrams").IsModified = true;
+            _context.Entry(item).Property("FatPerHundredGrams").IsModified = true;
+            _context.Entry(item).Property("ProteinPerHundredGrams").IsModified = true;
+            _context.Entry(item).Property("CarbPerHundredGrams").IsModified = true;
+            _context.Entry(item).Property("CategoryId").IsModified = true;
+            _context.SaveChanges();
+        }
         public IQueryable<Item> GetItemsByCategoryId(int categoryId)
         {
             var output = _context.Items.Where(c => c.CategoryId == categoryId);

@@ -10,5 +10,7 @@ namespace CountItMVC.Application.Interfaces
         ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString);
         CategoryForListVm ViewCategory(int categoryId);
         int AddCategory(NewCategoryVm model);
+        NewCategoryVm GetCustomerForEdit(int id);
+        void UpdateCategory(NewCategoryVm model);
     }
 }

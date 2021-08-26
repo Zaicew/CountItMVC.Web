@@ -26,6 +26,17 @@ namespace CountItMVC.Application.Services
             _categoryRepo.AddCategory(category);
             return category.Id;
         }
+        public NewCategoryVm GetCustomerForEdit(int id)
+        {
+            var category = _categoryRepo.GetCategoryById(id);
+            var categoryVm = _mapper.Map<NewCategoryVm>(category);
+            return categoryVm;
+        }
+        public void UpdateCategory(NewCategoryVm model)
+        {
+            var category = _mapper.Map<Category>(model);
+            _categoryRepo.UpdateCategory(category);
+        }
         public ListCategoryForListVm ViewAllCategoriesForList(int pageSize, int pageNo, string searchString)
         {
             var categories = _categoryRepo.GetAllCategories().Where(p => p.Name.StartsWith(searchString));
