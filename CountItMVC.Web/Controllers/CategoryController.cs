@@ -11,9 +11,11 @@ namespace CountItMVC.Web.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        private readonly IItemService _itemService;
+        public CategoryController(ICategoryService categoryService, IItemService itemService)
         {
             _categoryService = categoryService;
+            _itemService = itemService;
         }
         public IActionResult Index()
         {
@@ -69,5 +71,14 @@ namespace CountItMVC.Web.Controllers
             _categoryService.UpdateCategory(model);
             return RedirectToAction("Index");
         }
+        [HttpGet("{categoryId}")]
+        [Route("category/deletecategory/{categoryId}")]
+        public IActionResult DeleteCategory(int categoryId)
+        {
+            _itemService.ChangeCategoryForAllItemsFromDeletingCategory(categoryId);
+            _categoryService.DeleteCategory(categoryId);
+            return RedirectToAction("Index");
+        }
+
     }
 }

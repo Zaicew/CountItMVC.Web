@@ -91,6 +91,13 @@ namespace CountItMVC.Web.Controllers
             _itemService.UpdateItem(model);
             return RedirectToAction("ViewAllItems");
         }
+        [HttpGet("{itemId}")]
+        [Route("item/deleteitem/{itemId}")]
+        public IActionResult DeleteItem(int itemId)
+        {
+            _itemService.DeleteItem(itemId);
+            return RedirectToAction("ViewAllItems");
+        }
 
         //public IActionResult Index()
         //{

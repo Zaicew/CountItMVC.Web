@@ -16,5 +16,6 @@ namespace CountItMVC.Application.Interfaces
         int AddEmailToCustomer(int customerId, ContactDetailListVm contactInformation);
         NewCustomerVm GetCusomersForEdit(int id);
         void UpdateCustomer(NewCustomerVm model);
+        void DeactiveCustomer(int customerId);
     }
 }

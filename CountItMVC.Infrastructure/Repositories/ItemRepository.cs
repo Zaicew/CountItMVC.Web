@@ -12,15 +12,16 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             _context = context;
         }
-        public void DeleteItem(int itemId)
+        public int DeleteItem(int itemId)
         {
-            var item = _context.Items.Find(itemId);
-            if (item != null)
+            var itemToDelete = _context.Items.FirstOrDefault(i => i.Id == itemId);
+            if(itemToDelete is null)
             {
-                _context.Items.Remove(item);
-                _context.SaveChanges();
+                return -1;
             }
-
+            _context.Items.Remove(itemToDelete);
+            _context.SaveChanges();
+            return itemToDelete.Id;
         }
         public int AddItem(Item item)
         {
@@ -60,5 +61,29 @@ namespace CountItMVC.Infrastructure.Repositories
             return _context.Items;
         }
 
+        public void ChangeCategoryToDomainCategory(int categoryId)
+        {
+            var itemsToChangeCategory = _context.Items.Where(i => i.CategoryId == categoryId);
+            foreach (var item in itemsToChangeCategory)
+            {
+                item.CategoryId = 1;
+                UpdateItem(item);
+            }
+        }
+
+        //public void ChangeCategoriesForDeletingCategory(int categoryId)
+        //{
+        //    var itemsToChangeCategory = _context.Items.Where(i => i.CategoryId == categoryId);
+        //    foreach(var item in itemsToChangeCategory)
+        //    {
+        //        item.CategoryId = 1;
+        //        UpdateItem(item);
+        //    }
+        //}
+
+        //public void UpdateItemCategory(Item item)
+        //{
+
+        //}
     }
 }

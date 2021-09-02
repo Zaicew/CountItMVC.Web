@@ -11,8 +11,8 @@ namespace CountItMVC.Domain.Interface
         IQueryable<Customer> GetAllCustomers();
         IQueryable<Customer> GetAllActiveCustomers();
         IQueryable<Customer> GetAllDeactivatedCustomers();
-        bool DeactiveCustomer(int customerId);
-        bool ActiveCustomer(int customerId);
+        int DeactiveCustomer(int customerId);
+        int ActiveCustomer(int customerId);
         Customer GetCustomer(int customerId);
         int AddCustomer(Customer customer);
         void UpdateCustomer(Customer customer);

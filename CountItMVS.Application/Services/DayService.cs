@@ -27,6 +27,12 @@ namespace CountItMVC.Application.Services
             _dayRepo.AddDay(day);
             return day.Id;
         }
+
+        public void DeleteDay(int dayId)
+        {
+            _dayRepo.DeleteDay(dayId);
+        }
+
         public ListDayDetailVm GetAllDaysForList()        
         {
             var days = _dayRepo.GetAllDays().ProjectTo<DayDetailVm>(_mapper.ConfigurationProvider).ToList();

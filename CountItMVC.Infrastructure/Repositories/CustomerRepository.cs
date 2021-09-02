@@ -15,17 +15,26 @@ namespace CountItMVC.Infrastructure.Repositories
             _context = context;
         }
 
-        public bool ActiveCustomer(int customerId)
+        public int ActiveCustomer(int customerId)
         {
-            var customer = _context.Customers.Find(customerId);
-            customer.IsActive = true;
-            return true;
+            if (_context.Customers.Find(customerId) is null)
+            {
+                return -1;
+            }
+            _context.Customers.Find(customerId).IsActive = true;
+            _context.SaveChanges();
+            return customerId;
         }
-        public bool DeactiveCustomer(int customerId)
+        public int DeactiveCustomer(int customerId)
         {
-            var customer = _context.Customers.Find(customerId);
-            customer.IsActive = false;
-            return false;
+            if (_context.Customers.Find(customerId) is null)
+            {
+                return -1;
+            }
+
+            _context.Customers.Find(customerId).IsActive = false;
+            _context.SaveChanges();
+            return customerId;
         }
         public IQueryable<Customer> GetAllActiveCustomers()
         {

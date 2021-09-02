@@ -112,6 +112,11 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("ViewAllCustomers");
         }
 
+        public IActionResult DeleteCustomer(int id)
+        {
+            _customerService.DeactiveCustomer(id);
+            return RedirectToAction("ViewAllCustomers");
+        }
     }
 }
 

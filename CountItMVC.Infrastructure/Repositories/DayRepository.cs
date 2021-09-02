@@ -21,10 +21,10 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public void DeleteDay(int dayId)
         {
-            var item = _context.Days.Find(dayId);
-            if (item != null)
+            var day = _context.Days.Find(dayId);
+            if (!(day is null))
             {
-                _context.Days.Remove(item);
+                _context.Days.Remove(day);
                 _context.SaveChanges();
             }
         }

@@ -14,5 +14,6 @@ namespace CountItMVC.Application.Interfaces
         ListDayDetailVm GetAllDaysForList();
         void UpdateDay(NewDayVm model);
         NewDayVm GetDayForEdit(int id);
+        void DeleteDay(int dayId);
     }
 }
