@@ -128,7 +128,7 @@ namespace CountItMVC.Application.Services
             foreach(var item in itemToChangeCategory)
             {
                 item.CategoryId = 1;
-                _itemRepo.UpdateItem(item);
+                _itemRepo.UpdateCategoryWithoutSavingChanges(item);
             }
         }
     }

@@ -71,6 +71,12 @@ namespace CountItMVC.Infrastructure.Repositories
             }
         }
 
+        public void UpdateCategoryWithoutSavingChanges(Item item)
+        {
+            _context.Attach(item);
+            _context.Entry(item).Property("CategoryId").IsModified = true;
+        }
+
         //public void ChangeCategoriesForDeletingCategory(int categoryId)
         //{
         //    var itemsToChangeCategory = _context.Items.Where(i => i.CategoryId == categoryId);

@@ -32,7 +32,6 @@ namespace CountItMVC.Application.Services
         public void DeleteCategory(int categoryId)
         {
             _categoryRepo.DeleteCategory(categoryId); 
-            _itemRepo.ChangeCategoryToDomainCategory(categoryId);
         }
 
         public IQueryable<Category> GetAllCategories()
