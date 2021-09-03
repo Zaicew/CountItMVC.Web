@@ -11,9 +11,12 @@ namespace CountItMVC.Web.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
-        public CustomerController(ICustomerService customerService)
+        private readonly IDayService _dayService;
+        public CustomerController(ICustomerService customerService, IDayService dayService)
         {
             _customerService = customerService;
+            _dayService = dayService;
+
         }
         //public IActionResult Index_test()
         //{
@@ -97,6 +100,7 @@ namespace CountItMVC.Web.Controllers
         public IActionResult AddCustomer(NewCustomerVm model)
         {
             var id = _customerService.AddCustomer(model);
+            _dayService.AddDaysForCustomer(id);
             return RedirectToAction("ViewAllCustomers");
         }
         [HttpGet]

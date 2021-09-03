@@ -7,6 +7,7 @@ namespace CountItMVC.Domain.Model
     {
         public Meal()
         {
+            //usun to
             IsVisible = true;
         }
         public int Id { get; set; }

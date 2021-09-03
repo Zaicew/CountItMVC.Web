@@ -11,5 +11,6 @@ namespace CountItMVC.Application.Interfaces
         int AddMeal(NewMealVm meal);
         NewMealVm GetMealForEdit(int id);
         void UpdateMeal(NewMealVm model);
+        //void AddMealsToDay(int id);
     }
 }

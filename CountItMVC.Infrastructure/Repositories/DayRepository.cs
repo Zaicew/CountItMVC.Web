@@ -15,9 +15,15 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public int AddDay(Day day)
         {
-                _context.Days.Add(day);
-                _context.SaveChanges();
-                return day.Id;
+            _context.Days.Add(day);
+            _context.SaveChanges();
+            foreach (var item in day.mealList)
+            {
+                item.DayId = day.Id;
+                _context.Meals.Add(item);
+            }
+            _context.SaveChanges();
+            return day.Id;
         }
         public void DeleteDay(int dayId)
         {
@@ -40,7 +46,6 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             return _context.Days.FirstOrDefault(p => p.Id == dayId);
         }
-        //check if below works properly
         public ICollection<Day> GetAllDaysFromCurrentCustomer(int customerId)
         {
             return _context.Customers.Find(customerId).Days;

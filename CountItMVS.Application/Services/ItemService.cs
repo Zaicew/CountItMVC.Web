@@ -116,12 +116,10 @@ namespace CountItMVC.Application.Services
             };
             return itemVm;
         }
-
         public void DeleteItem(int itemId)
         {
            _itemRepo.DeleteItem(itemId);           
         }
-
         public void ChangeCategoryForAllItemsFromDeletingCategory(int categoryId)
         {
             var itemToChangeCategory = _itemRepo.GetAllItems().Where(i => i.CategoryId == categoryId);

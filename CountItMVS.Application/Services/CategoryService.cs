@@ -13,13 +13,11 @@ namespace CountItMVC.Application.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepo;
-        private readonly IItemRepository _itemRepo;
         private readonly IMapper _mapper;
 
-        public CategoryService(ICategoryRepository categoryRepo, IItemRepository itemRepo, IMapper mapper)
+        public CategoryService(ICategoryRepository categoryRepo, IMapper mapper)
         {
             _categoryRepo = categoryRepo;
-            _itemRepo = itemRepo;
             _mapper = mapper;
         }
         public int AddCategory(NewCategoryVm model)

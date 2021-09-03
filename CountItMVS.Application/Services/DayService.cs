@@ -14,18 +14,38 @@ namespace CountItMVC.Application.Services
     public class DayService : IDayService
     {
         private readonly IDayRepository _dayRepo;
+        private readonly IMealRepository _mealRepo;
         private readonly IMapper _mapper;
 
-        public DayService(IDayRepository dayRepo, IMapper mapper)
+        public DayService(IDayRepository dayRepo, IMealRepository mealRepo , IMapper mapper)
         {
             _dayRepo = dayRepo;
+            _mealRepo = mealRepo;
             _mapper = mapper;
         }
         public int AddDay(NewDayVm model)
         {
             var day = _mapper.Map<Day>(model);
+            var meals = _mealRepo.GenerateDomainMealsForDay(model.Id);
+            day.mealList = meals;
             _dayRepo.AddDay(day);
             return day.Id;
+        }
+        public void AddDaysForCustomer(int id)
+        {
+            DateTime startDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, DateTime.Today.Day);
+            for(int i = 0; i<61; i++)
+            {
+                var newDay = new Day()
+                {
+                    CustomerId = id,
+                    Date = startDate,
+                    mealList = new Meal[5]
+                }; 
+                newDay.mealList = _mealRepo.GenerateDomainMealsForDay(newDay.Id);
+                _dayRepo.AddDay(newDay);
+                startDate = startDate.AddDays(1);
+            }
         }
 
         public void DeleteDay(int dayId)
@@ -85,28 +105,6 @@ namespace CountItMVC.Application.Services
         {
             var day = _mapper.Map<Day>(model);
             _dayRepo.UpdateDay(day);
-        }
-        private MealForListVm[] CreateMealListVmForCurrentDay(Day day)
-        {
-            var result = new MealForListVm[5];
-            for (int i = 0; i < day.mealList.Length; i++)
-            {
-                var item = day.mealList[i];
-                var meal = new MealForListVm()
-                {
-                    Id = item.Id,
-                    TotalKcal = item.TotalKcal,
-                    TotalCarb = item.TotalCarb,
-                    TotalProtein = item.TotalProtein,
-                    TotalFat = item.TotalFat,
-                    TotalWeight = item.TotalWeight,
-                    IsVisible = item.IsVisible,
-                    DayId = item.DayId
-                };
-                result[i] = meal;
-            }
-
-            return result;
         }
     }
 }

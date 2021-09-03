@@ -1,0 +1,8 @@
+2021-09-02T14:09:46.7720978+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-02T14:09:46.7795193+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-02T14:09:46.7807064+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-02T14:10:33.0481784+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-02T14:10:33.0549244+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-02T14:10:33.0566767+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-02T14:10:33.1396539+02:00 800000e4-0009-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-02T14:10:39.7848444+02:00 80000084-0005-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)

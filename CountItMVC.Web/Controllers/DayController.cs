@@ -13,9 +13,11 @@ namespace CountItMVC.Web.Controllers
     public class DayController : Controller
     {
         private readonly IDayService _dayService;
-        public DayController(IDayService dayService)
+        private readonly IMealService _mealService;
+        public DayController(IDayService dayService, IMealService mealService)
         {
             _dayService = dayService;
+            _mealService = mealService;
         }
         public IActionResult Index()
         {
@@ -31,6 +33,7 @@ namespace CountItMVC.Web.Controllers
         public IActionResult AddDay(NewDayVm model)
         {
             var id = _dayService.AddDay(model);
+            //_mealService.AddMealsToDay(id);
             return RedirectToAction("Index");
         }
         [HttpGet]

@@ -904,3 +904,10 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreap
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Day\EditDay.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Item\EditItem.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Meal\EditMeal.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.File.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll

@@ -16,16 +16,15 @@ namespace CountItMVC.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IItemService _itemService;
 
-        public HomeController(ILogger<HomeController> logger, IItemService itemService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _itemService = itemService;
         }
 
         public IActionResult Index()
         {
+            _logger.LogInformation("I'm in home/index");
             return View();
         }
 

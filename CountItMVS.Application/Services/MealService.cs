@@ -14,11 +14,13 @@ namespace CountItMVC.Application.Services
     public class MealService : IMealService
     {
         private readonly IMealRepository _mealRepo;
+        private readonly IDayRepository _dayRepo;
         private readonly IMapper _mapper;
 
-        public MealService(IMealRepository mealRepo, IMapper mapper)
+        public MealService(IMealRepository mealRepo, IDayRepository dayRepo, IMapper mapper)
         {
             _mealRepo = mealRepo;
+            _dayRepo = dayRepo;
             _mapper = mapper;
         }
 
@@ -28,6 +30,19 @@ namespace CountItMVC.Application.Services
             var id = _mealRepo.AddMeal(meal);
             return id;
         }
+
+        //public void AddMealsToDay(int dayId)
+        //{
+        //    var day = _dayRepo.GetDayById(dayId);
+        //    var meals = new Meal[5];
+        //    for (int i = 0; i<meals.Length; i++)
+        //    {
+        //        meals[i].DayId = dayId;
+        //        meals[i].IsVisible = true;
+        //        meals[i].ItemsInMeal = new List<ItemInMeal>();
+        //    }
+        //    day.mealList = meals;
+        //}
 
         public ListMealForListVm GetAllMealsForList(int pageNo, int pageSize)
         {

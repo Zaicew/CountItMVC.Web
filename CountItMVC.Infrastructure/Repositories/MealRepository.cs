@@ -42,5 +42,20 @@ namespace CountItMVC.Infrastructure.Repositories
             _context.Entry(meal).Property("DayId").IsModified = true;
             _context.SaveChanges();
         }
+
+        public Meal[] GenerateDomainMealsForDay(int dayId)
+        {
+            var meals = new Meal[5];
+            for (int i = 0; i < meals.Length; i++) 
+            {
+                meals[i] = new Meal()
+                {
+                    DayId = dayId,
+                    IsVisible = true,
+                    ItemsInMeal = new List<ItemInMeal>()
+                };
+            }
+            return meals;
+        }
     }
 }
