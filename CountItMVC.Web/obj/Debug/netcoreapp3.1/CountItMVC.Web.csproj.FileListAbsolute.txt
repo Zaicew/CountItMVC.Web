@@ -911,3 +911,10 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreap
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\CountItMVC.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll

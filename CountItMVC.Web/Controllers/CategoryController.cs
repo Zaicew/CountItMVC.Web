@@ -22,12 +22,14 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("ViewAllCategories");
         }
         [HttpGet]
+        [Route("Category/ViewAllCategories")]
         public IActionResult ViewAllCategories()
         {
             var categories = _categoryService.ViewAllCategoriesForList(2,1,"");
             return View(categories);
         }
         [HttpPost]
+        [Route("Category/ViewAllCategories")]
         public IActionResult ViewAllCategories(int pageSize, int? pageNo, string searchString)
         {
             if(!pageNo.HasValue)
@@ -49,23 +51,27 @@ namespace CountItMVC.Web.Controllers
             return View(result);
         }
         [HttpGet]
+        [Route("Category/AddCategory")]
         public IActionResult AddCategory()
         {
             return View(new NewCategoryVm());
         }
         [HttpPost]
+        [Route("Category/AddCategory")]
         public IActionResult AddCategory(NewCategoryVm model)
         {
             var id = _categoryService.AddCategory(model);
             return RedirectToAction("Index");
         }
         [HttpGet]
+        [Route("Category/EditCategory")]
         public IActionResult EditCategory(int id)
         {
             var category = _categoryService.GetCategoryForEdit(id);
             return View(category);
         }
         [HttpPost]
+        [Route("Category/EditCategory")]
         public IActionResult EditCategory(NewCategoryVm model)
         {
             _categoryService.UpdateCategory(model);

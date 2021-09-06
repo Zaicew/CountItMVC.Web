@@ -19,17 +19,20 @@ namespace CountItMVC.Web.Controllers
             _dayService = dayService;
             _mealService = mealService;
         }
+        [Route("Day/Index")]
         public IActionResult Index()
         {
             var result = _dayService.GetAllDaysForList();
             return View(result);
         }
         [HttpGet]
+        [Route("Day/AddDay")]
         public IActionResult AddDay()
         {
             return View(new NewDayVm());
         }
         [HttpPost]
+        [Route("Day/AddDay")]
         public IActionResult AddDay(NewDayVm model)
         {
             var id = _dayService.AddDay(model);
@@ -37,12 +40,14 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
+        [Route("Day/EditDay")]
         public IActionResult EditDay(int id)
         {
             var day = _dayService.GetDayForEdit(id);
             return View(day);
         }
         [HttpPost]
+        [Route("Day/EditDay")]
         public IActionResult EditDay(NewDayVm model)
         {
             _dayService.UpdateDay(model);

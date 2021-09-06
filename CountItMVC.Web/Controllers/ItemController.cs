@@ -18,17 +18,20 @@ namespace CountItMVC.Web.Controllers
             _itemService = itemService;
             _categoryService = categoryService;
         }
+        [Route("Item/Index")]
         public IActionResult Index()
         {
             return RedirectToAction("ViewAllItems");
         }
         [HttpGet]
+        [Route("Item/ViewAllItems")]
         public IActionResult ViewAllItems()
         {
             var items = _itemService.GetAllItemsForList(2, 1, "");
             return View(items);
         }
         [HttpPost]
+        [Route("Item/ViewAllItems")]
         public IActionResult ViewAllItems(int pageSize, int? pageNo, string searchString )
         {
             if(!pageNo.HasValue)
@@ -60,6 +63,7 @@ namespace CountItMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Route("Item/AddItem")]
         public IActionResult AddItem()
         {
             var categories = _categoryService.GetAllCategories();
@@ -74,18 +78,21 @@ namespace CountItMVC.Web.Controllers
             return View();
         }
         [HttpPost]
+        [Route("Item/AddItem")]
         public IActionResult AddItem(NewItemVm model)
         {
             _itemService.AddItem(model);
             return RedirectToAction("ViewAllItems");
         }
         [HttpGet]
+        [Route("Item/EditItem")]
         public IActionResult EditItem(int id)
         {
             var item = _itemService.GetItemForEdit(id);
             return View(item);
         }
         [HttpPost]
+        [Route("Item/EditItem")]
         public IActionResult EditItem(NewItemVm model)
         {
             _itemService.UpdateItem(model);

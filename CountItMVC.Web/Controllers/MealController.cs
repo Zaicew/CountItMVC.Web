@@ -17,13 +17,16 @@ namespace CountItMVC.Web.Controllers
             _mealService = mealService;
             _itemInMealService = itemInMealService;
         }
+        
         [HttpGet]
+        [Route("Meal/Index")]
         public IActionResult Index()
         {
             var meals = _mealService.GetAllMealsForList(2, 1);
             return View(meals);
         }
         [HttpPost]
+        [Route("Meal/Index")]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
             if(!pageNo.HasValue)
@@ -39,18 +42,21 @@ namespace CountItMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Route("Meal/AddMeal")]
         public IActionResult AddMeal()
         {
             return View(new NewMealVm());
         }
 
         [HttpPost]
+        [Route("Meal/AddMeal")]
         public IActionResult AddMeal(NewMealVm model)
         {
             _mealService.AddMeal(model);
             return View(model);
         }
         [HttpGet]
+        [Route("Meal/EditMeal/{id}")]
         public IActionResult EditMeal(int id)
         {
             var meal = _mealService.GetMealForEdit(id);
@@ -58,6 +64,7 @@ namespace CountItMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Route("Meal/EditMeal")]
         public IActionResult EditMeal(NewMealVm model)
         {
             _mealService.UpdateMeal(model);

@@ -32,12 +32,14 @@ namespace CountItMVC.Web.Controllers
             return View(customerModel);
         }
         [HttpGet]
+        [Route("Customer/ViewAllCustomers")]
         public IActionResult ViewAllCustomers()
         {
             var customers = _customerService.GetAllCusomersForList(2, 1, "");
             return View(customers);
         }
         [HttpPost]
+        [Route("Customer/ViewAllCustomers")]
         public IActionResult ViewAllCustomers(int pageSize, int? pageNo, string searchString)
         {
             if(!pageNo.HasValue)
@@ -52,12 +54,14 @@ namespace CountItMVC.Web.Controllers
             return View(customers);
         }
         [HttpGet]
+        [Route("Customer/ViewAllActiveCustomers")]
         public IActionResult ViewAllActiveCustomers()
         {
             var customers = _customerService.GetAllActiveCusomersForList(2, 1, "");
             return View(customers);
         }
         [HttpPost]
+        [Route("Customer/ViewAllActiveCustomers")]
         public IActionResult ViewAllActiveCustomers(int pageSize, int? pageNo, string searchString)
         {
             if (!pageNo.HasValue)
@@ -72,12 +76,14 @@ namespace CountItMVC.Web.Controllers
             return View(customers);
         }
         [HttpGet]
+        [Route("Customer/ViewAllInActiveCustomers")]
         public IActionResult ViewAllInActiveCustomers()
         {
             var customers = _customerService.GetAllInActiveCusomersForList(2, 1, "");
             return View(customers);
         }
         [HttpPost]
+        [Route("Customer/ViewAllInActiveCustomers")]
         public IActionResult ViewAllInActiveCustomers(int pageSize, int? pageNo, string searchString)
         {
             if(!pageNo.HasValue)
@@ -92,11 +98,13 @@ namespace CountItMVC.Web.Controllers
             return View(customers);
         }
         [HttpGet]
+        [Route("Customer/AddCustomer")]
         public IActionResult AddCustomer()
         {
             return View(new NewCustomerVm());
         }
         [HttpPost]
+        [Route("Customer/AddCustomer")]
         public IActionResult AddCustomer(NewCustomerVm model)
         {
             var id = _customerService.AddCustomer(model);
@@ -104,18 +112,21 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("ViewAllCustomers");
         }
         [HttpGet]
+        [Route("Customer/EditCustomer")]
         public IActionResult EditCustomer(int id)
         {
             var customer = _customerService.GetCusomersForEdit(id);
             return View(customer);
         }
         [HttpPost]
+        [Route("Customer/EditCustomer")]
         public IActionResult EditCustomer(NewCustomerVm model)
         {
             _customerService.UpdateCustomer(model);
             return RedirectToAction("ViewAllCustomers");
         }
 
+        [Route("Customer/DeleteCustomer")]
         public IActionResult DeleteCustomer(int id)
         {
             _customerService.DeactiveCustomer(id);
