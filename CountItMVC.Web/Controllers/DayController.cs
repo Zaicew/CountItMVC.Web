@@ -53,7 +53,7 @@ namespace CountItMVC.Web.Controllers
             _dayService.UpdateDay(model);
             return RedirectToAction("Index");
         }
-        [HttpGet("{dayId}")]
+
         [Route("Day/DeleteDay/{dayId}")]
         public IActionResult DeleteDay(int dayId)
         {

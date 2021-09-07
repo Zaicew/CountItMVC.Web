@@ -46,7 +46,6 @@ namespace CountItMVC.Web.Controllers
             return View(items);
         }
 
-        [HttpGet("{itemId}")]
         [Route("Item/ViewItem/{itemId}")]
         public IActionResult ViewItem(int itemId)
         {
@@ -54,7 +53,6 @@ namespace CountItMVC.Web.Controllers
             return View(item);
         }
 
-        [HttpGet("{categoryId}")]
         [Route("Item/ViewAllItemsFromCategory/{categoryId}")]
         public IActionResult ViewAllItemsFromCategory(int categoryId)
         {
@@ -98,53 +96,12 @@ namespace CountItMVC.Web.Controllers
             _itemService.UpdateItem(model);
             return RedirectToAction("ViewAllItems");
         }
-        [HttpGet("{itemId}")]
+
         [Route("item/deleteitem/{itemId}")]
         public IActionResult DeleteItem(int itemId)
         {
             _itemService.DeleteItem(itemId);
             return RedirectToAction("ViewAllItems");
         }
-
-        //public IActionResult Index()
-        //{
-        //    var model = itemService.GetAllItemsForList();
-        //    return View(model);
-        //}
-
-        //[HttpGet]
-        //public IActionResult AddItem()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult AddItem(ItemModel model)
-        //{
-        //    var id = customerService.AddCustomer(model);
-        //    return View();
-        //}
-
-        //[HttpGet]
-        //public IActionResult ChangeCategoryForItem(int itemId, int newCategoryId)
-        //{
-
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult ChangeCategoryForItem(ItemModel model)
-        //{
-        //    var category = itemService.Items.FirstOrDefault(p => p.id == itemId);
-        //    category.categoryId = newCategoryId;
-        //    return View(model);
-        //}
-
-        //public IActionResult ViewItem(int itemId)
-        //{
-        //    var itemModel = itemService.GetItem(itemId);
-        //    return View(itemModel);
-        //}
-
     }
 }

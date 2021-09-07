@@ -48,7 +48,7 @@ namespace CountItMVC.Web
 
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
-            services.AddRazorPages();
+
 
             services.AddTransient<IValidator<NewCustomerVm>, NewCustomerValidation>();
             services.AddTransient<IValidator<NewCategoryVm>, NewCategoryValidation>();
@@ -72,7 +72,9 @@ namespace CountItMVC.Web
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
-            });
+            }); 
+            
+            services.AddRazorPages();
 
         }
 

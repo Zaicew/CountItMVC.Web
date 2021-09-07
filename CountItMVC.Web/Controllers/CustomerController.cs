@@ -24,9 +24,8 @@ namespace CountItMVC.Web.Controllers
         //    return View(model);
         //}
 
-        [HttpGet("{customerId}")]
         [Route("customer/ViewCustomer/{customerId}")]
-        public IActionResult ViewCustomer(int customerId)        
+        public IActionResult ViewCustomer(int customerId)
         {
             var customerModel = _customerService.GetCustomerDetails_test(customerId);
             return View(customerModel);
@@ -134,58 +133,3 @@ namespace CountItMVC.Web.Controllers
         }
     }
 }
-
-
-//[HttpPost]
-//public IActionResult AddCustomer(CustomerModel model)
-//{
-//    var id = customerService.AddCustomer(model);
-//    return View();
-//}
-//[HttpGet]
-//public IActionResult AddCustomer()
-//{
-
-//    return View();
-//}
-
-////[HttpGet]
-////public IActionResult AddNewAddressForClient(int customerId)
-////{
-////    return View();
-////}
-//[HttpPost]
-//public IActionResult AddNewAddressForClient(AddressModel model)
-//{
-
-//    return View();
-//}
-
-//[HttpPost]
-//public IActionResult AddNewPhoneNumberForClient(ContactDetail model)
-//{
-
-//    return View();
-//}
-
-//[HttpPost]
-//public IActionResult AddNewEmailForClient(ContactDetail model)
-//{
-
-//    return View();
-//}
-
-
-//[HttpGet]
-//public IActionResult GetAllCustomersForList()
-//{
-
-//    return View();
-//}
-
-//[HttpPost]
-//public IActionResult GetAllCustomersForList()
-//{
-//    var customers = customerService.GetAllCustomers();
-//    return View(customers);
-//}

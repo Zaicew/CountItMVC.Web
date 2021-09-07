@@ -77,7 +77,7 @@ namespace CountItMVC.Web.Controllers
             _categoryService.UpdateCategory(model);
             return RedirectToAction("Index");
         }
-        [HttpGet("{categoryId}")]
+
         [Route("category/deletecategory/{categoryId}")]
         public IActionResult DeleteCategory(int categoryId)
         {
@@ -85,6 +85,7 @@ namespace CountItMVC.Web.Controllers
             _categoryService.DeleteCategory(categoryId);
             return RedirectToAction("Index");
         }
+
 
     }
 }
