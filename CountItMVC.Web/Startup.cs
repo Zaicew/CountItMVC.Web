@@ -54,6 +54,8 @@ namespace CountItMVC.Web
             services.AddTransient<IValidator<NewCategoryVm>, NewCategoryValidation>();
             services.AddTransient<IValidator<NewItemVm>, NewItemValidation>();
 
+            services.AddRazorPages();
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -66,15 +68,33 @@ namespace CountItMVC.Web
                 options.User.RequireUniqueEmail = true;
             });
 
-            
-            services.AddAuthentication().AddGoogle(options =>
+            services.AddAuthentication()
+                .AddGoogle(options =>
             {
                 IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
-            }); 
-            
-            services.AddRazorPages();
+            })
+                .AddFacebook(options =>
+            {
+                IConfigurationSection facebookAuthnNSection = Configuration.GetSection("Authentication:Facebook");
+                options.ClientId = facebookAuthnNSection["ClientId"];
+                options.ClientSecret = facebookAuthnNSection["ClientSecret"];
+            })
+                .AddTwitter(options =>
+            {
+                IConfigurationSection twitterAuthNSection = Configuration.GetSection("Authentication:Twitter");
+                options.ConsumerKey = twitterAuthNSection["ConsumerKey"];
+                options.ConsumerSecret = twitterAuthNSection["ConsumerSecret"];
+                options.RetrieveUserDetails = true;
+            })
+                .AddMicrosoftAccount(options =>
+            {
+                //IConfigurationSection facebookAuthnNSection = Configuration.GetSection("Authentication:Facebook");
+                options.ClientId = "7c78a3c5-5f88-4a9d-bda6-189503ffc0ef";
+                options.ClientSecret = "qzRSO53~jA-Vd4.GOrX-5..-r7W.3m3TJU";
+            });
+
 
         }
 
