@@ -12,12 +12,12 @@ namespace CountItMVC.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<ICategoryRepository, CategoryRepository>();
-            services.AddTransient<IContactDetailRepository, ContactDetailRepository>();
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IDayRepository, DayRepository>();
             services.AddTransient<IItemInMealRepository, ItemInMealRepository>();
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<IMealRepository, MealRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             return services;
         }

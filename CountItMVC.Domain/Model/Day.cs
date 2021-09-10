@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace CountItMVC.Domain.Model
 {
@@ -83,11 +84,19 @@ namespace CountItMVC.Domain.Model
                 return result;
             }
         }
-        public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public Meal[] mealList = new Meal[5];
 
         public virtual ICollection<DayTag> DaysTags { get; set; }
+
+        //public AspNetUsers asp { get; set; }
+
+        //public static string getUserId(this ClaimsPrincipal user)
+        //{
+        //    ClaimsPrincipal currentUser = user;
+        //    return currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //}
     }
 }

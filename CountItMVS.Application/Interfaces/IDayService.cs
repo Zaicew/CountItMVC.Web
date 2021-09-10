@@ -15,6 +15,6 @@ namespace CountItMVC.Application.Interfaces
         void UpdateDay(NewDayVm model);
         NewDayVm GetDayForEdit(int id);
         void DeleteDay(int dayId);
-        void AddDaysForCustomer(int id);
+        void AddDaysForCustomer(string customerId);
     }
 }

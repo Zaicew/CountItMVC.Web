@@ -22,6 +22,7 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using CountItMVC.Application.ViewModels;
 using Microsoft.Extensions.Logging;
+using CountItMVC.Domain.Model;
 
 namespace CountItMVC.Web
 {
@@ -40,7 +41,18 @@ namespace CountItMVC.Web
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            //{
+            //    options.Password.RequireDigit = true;
+            //    options.Password.RequiredLength = 8;
+            //    options.Password.RequireLowercase = true;
+            //    options.Password.RequireUppercase = true;
+            //    options.Password.RequiredUniqueChars = 1;
+
+            //    options.SignIn.RequireConfirmedAccount = false;
+            //    options.User.RequireUniqueEmail = true;
+            //}).AddEntityFrameworkStores<Context>();
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<Context>();
 
             services.AddApplication();
@@ -49,8 +61,6 @@ namespace CountItMVC.Web
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
 
-
-            services.AddTransient<IValidator<NewCustomerVm>, NewCustomerValidation>();
             services.AddTransient<IValidator<NewCategoryVm>, NewCategoryValidation>();
             services.AddTransient<IValidator<NewItemVm>, NewItemValidation>();
 
@@ -123,15 +133,6 @@ namespace CountItMVC.Web
 
             app.UseEndpoints(endpoints =>
             {
-
-                //endpoints.MapControllerRoute(
-                //    name: "itemDetails",
-                //    pattern: "Item/ShowDetailsOfChoosenItem/{*id}",
-                //    defaults: new { controller = "Item", action = "ShowDetailsOfChoosenItem" });
-                //endpoints.MapControllerRoute(
-                //    name: "customerDetails",
-                //    pattern: "Customer/ViewCustomer/{*id}",
-                //    defaults: new { controller = "Customer", action = "ViewCustomer" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

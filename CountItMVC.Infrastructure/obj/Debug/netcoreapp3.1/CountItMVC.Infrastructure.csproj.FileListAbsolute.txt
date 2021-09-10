@@ -20,6 +20,7 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debu
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Infrastructure.pdb
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Domain.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\bin\Debug\netcoreapp3.1\CountItMVC.Domain.pdb
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csproj.AssemblyReference.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.AssemblyInfoInputs.cache
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.AssemblyInfo.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csproj.CoreCompileInputs.cache
@@ -27,4 +28,3 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debu
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.dll
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.pdb
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.genruntimeconfig.cache
-D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\obj\Debug\netcoreapp3.1\CountItMVC.Infrastructure.csproj.AssemblyReference.cache

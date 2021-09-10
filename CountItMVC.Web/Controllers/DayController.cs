@@ -36,6 +36,7 @@ namespace CountItMVC.Web.Controllers
         public IActionResult AddDay(NewDayVm model)
         {
             var id = _dayService.AddDay(model);
+            string id2 = User.Identities.ToList()[0].Claims.ToList()[0].Value;
             //_mealService.AddMealsToDay(id);
             return RedirectToAction("Index");
         }

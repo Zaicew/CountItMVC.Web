@@ -9,17 +9,12 @@ namespace CountItMVC.Infrastructure
 {
     public class Context : IdentityDbContext
     {
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ContactDetail> ContactDetails { get; set; }
-        public DbSet<ContactDetailType> ContactDetailTypes { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<CustomerContactInformation> CustomerContactInformations { get; set; }
+        public DbSet<ApplicationUser> Users { get;set; }
         public DbSet<Day> Days { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemInMeal> ItemInMeals { get; set; }
         public DbSet<Meal> Meals { get; set; }
-        public DbSet<Provider> Providers { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<CategoryTag> CategoryTag { get; set; }
         public DbSet<DayTag> DayTag { get; set; }
@@ -35,13 +30,7 @@ namespace CountItMVC.Infrastructure
         {
             base.OnModelCreating(builder);
 
-            //(1)organization relation 1vs1
-            builder.Entity<Customer>()
-                .HasOne(a => a.CustomerContactInformation).WithOne(b => b.Customer)
-                .HasForeignKey<CustomerContactInformation>(e => e.CustomerRef);
-
-
-
+        
             //many vs many relations (all tags)
             //itemtag
             builder.Entity<ItemTag>()

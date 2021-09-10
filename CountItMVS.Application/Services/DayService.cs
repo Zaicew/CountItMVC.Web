@@ -15,30 +15,33 @@ namespace CountItMVC.Application.Services
     {
         private readonly IDayRepository _dayRepo;
         private readonly IMealRepository _mealRepo;
+        private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
 
-        public DayService(IDayRepository dayRepo, IMealRepository mealRepo , IMapper mapper)
+        public DayService(IDayRepository dayRepo, IMealRepository mealRepo, IUserRepository userRepo, IMapper mapper)
         {
             _dayRepo = dayRepo;
             _mealRepo = mealRepo;
+            _userRepo = userRepo;
             _mapper = mapper;
         }
         public int AddDay(NewDayVm model)
         {
             var day = _mapper.Map<Day>(model);
+            day.UserId = model.UserId;
             var meals = _mealRepo.GenerateDomainMealsForDay(model.Id);
             day.mealList = meals;
             _dayRepo.AddDay(day);
             return day.Id;
         }
-        public void AddDaysForCustomer(int id)
+        public void AddDaysForCustomer(string userId)
         {
             DateTime startDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month - 1, DateTime.Today.Day);
             for(int i = 0; i<61; i++)
             {
                 var newDay = new Day()
                 {
-                    CustomerId = id,
+                    UserId = userId,
                     Date = startDate,
                     mealList = new Meal[5]
                 }; 

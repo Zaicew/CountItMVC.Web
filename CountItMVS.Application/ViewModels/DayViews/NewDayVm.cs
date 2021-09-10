@@ -12,12 +12,7 @@ namespace CountItMVC.Application.ViewModels
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public double TotalKcal { get; set; }
-        public double TotalFat { get; set; }
-        public double TotalProtein { get; set; }
-        public double TotalCarbs { get; set; }
-        public double TotalWeightInGram { get; set; }
-        public int CustomerId { get; set; }
+        public string UserId { get; set; }
 
         public MealForListVm[] mealList = new MealForListVm[5];
 
@@ -25,7 +20,8 @@ namespace CountItMVC.Application.ViewModels
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewDayVm, Day>()
-                .ForMember(c => c.mealList, opt => opt.Ignore()).ReverseMap();
+                .ForMember(c => c.mealList, opt => opt.Ignore())
+                .ForMember(c => c.UserId, opt => opt.Ignore()).ReverseMap();
         }
     }
 }

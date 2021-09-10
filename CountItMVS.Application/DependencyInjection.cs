@@ -13,11 +13,12 @@ namespace CountItMVC.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<ICategoryService, CategoryService>();
-            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IDayService, DayService>();
             services.AddTransient<IItemInMealService, ItemInMealService>();
             services.AddTransient<IItemService, ItemService>();
             services.AddTransient<IMealService, MealService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
