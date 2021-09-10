@@ -100,9 +100,11 @@ namespace CountItMVC.Web
             })
                 .AddMicrosoftAccount(options =>
             {
-                //IConfigurationSection facebookAuthnNSection = Configuration.GetSection("Authentication:Facebook");
-                options.ClientId = "7c78a3c5-5f88-4a9d-bda6-189503ffc0ef";
-                options.ClientSecret = "qzRSO53~jA-Vd4.GOrX-5..-r7W.3m3TJU";
+                IConfigurationSection microsoftAuthnNSection = Configuration.GetSection("Authentication:Microsoft");
+                options.ClientId = microsoftAuthnNSection["ClientId"];
+                options.ClientSecret = microsoftAuthnNSection["ClientSecret"];
+                //options.ClientId = "7c78a3c5-5f88-4a9d-bda6-189503ffc0ef";
+                //options.ClientSecret = "fhBdQ.4IIbQPVoZeR069.9n1PnQk-n.1t7";
             });
 
 
