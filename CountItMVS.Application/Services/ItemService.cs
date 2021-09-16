@@ -129,5 +129,11 @@ namespace CountItMVC.Application.Services
                 _itemRepo.UpdateCategoryWithoutSavingChanges(item);
             }
         }
+
+        public IQueryable<Item> GetAllItems()
+        {
+            var items = _itemRepo.GetAllItems();
+            return items;
+        }
     }
 }

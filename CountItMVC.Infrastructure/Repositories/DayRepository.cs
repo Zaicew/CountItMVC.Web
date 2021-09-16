@@ -46,10 +46,10 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             return _context.Days.FirstOrDefault(p => p.Id == dayId);
         }
-        public ICollection<Day> GetAllDaysFromCurrentCustomer(string userId)
-        {
-            return _context.Users.Find(userId).Days;
-        }
+        //public ICollection<Day> GetAllDaysFromCurrentCustomer(string userId)
+        //{
+        //    return _context.Users.Find(userId).Days;
+        //}
         public void UpdateDay(Day day)
         {
             _context.Attach(day);

@@ -66,13 +66,6 @@ namespace CountItMVC.Web.Controllers
         {
             var categories = _categoryService.GetAllCategories();
             ViewBag.categories = new SelectList(categories, "Id", "Name");
-            //var model = new NewItemVm()
-            //{
-            //    Categories = new List<SelectListItem>()};
-            //foreach (var cat in categories)
-            //{
-            //    model.Categories.Add(new SelectListItem(cat.Name, cat.Id.ToString()));
-            //}
             return View();
         }
         [HttpPost]

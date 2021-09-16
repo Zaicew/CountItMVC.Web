@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CountItMVC.Web.Controllers
@@ -12,12 +13,36 @@ namespace CountItMVC.Web.Controllers
     {
         private readonly IMealService _mealService;
         private readonly IItemInMealService _itemInMealService;
-        public MealController(IMealService mealService, IItemInMealService itemInMealService)
+        private readonly IDayService _dayService;
+        public MealController(IMealService mealService, IItemInMealService itemInMealService, IDayService dayService)
         {
             _mealService = mealService;
+            _dayService = dayService;
             _itemInMealService = itemInMealService;
         }
-        
+
+        //[HttpGet]
+        //[Route("Meal/ViewAllMealsFromCurrentUser")]
+        //public IActionResult ViewAllMealsFromCurrentUser()
+        //{
+        //    //var userId = HttpContext.User.Identities.Where(i => i.Name == HttpContext.User.Identity.Name).ToList()[0].Claims.ToList()[0].Value;
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var meals = _mealService.GetAllMealsFromUserForList(2,1, userId);
+        //    return View(meals);
+        //}
+
+        //[HttpPost]
+        //[Route("Meal/ViewAllMealsFromCurrentUser")]
+        //public IActionResult ViewAllMealsFromCurrentUser(int pageSize, int? pageNo, string userId)
+        //{
+        //    if(!pageNo.HasValue)
+        //    {
+        //        pageNo = 1;
+        //    }
+        //    var meals = _mealService.GetAllMealsFromUserForList(2,1, userId);
+        //    return View(meals);
+        //}
+
         [HttpGet]
         [Route("Meal/Index")]
         public IActionResult Index()
@@ -70,5 +95,12 @@ namespace CountItMVC.Web.Controllers
             _mealService.UpdateMeal(model);
             return RedirectToAction("Index");
         }
+
+        //[HttpGet]
+        //[Route("Meal/AddItemToMeal/{mealId}")]
+        //public IActionResult AddItemToMeal(int mealId)
+        //{
+        //    var meal = _mealService.GetMeal
+        //}
     }
 }

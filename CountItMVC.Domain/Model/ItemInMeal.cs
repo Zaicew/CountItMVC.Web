@@ -8,22 +8,22 @@ namespace CountItMVC.Domain.Model
     public class ItemInMeal
     {
         public int Id { get; set; }
-        public double HowManyGramsCurrentProduct
-        {
-            get
-            {
-                return this.HowManyGramsCurrentProduct;
-            }
-            set
-            {
-                if (value > 0)
-                    this.HowManyGramsCurrentProduct = value;
-                else
-                {
-                    //mistake!
-                }
-            }
-        }
+        public double HowManyGramsCurrentProduct { get; set; }
+        //{
+        //    get
+        //    {
+        //        return this.HowManyGramsCurrentProduct;
+        //    }
+        //    set
+        //    {
+        //        if (value > 0)
+        //            this.HowManyGramsCurrentProduct = value;
+        //        else
+        //        {
+        //            //mistake!
+        //        }
+        //    }
+        //}
         public int ItemId { get; set; }
         public virtual Item Item { get; set; }
         public int MealId { get; set; }

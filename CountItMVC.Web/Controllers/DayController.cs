@@ -2,10 +2,12 @@
 using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CountItMVC.Web.Controllers
@@ -14,8 +16,10 @@ namespace CountItMVC.Web.Controllers
     {
         private readonly IDayService _dayService;
         private readonly IMealService _mealService;
-        public DayController(IDayService dayService, IMealService mealService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public DayController(IDayService dayService, IMealService mealService, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _dayService = dayService;
             _mealService = mealService;
         }
@@ -36,7 +40,7 @@ namespace CountItMVC.Web.Controllers
         public IActionResult AddDay(NewDayVm model)
         {
             var id = _dayService.AddDay(model);
-            string id2 = User.Identities.ToList()[0].Claims.ToList()[0].Value;
+            //string id2 = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //_mealService.AddMealsToDay(id);
             return RedirectToAction("Index");
         }
@@ -62,6 +66,19 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("Day/DayDetail/{dayId}")]
+        public IActionResult DayDetail(int dayId)
+        {
+            var day = _dayService.GetDayById(dayId);
+            return View(day);
+        }
+
+
+        //public async Task<IActionResult> GetUserId()
+        //{
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
+        //}
 
     }
 }

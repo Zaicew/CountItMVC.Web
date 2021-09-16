@@ -59,6 +59,7 @@ namespace CountItMVC.Application.Services
         public ListDayDetailVm GetAllDaysForList()        
         {
             var days = _dayRepo.GetAllDays().ProjectTo<DayDetailVm>(_mapper.ConfigurationProvider).ToList();
+
             var dayList = new ListDayDetailVm()
             {
                 Days = days,
@@ -66,30 +67,20 @@ namespace CountItMVC.Application.Services
             };
 
             return dayList;
-            //var days = _dayRepo.GetAllDays();
-            //var result = new ListDayDetailVm();
-            
-            //foreach (var item in days)
-            //{
-            //    var dayVm = new DayDetailVm()
-            //    {
-            //        Id = item.Id,
-            //        Date = item.Date,
-            //        TotalWeightInGram = item.TotalWeightInGram,
-            //        TotalKcal = item.TotalKcal,
-            //        TotalCarbs = item.TotalCarbs,
-            //        TotalProtein = item.TotalProtein,
-            //        TotalFat = item.TotalFat,
-            //        CustomerId = item.CustomerId,
-            //        //mealList = new MealForListVm[5] 
-            //};
-            //    //dayVm.mealList = CreateMealListVmForCurrentDay(item);
-            //    result.Days.Add(dayVm);
-            //}
-            //result.Count = result.Days.Count;
-
-            //return result;
         }
+
+        public ListDayDetailVm GetAllDaysForUserForList(string userId)
+        {
+            var days = _dayRepo.GetAllDays().Where(d => d.UserId == userId).ProjectTo<DayDetailVm>(_mapper.ConfigurationProvider).ToList();
+            var dayList = new ListDayDetailVm()
+            {
+                Days = days,
+                Count = days.Count
+            };
+
+            return dayList;
+        }
+
         public DayDetailVm GetDayById(int id)
         {
             var day = _dayRepo.GetDayById(id);

@@ -11,67 +11,103 @@ namespace CountItMVC.Domain.Model
             IsVisible = true;
         }
         public int Id { get; set; }
-        public double TotalKcal
-        {
-            get
-            {
-                double result = 0;
-                foreach(var item in ItemsInMeal)
-                {
-                    result += item.Item.KcalPerHundredGrams * item.HowManyGramsCurrentProduct;
-                }
-                return result;
-            }
-        }
-            
-        public double TotalFat 
-        { 
-            get
-            {
-                double result = 0;
-                foreach (var item in ItemsInMeal)
-                {
-                    result += item.Item.FatPerHundredGrams * item.HowManyGramsCurrentProduct;
-                }
-                return result;
-            }
-        }
-        public double TotalProtein
-        {
-            get
-            {
-                double result = 0;
-                foreach (var item in ItemsInMeal)
-                {
-                    result += item.Item.ProteinPerHundredGrams * item.HowManyGramsCurrentProduct;
-                }
-                return result;
-            }
-        }
-        public double TotalCarb
-        {
-            get
-            {
-                double result = 0;
-                foreach (var item in ItemsInMeal)
-                {
-                    result += item.Item.CarbPerHundredGrams * item.HowManyGramsCurrentProduct;
-                }
-                return result;
-            }
-        }
-        public double TotalWeight
-        {
-            get
-            {
-                double result = 0;
-                foreach (var item in ItemsInMeal)
-                {
-                    result += item.HowManyGramsCurrentProduct;
-                }
-                return result;
-            }
-        }
+        public double TotalKcal { get; set; }
+        //{
+        //    get
+        //    {
+        //        double result = 0;
+        //        if (ItemsInMeal is null)
+        //        {
+        //            result = 0;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in ItemsInMeal)
+        //            {
+        //                result += item.Item.KcalPerHundredGrams * item.HowManyGramsCurrentProduct;
+        //            }
+        //        }
+
+        //        return result;
+        //    }
+        //}            
+        public double TotalFat { get; set; }
+        //{ 
+        //    get
+        //    {
+        //        double result = 0;
+        //        if (ItemsInMeal is null)
+        //        {
+        //            result = 0;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in ItemsInMeal)
+        //            {
+        //                result += item.Item.FatPerHundredGrams * item.HowManyGramsCurrentProduct;
+        //            }
+        //        }
+        //        return result;
+
+        //    }
+        //}
+        public double TotalProtein { get; set; }
+        //{
+        //    get
+        //    {
+        //        double result = 0;
+        //        if (ItemsInMeal is null)
+        //        {
+        //            result = 0;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in ItemsInMeal)
+        //            {
+        //                result += item.Item.ProteinPerHundredGrams * item.HowManyGramsCurrentProduct;
+        //            }
+        //        }
+        //        return result;
+        //    }
+        //}
+        public double TotalCarb { get; set; }
+        //{
+        //    get
+        //    {
+        //        double result = 0;
+        //        if (ItemsInMeal is null)
+        //        {
+        //            result = 0;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in ItemsInMeal)
+        //            {
+        //                result += item.Item.CarbPerHundredGrams * item.HowManyGramsCurrentProduct;
+        //            }
+        //        }
+        //        return result;
+        //    }
+        //}
+        public double TotalWeight { get; set; }
+        //{
+        //    get
+        //    {
+        //        double result = 0;
+        //        if (ItemsInMeal is null)
+        //        {
+        //            result = 0;
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in ItemsInMeal)
+        //            {
+        //                result += item.HowManyGramsCurrentProduct;
+        //            }
+        //        }
+        //        return result;
+        //    }
+        //}
         public bool IsVisible { get; set; }
         public int DayId { get; set; }
         public virtual Day Day { get; set; }

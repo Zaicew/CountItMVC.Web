@@ -31,6 +31,12 @@ namespace CountItMVC.Application.Services
             return id;
         }
 
+        public IQueryable<Meal> GetAllMeals()
+        {
+            var meals = _mealRepo.GetAllMeals();
+            return meals;
+        }
+
         //public void AddMealsToDay(int dayId)
         //{
         //    var day = _dayRepo.GetDayById(dayId);
@@ -44,19 +50,54 @@ namespace CountItMVC.Application.Services
         //    day.mealList = meals;
         //}
 
-        public ListMealForListVm GetAllMealsForList(int pageNo, int pageSize)
+        public ListMealForListVm GetAllMealsForList(int pageSize, int pageNo)
         {
             var meals = _mealRepo.GetAllMeals();
             //var meals2 = _mealRepo.GetAllMeals().ProjectTo<MealForListVm>(_mapper.ConfigurationProvider).ToList();
-            var mealsToShow = meals.Skip(pageNo * (pageSize - 1)).Take(pageSize).ToList();
+            var mealsToShow = meals.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             var result = new ListMealForListVm
             {
                 Meals = new List<MealForListVm>(),
-                Counter = meals.Count(),
+                Count = meals.Count(),
                 CurrentPage = pageNo,
                 PageSize = pageSize
             };
-            foreach (var item in mealsToShow) result.Meals.Add(CreateMealVm(item));
+            foreach (var item in mealsToShow)
+            {
+                var mealVm = CreateMealVm(item);
+                result.Meals.Add(mealVm);
+            }
+
+            return result;
+        }
+
+        public ListMealForListVm GetAllMealsFromUserForList(int pageNo, int pageSize, string userId)
+        {
+            var mealsTest = _mealRepo.GetAllMealsFromUser(userId);
+
+            //var days = _dayRepo.GetAllDays().Where(d => d.UserId == userId);
+            
+            //var mealsFromUser = new List<Meal>();
+            //foreach (var day in days)
+            //{
+            //    var meals = _mealRepo.GetAllMealsFromDay(day.Id).ToList();
+            //    mealsFromUser.AddRange(meals);
+            //}
+
+            var mealsToShow = mealsTest.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+
+            var result = new ListMealForListVm
+            {
+                Meals = new List<MealForListVm>(),
+                Count = mealsTest.Count(),
+                CurrentPage = pageNo,
+                PageSize = pageSize
+            };
+            foreach (var item in mealsToShow)
+            {
+                var mealVm = CreateMealVm(item);
+                result.Meals.Add(mealVm);
+            }
 
             return result;
         }
@@ -78,7 +119,7 @@ namespace CountItMVC.Application.Services
             var mealVm = new MealForListVm()
             {
                 Id = meal.Id,
-                DayId = meal.Id,
+                DayId = meal.DayId,
                 IsVisible = meal.IsVisible,
                 TotalKcal = meal.TotalKcal,
                 TotalCarb = meal.TotalCarb,

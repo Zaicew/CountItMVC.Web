@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Days[0].TotalWeightInGram)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Days[0].CustomerId)
+                @Html.DisplayNameFor(model => model.Days[0].UserId)
             </th>
             <th></th>
         </tr>
@@ -64,11 +64,11 @@
                 @Html.DisplayFor(modelItem => item.TotalWeightInGram)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditDay", new {  id=item.Id  }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detail", "DayDetail", new {  id=item.Id  }) |
                 @Html.ActionLink("Delete", "DeleteDay", new {  id=item.Id  })
             </td>
         </tr>

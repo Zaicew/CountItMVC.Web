@@ -70,9 +70,10 @@
                             @Html.DisplayFor(modelItem => item.DayId)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "EditMeal", new {  id=item.Id }) |
+                            @Html.ActionLink("Edit", "EditMeal", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "DeleteMeal", new {  id=item.Id  })
+                            @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
+                            @Html.ActionLink("AddItemToMeal", "AddItemToMeal", new { id = item.Id })
                         </td>
                     </tr>
                 }
@@ -82,7 +83,7 @@
     <div class="row">
         <table>
             <tr>
-                @for(int i = 1; i<Math.Ceiling(Model.CurrentPage / (double)Model.PageSize); i++)
+                @for(int i = 1; i<Math.Ceiling(Model.Count / (double)Model.PageSize) + 1; i++)
             {
                 <td>
                     @if(i!=Model.CurrentPage)
@@ -98,7 +99,7 @@
             </tr>
         </table>
         <input type="hidden" name="pageNo" id="pageNo" />
-        <input type="hidden" name="pageSize" id="pageSize" />
+        <input type="hidden" name="pageSize" id="pageSize" value="2" />
     </div>
 </form>
 

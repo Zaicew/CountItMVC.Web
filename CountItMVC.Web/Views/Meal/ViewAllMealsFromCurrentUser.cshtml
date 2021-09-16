@@ -1,0 +1,113 @@
+﻿@model CountItMVC.Application.ViewModels.ListMealForListVm
+
+@{
+    ViewData["Title"] = "ViewAllMealsFromCurrentUser";
+}
+
+<h1>ViewAllMealsFromCurrentUser</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="ViewAllMealsFromCurrentUser" asp-controller="Meal" method="post">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].TotalKcal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].TotalFat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].TotalProtein)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].TotalCarb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].TotalWeight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].IsVisible)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].DayId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Meals)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalKcal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalFat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalProtein)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalCarb)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalWeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsVisible)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DayId)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditMeal", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table>
+            <tr>
+                @for (int i = 1; i < Math.Ceiling(Model.Count / (double)Model.PageSize) + 1; i++)
+                {
+                    <td>
+                        @if (i != Model.CurrentPage)
+                        {
+                            <a href="javascript:PagerClick(@i)">@i</a>
+                        }
+                        else
+                        {
+                            <span>@i</span>
+                        }
+                    </td>
+                }
+            </tr>
+        </table>
+        <input type="hidden" name="pageNo" id="pageNo" />
+        <input type="hidden" name="pageSize" id="pageSize" value="2" />
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function PagerClick(ViewAllMealsFromCurrentUser) {
+            document.getElementById("pageNo").value = ViewAllMealsFromCurrentUser;
+        document.forms[0].submit();
+    }
+    </script>
+}

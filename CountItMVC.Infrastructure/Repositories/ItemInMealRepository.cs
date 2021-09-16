@@ -16,9 +16,10 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public int AddItemToMeal(ItemInMeal item)
         {
-                _context.ItemInMeals.Add(item);
-                _context.SaveChanges();
-                return item.Id;
+            _context.ItemInMeals.Add(item);
+            _context.SaveChanges();
+            RecalculateMacroForMeal(item.MealId);
+            return item.Id;
         }
         public int RemoveItemFromMeal(ItemInMeal item)
         {
@@ -54,6 +55,45 @@ namespace CountItMVC.Infrastructure.Repositories
                 itemInMeal.HowManyGramsCurrentProduct = newWeight;
             }
             _context.SaveChanges();
-        }    
+        }
+
+        private void RecalculateMacroForMeal(int mealId)
+        {
+            var meal = _context.Meals.Find(mealId);
+            var itemsInMeal = _context.ItemInMeals.Where(m => m.MealId == mealId).ToList();
+            meal.ItemsInMeal = itemsInMeal;
+            meal = MakeZeroForAllProperties(meal);
+            foreach (var e in meal.ItemsInMeal)
+            {
+                var item = _context.Items.Find(e.ItemId);
+                meal.TotalCarb += item.CarbPerHundredGrams * (e.HowManyGramsCurrentProduct/100);
+                meal.TotalFat += item.FatPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
+                meal.TotalKcal += item.KcalPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
+                meal.TotalProtein += item.ProteinPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
+                meal.TotalWeight += (e.HowManyGramsCurrentProduct);
+            }
+            UpdateMealMacros(meal);
+        }
+
+        private void UpdateMealMacros(Meal meal)
+        {
+            _context.Attach(meal);
+            _context.Entry(meal).Property("TotalCarb").IsModified = true;
+            _context.Entry(meal).Property("TotalFat").IsModified = true;
+            _context.Entry(meal).Property("TotalKcal").IsModified = true;
+            _context.Entry(meal).Property("TotalProtein").IsModified = true;
+            _context.Entry(meal).Property("TotalWeight").IsModified = true;
+            _context.SaveChanges();
+        }
+
+        private Meal MakeZeroForAllProperties(Meal meal)
+        {
+            meal.TotalCarb = 0;
+            meal.TotalFat = 0;
+            meal.TotalKcal = 0;
+            meal.TotalProtein = 0;
+            meal.TotalWeight = 0;
+            return meal;
+        }
     }
 }

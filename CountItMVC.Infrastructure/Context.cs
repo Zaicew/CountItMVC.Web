@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using CountItMVC.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CountItMVC.Infrastructure
 {
-    public class Context : IdentityDbContext
+    public class Context : IdentityDbContext<ApplicationUser>
     {
+        public Context(DbContextOptions<Context> options) : base(options)
+        {
+
+        }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ApplicationUser> Users { get;set; }
+        public override DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Day> Days { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemInMeal> ItemInMeals { get; set; }
@@ -19,13 +24,6 @@ namespace CountItMVC.Infrastructure
         public DbSet<CategoryTag> CategoryTag { get; set; }
         public DbSet<DayTag> DayTag { get; set; }
         public DbSet<ItemTag> ItemTag { get; set; }
-
-
-        public Context(DbContextOptions options) : base(options)
-        {
-
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

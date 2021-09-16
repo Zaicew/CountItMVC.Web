@@ -2,7 +2,7 @@
 
 namespace CountItMVC.Infrastructure.Migrations
 {
-    public partial class migration09092021_1 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

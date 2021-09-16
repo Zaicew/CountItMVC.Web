@@ -73,7 +73,6 @@ namespace CountItMVC.Web
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredUniqueChars = 1;
-
                 options.SignIn.RequireConfirmedAccount = false;
                 options.User.RequireUniqueEmail = true;
             });
@@ -103,8 +102,6 @@ namespace CountItMVC.Web
                 IConfigurationSection microsoftAuthnNSection = Configuration.GetSection("Authentication:Microsoft");
                 options.ClientId = microsoftAuthnNSection["ClientId"];
                 options.ClientSecret = microsoftAuthnNSection["ClientSecret"];
-                //options.ClientId = "7c78a3c5-5f88-4a9d-bda6-189503ffc0ef";
-                //options.ClientSecret = "fhBdQ.4IIbQPVoZeR069.9n1PnQk-n.1t7";
             });
 
 

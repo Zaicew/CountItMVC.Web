@@ -14,9 +14,9 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             _context = context;
         }
-        public ICollection<Meal> GetAllMealsFromDay(int dayId)
+        public IQueryable<Meal> GetAllMealsFromDay(int dayId)
         {
-            return _context.Meals.Where(m => m.DayId == dayId).ToList();
+            return _context.Meals.Where(m => m.DayId == dayId);
         }
         public IQueryable<Meal> GetAllMeals()
         {
@@ -57,5 +57,43 @@ namespace CountItMVC.Infrastructure.Repositories
             }
             return meals;
         }
+
+        //public void AddItemToMeal(ItemInMeal itemInMeal)
+        //{
+        //    var meal = _context.Meals.Find(itemInMeal.MealId);
+        //    var item = _context.Items.Find(itemInMeal.ItemId);
+        //    var day = _context.Days.Find(meal.DayId);
+        //    RecalculateMacros(meal, item, day, itemInMeal);
+        //}
+
+        public List<Meal> GetAllMealsFromUser(string userId)
+        {
+            var days = _context.Days.Where(d => d.UserId == userId);
+            _context.SaveChanges();
+            var mealList = new List<Meal>();
+            foreach (var item in days)
+            {
+                var meals = _context.Meals.Where(m => m.DayId == item.Id);
+                _context.SaveChanges();
+                foreach (var meal in meals) mealList.Add(meal);
+            }
+            return mealList;
+        }
+
+        //private void RecalculateMacros(Meal meal, Item item, Day day, ItemInMeal itemInMeal)
+        //{
+        //    var recalculatedMeal = RecalculateMeal(meal, item, itemInMeal);
+        //}
+
+        //private Meal RecalculateMeal(Meal meal, Item item, ItemInMeal itemInMeal)
+        //{
+        //    var result = meal.;
+        //    result.TotalCarb = 0;
+        //    foreach (var elemenet in meal.ItemsInMeal)
+        //    {
+
+        //    }
+
+        //}
     }
 }
