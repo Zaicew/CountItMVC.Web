@@ -9,81 +9,11 @@ namespace CountItMVC.Domain.Model
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public double TotalKcal
-        {
-            get
-            {
-                double result = 0;
-                //foreach (var item in mealList)
-                //{
-                //    if (item.IsVisible)
-                //    {
-                //        result += item.TotalKcal;
-                //    }
-                //}
-                return result;
-            }
-        }
-        public double TotalFat
-        {
-            get
-            {
-                double result = 0;
-                //foreach (var item in mealList)
-                //{
-                //    if (item.IsVisible)
-                //    {
-                //        result += item.TotalFat;
-                //    }
-                //}
-                return result;
-            }
-        }
-        public double TotalProtein
-        {
-            get
-            {
-                double result = 0;
-                //foreach (var item in mealList)
-                //{
-                //    if (item.IsVisible)
-                //    {
-                //        result += item.TotalProtein;
-                //    }
-                //}
-                return result;
-            }
-        }
-        public double TotalCarbs
-        {
-            get
-            {
-                double result = 0;
-                //foreach (var item in mealList)
-                //{
-                //    if (item.IsVisible)
-                //    {
-                //        result += item.TotalCarb;
-                //    }
-                //}
-                return result;
-            }
-        }
-        public double TotalWeightInGram
-        {
-            get
-            {
-                double result = 0;
-                foreach (var item in mealList)
-                {
-                    //if (item.IsVisible)
-                    //{
-                        //result += item.TotalWeight;
-                    //}
-                }
-                return result;
-            }
-        }
+        public double TotalKcal { get; set; }
+        public double TotalFat { get; set; }
+        public double TotalProtein { get; set; }
+        public double TotalCarbs { get; set; }
+        public double TotalWeightInGram { get; set; }
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 

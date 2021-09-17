@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using CountItMVC.Domain.Interface;
@@ -55,5 +56,50 @@ namespace CountItMVC.Infrastructure.Repositories
             _context.Attach(day);
             _context.Entry(day).Property("Date").IsModified = true;
                 }
+
+        public void UpdateDayMacro(Meal meal)
+        {
+            var day = _context.Days.Find(meal.DayId);
+            var meals = _context.Meals.Where(m => m.DayId == day.Id);
+            day.mealList = meals.ToArray();
+            day = MakeZeroForAllProperties(day);
+            day = RecalculateDayMacros(day);
+            UpdateMacroInDay(day);
+
+        }
+
+        private Day RecalculateDayMacros(Day day)
+        {
+            foreach (var e in day.mealList)
+            {
+                var meal = _context.Meals.Find(e.Id);
+                day.TotalCarbs += Math.Round(meal.TotalCarb, 2);
+                day.TotalFat += Math.Round(meal.TotalFat, 2);
+                day.TotalKcal += Math.Round(meal.TotalKcal, 2);
+                day.TotalProtein += Math.Round(meal.TotalProtein, 2);
+                day.TotalWeightInGram += Math.Round(meal.TotalWeight, 2);
+            }
+            return day;
+        }
+
+        private Day MakeZeroForAllProperties(Day day)
+        {
+            day.TotalCarbs = 0;
+            day.TotalFat = 0;
+            day.TotalKcal = 0;
+            day.TotalProtein = 0;
+            day.TotalWeightInGram = 0;
+            return day;
+        }
+        private void UpdateMacroInDay(Day day)
+        {
+            _context.Attach(day);
+            _context.Entry(day).Property("TotalCarbs").IsModified = true;
+            _context.Entry(day).Property("TotalFat").IsModified = true;
+            _context.Entry(day).Property("TotalKcal").IsModified = true;
+            _context.Entry(day).Property("TotalProtein").IsModified = true;
+            _context.Entry(day).Property("TotalWeightInGram").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

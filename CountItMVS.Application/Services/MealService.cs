@@ -119,6 +119,7 @@ namespace CountItMVC.Application.Services
             var mealVm = new MealForListVm()
             {
                 Id = meal.Id,
+                Name = meal.Name,
                 DayId = meal.DayId,
                 IsVisible = meal.IsVisible,
                 TotalKcal = meal.TotalKcal,

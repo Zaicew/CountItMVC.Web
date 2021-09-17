@@ -43,15 +43,7 @@
                 <input asp-for="TotalWeightInGram" class="form-control" />
                 <span asp-validation-for="TotalWeightInGram" class="text-danger"></span>
             </div>*@
-            @{ 
-                var userId = Context.User.Identities.Where(i => i.Name == Context.User.Identity.Name).ToList()[0].Claims.ToList()[0].Value;
 
-                        <div class="form-group">
-                            @*//<label asp-for="CustomerId" class="control-label"></label>*@
-                            <input type="hidden" asp-for="UserId = @userId" class="form-control" />
-                            @*//<span asp-validation-for="CustomerId" class="text-danger"></span>*@
-                        </div>
-                }
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

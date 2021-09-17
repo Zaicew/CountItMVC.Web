@@ -51,6 +51,7 @@ namespace CountItMVC.Infrastructure.Repositories
                 meals[i] = new Meal()
                 {
                     DayId = dayId,
+                    Name = MealNames[i],
                     IsVisible = true,
                     ItemsInMeal = new List<ItemInMeal>()
                 };
@@ -95,5 +96,13 @@ namespace CountItMVC.Infrastructure.Repositories
         //    }
 
         //}
+        private Dictionary<int, string> MealNames = new Dictionary<int, string>()
+        {
+            { 0, "Breakfast"},
+            { 1, "Snack I"},
+            { 2, "Lunch"},
+            { 3, "Snack II"},
+            { 4, "Dinner"}
+        };
     }
 }

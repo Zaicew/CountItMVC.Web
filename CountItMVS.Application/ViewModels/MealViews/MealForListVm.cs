@@ -10,6 +10,7 @@ namespace CountItMVC.Application.ViewModels
     public class MealForListVm : IMapFrom<Meal>
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public double TotalKcal { get; set; }
         public double TotalFat { get; set; }
         public double TotalProtein { get; set; }

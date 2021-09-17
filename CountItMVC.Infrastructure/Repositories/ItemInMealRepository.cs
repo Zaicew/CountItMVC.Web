@@ -10,9 +10,11 @@ namespace CountItMVC.Infrastructure.Repositories
     public class ItemInMealRepository : IItemInMealRepository
     {
         private readonly Context _context;
-        public ItemInMealRepository(Context context)
+        private readonly IDayRepository _dayRepo;
+        public ItemInMealRepository(Context context, IDayRepository dayRepo)
         {
             _context = context;
+            _dayRepo = dayRepo;
         }
         public int AddItemToMeal(ItemInMeal item)
         {
@@ -63,16 +65,23 @@ namespace CountItMVC.Infrastructure.Repositories
             var itemsInMeal = _context.ItemInMeals.Where(m => m.MealId == mealId).ToList();
             meal.ItemsInMeal = itemsInMeal;
             meal = MakeZeroForAllProperties(meal);
+            meal = RecalculateAllMacrosInMeal(meal);
+            UpdateMealMacros(meal);
+            _dayRepo.UpdateDayMacro(meal);
+        }
+
+        private Meal RecalculateAllMacrosInMeal(Meal meal)
+        {
             foreach (var e in meal.ItemsInMeal)
             {
                 var item = _context.Items.Find(e.ItemId);
-                meal.TotalCarb += item.CarbPerHundredGrams * (e.HowManyGramsCurrentProduct/100);
-                meal.TotalFat += item.FatPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
-                meal.TotalKcal += item.KcalPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
-                meal.TotalProtein += item.ProteinPerHundredGrams * (e.HowManyGramsCurrentProduct / 100);
-                meal.TotalWeight += (e.HowManyGramsCurrentProduct);
+                meal.TotalCarb += Math.Round(item.CarbPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
+                meal.TotalFat += Math.Round(item.FatPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
+                meal.TotalKcal += Math.Round(item.KcalPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
+                meal.TotalProtein += Math.Round(item.ProteinPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
+                meal.TotalWeight += Math.Round((e.HowManyGramsCurrentProduct), 2);
             }
-            UpdateMealMacros(meal);
+            return meal;
         }
 
         private void UpdateMealMacros(Meal meal)

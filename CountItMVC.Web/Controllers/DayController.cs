@@ -39,6 +39,7 @@ namespace CountItMVC.Web.Controllers
         [Route("Day/AddDay")]
         public IActionResult AddDay(NewDayVm model)
         {
+            model.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var id = _dayService.AddDay(model);
             //string id2 = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //_mealService.AddMealsToDay(id);

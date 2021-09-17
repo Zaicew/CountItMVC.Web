@@ -14,5 +14,6 @@ namespace CountItMVC.Domain.Interface
         Day GetDayById(int dayId);
         IQueryable<Tag> GetAllTags();
         void UpdateDay(Day day);
+        void UpdateDayMacro(Meal meal);
     }
 }

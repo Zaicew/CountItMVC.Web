@@ -1,0 +1,165 @@
+2021-09-17T11:19:30.3534298+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T11:19:30.3609296+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T11:19:30.3618689+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T11:19:30.5398851+02:00 80000003-000c-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T11:19:49.6799902+02:00 80000057-0005-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T11:20:58.7326275+02:00 80000059-0005-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:04:45.9112049+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:04:45.9180435+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:04:45.9189472+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:04:46.0918330+02:00 80000025-000d-fd00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:04:54.3625769+02:00 8000005c-0005-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:04:55.9132517+02:00 8000004d-0009-ff00-b63f-84710c7967bb [ERR] Failed executing DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [d].[Date], [d].[Id], [d].[TotalCarbs], [d].[TotalFat], [d].[TotalKcal], [d].[TotalProtein], [d].[TotalWeightInGram], [d].[UserId]
+FROM [Days] AS [d]" (627a98df)
+2021-09-17T14:04:55.9540437+02:00 8000004d-0009-ff00-b63f-84710c7967bb [ERR] An exception occurred while iterating over the results of a query for context type '"CountItMVC.Infrastructure.Context"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'TotalCarbs'.
+Invalid column name 'TotalFat'.
+Invalid column name 'TotalKcal'.
+Invalid column name 'TotalProtein'.
+Invalid column name 'TotalWeightInGram'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00b7bb45-53dc-4469-b745-beb9677e6536
+Error Number:207,State:1,Class:16" (f5c7ac34)
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'TotalCarbs'.
+Invalid column name 'TotalFat'.
+Invalid column name 'TotalKcal'.
+Invalid column name 'TotalProtein'.
+Invalid column name 'TotalWeightInGram'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00b7bb45-53dc-4469-b745-beb9677e6536
+Error Number:207,State:1,Class:16
+2021-09-17T14:07:33.3621989+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:07:33.3696517+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:07:33.3706937+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:07:33.5537556+02:00 8000001b-000a-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:07:49.5779426+02:00 80000045-0001-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:09:35.7104342+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:09:35.7169612+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:09:35.7180308+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:09:35.8111733+02:00 80000027-000d-fd00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:10:10.1191374+02:00 8000002b-0006-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CountItMVC.Infrastructure.Repositories.DayRepository.RecalculateDayMacros(Day day) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\DayRepository.cs:line 72
+   at CountItMVC.Infrastructure.Repositories.DayRepository.UpdateDayMacro(Meal meal) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\DayRepository.cs:line 64
+   at CountItMVC.Infrastructure.Repositories.ItemInMealRepository.RecalculateMacroForMeal(Int32 mealId) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\ItemInMealRepository.cs:line 70
+   at CountItMVC.Infrastructure.Repositories.ItemInMealRepository.AddItemToMeal(ItemInMeal item) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\ItemInMealRepository.cs:line 23
+   at CountItMVC.Application.Services.ItemInMealService.AddItemToMeal(AddItemToMealVm model) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\Services\ItemInMealService.cs:line 38
+   at CountItMVC.Web.Controllers.ItemInMealController.AddItemToMeal(AddItemToMealVm model) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\Controllers\ItemInMealController.cs:line 51
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-17T14:10:32.4567418+02:00 80000055-0009-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:10:52.1925837+02:00 80000062-0005-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:17:47.5609318+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:17:47.5679210+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:17:47.5689005+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:17:47.6608363+02:00 80000018-0000-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:20:00.6476822+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:20:00.6560346+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:20:00.6573139+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:20:00.7624190+02:00 8000002e-0006-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:27:50.6077022+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:27:50.6144570+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:27:50.6154276+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:27:50.7633983+02:00 8000008a-0007-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:29:32.5855876+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:29:32.5976013+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:29:32.5995676+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:29:32.7556186+02:00 80000035-000d-fd00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:30:25.3352896+02:00 80000036-0006-fe00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: The property 'TotalCarb' on entity type 'Day' could not be found. Ensure that the property exists and has been included in the model.
+   at Microsoft.EntityFrameworkCore.Metadata.Internal.EntityTypeExtensions.GetProperty(IEntityType entityType, String name)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry..ctor(InternalEntityEntry internalEntry, String name)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Property(String propertyName)
+   at CountItMVC.Infrastructure.Repositories.DayRepository.UpdateMacroInDay(Day day) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\DayRepository.cs:line 97
+   at CountItMVC.Infrastructure.Repositories.DayRepository.UpdateDayMacro(Meal meal) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\DayRepository.cs:line 67
+   at CountItMVC.Infrastructure.Repositories.ItemInMealRepository.RecalculateMacroForMeal(Int32 mealId) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\ItemInMealRepository.cs:line 70
+   at CountItMVC.Infrastructure.Repositories.ItemInMealRepository.AddItemToMeal(ItemInMeal item) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Infrastructure\Repositories\ItemInMealRepository.cs:line 23
+   at CountItMVC.Application.Services.ItemInMealService.AddItemToMeal(AddItemToMealVm model) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVS.Application\Services\ItemInMealService.cs:line 38
+   at CountItMVC.Web.Controllers.ItemInMealController.AddItemToMeal(AddItemToMealVm model) in D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\Controllers\ItemInMealController.cs:line 51
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-17T14:31:08.9569194+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:31:08.9648060+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:31:08.9657488+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:31:09.0616790+02:00 80000021-000a-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T14:46:34.5343842+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T14:46:34.5409298+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T14:46:34.5420193+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T14:46:34.6460416+02:00 80000021-0008-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)

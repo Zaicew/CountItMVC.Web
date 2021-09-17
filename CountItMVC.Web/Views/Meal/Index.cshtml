@@ -18,6 +18,9 @@
                         @Html.DisplayNameFor(model => model.Meals[0].Id)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.Meals[0].Name)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Meals[0].TotalKcal)
                     </th>
                     <th>
@@ -44,38 +47,41 @@
             <tbody>
                 @foreach (var item in Model.Meals)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TotalKcal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TotalFat)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TotalProtein)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TotalCarb)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TotalWeight)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsVisible)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DayId)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "EditMeal", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
-                            @Html.ActionLink("AddItemToMeal", "AddItemToMeal", new { id = item.Id })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalKcal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalFat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalProtein)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalCarb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsVisible)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DayId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditMeal", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
+                        @Html.ActionLink("AddItemToMeal", "AddItemToMeal", new { id = item.Id })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
