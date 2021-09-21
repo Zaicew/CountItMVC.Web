@@ -10,6 +10,7 @@ namespace CountItMVC.Infrastructure.Repositories
     public class MealRepository : IMealRepository
     {
         private readonly Context _context;
+        private readonly IItemInMealRepository _itemInMealRepo;
         public MealRepository(Context context)
         {
             _context = context;
@@ -43,18 +44,18 @@ namespace CountItMVC.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public Meal[] GenerateDomainMealsForDay(int dayId)
+        public List<Meal> GenerateDomainMealsForDay(int dayId)
         {
-            var meals = new Meal[5];
-            for (int i = 0; i < meals.Length; i++) 
+            var meals = new List<Meal>();
+            for (int i = 0; i < meals.Count; i++) 
             {
-                meals[i] = new Meal()
+                meals.Add(new Meal()
                 {
                     DayId = dayId,
                     Name = MealNames[i],
                     IsVisible = true,
                     ItemsInMeal = new List<ItemInMeal>()
-                };
+                });
             }
             return meals;
         }
@@ -80,6 +81,18 @@ namespace CountItMVC.Infrastructure.Repositories
             }
             return mealList;
         }
+        //public List<MealForListVm> GenerateMealViews(int dayId)
+        //{
+        //    var meals = GetAllMeals().Where(m => m.DayId == dayId);
+        //    var mealList = new List<MealForListVm>();
+        //    foreach (var item in meals)
+        //    {
+        //        var itemsInMeal = _itemInMealRepo.GetAllItemsFromMeal(item.Id);
+        //        var mealVm = _mapper.Map<MealForListVm>(item);
+        //        mealList.Add(mealVm);
+        //    }
+        //    return mealList;
+        //}
 
         //private void RecalculateMacros(Meal meal, Item item, Day day, ItemInMeal itemInMeal)
         //{

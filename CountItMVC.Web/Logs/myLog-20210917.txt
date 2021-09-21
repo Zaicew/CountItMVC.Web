@@ -163,3 +163,8 @@ System.InvalidOperationException: The property 'TotalCarb' on entity type 'Day' 
 2021-09-17T14:46:34.5409298+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2021-09-17T14:46:34.5420193+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
 2021-09-17T14:46:34.6460416+02:00 80000021-0008-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T15:03:15.6714854+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-17T15:03:15.6793286+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-17T15:03:15.6804151+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-17T15:03:15.7959965+02:00 80000020-000b-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-17T15:05:58.9940402+02:00 80000078-0001-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)

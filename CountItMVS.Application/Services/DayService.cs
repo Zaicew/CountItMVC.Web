@@ -16,13 +16,20 @@ namespace CountItMVC.Application.Services
         private readonly IDayRepository _dayRepo;
         private readonly IMealRepository _mealRepo;
         private readonly IUserRepository _userRepo;
+        private readonly IItemInMealRepository _itemInMealRepo;
+        private readonly IItemRepository _itemRepo;
+        private readonly IMealService _mealService;
         private readonly IMapper _mapper;
 
-        public DayService(IDayRepository dayRepo, IMealRepository mealRepo, IUserRepository userRepo, IMapper mapper)
+        public DayService(IDayRepository dayRepo, IMealRepository mealRepo, IUserRepository userRepo, IMapper mapper,
+            IItemInMealRepository itemInMealRepo, IItemRepository itemRepo, IMealService mealService)
         {
             _dayRepo = dayRepo;
             _mealRepo = mealRepo;
             _userRepo = userRepo;
+            _itemInMealRepo = itemInMealRepo;
+            _itemRepo = itemRepo;
+            _mealService = mealService;
             _mapper = mapper;
         }
         public int AddDay(NewDayVm model)
@@ -43,7 +50,7 @@ namespace CountItMVC.Application.Services
                 {
                     UserId = userId,
                     Date = startDate,
-                    mealList = new Meal[5]
+                    mealList = new List<Meal>()
                 }; 
                 newDay.mealList = _mealRepo.GenerateDomainMealsForDay(newDay.Id);
                 _dayRepo.AddDay(newDay);
@@ -85,7 +92,7 @@ namespace CountItMVC.Application.Services
         {
             var day = _dayRepo.GetDayById(id);
             var dayVm = _mapper.Map<DayDetailVm>(day);
-
+            dayVm.mealList = _mealService.GenerateMealViews(dayVm.Id);
             return dayVm;
         }
         public NewDayVm GetDayForEdit(int id)
@@ -100,6 +107,7 @@ namespace CountItMVC.Application.Services
             var day = _mapper.Map<Day>(model);
             _dayRepo.UpdateDay(day);
         }
+
     }
 }
 

@@ -96,11 +96,11 @@ namespace CountItMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpGet]
-        //[Route("Meal/AddItemToMeal/{mealId}")]
-        //public IActionResult AddItemToMeal(int mealId)
-        //{
-        //    var meal = _mealService.GetMeal
-        //}
+        [Route("Meal/MealDetail/{mealId}")]
+        public IActionResult MealDetail(int mealId)
+        {
+            var meal = _mealService.GetMeal(mealId);
+            return View(meal);
+        }
     }
 }

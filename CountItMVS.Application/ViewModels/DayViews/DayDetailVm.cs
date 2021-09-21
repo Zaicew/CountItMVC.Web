@@ -18,7 +18,7 @@ namespace CountItMVC.Application.ViewModels
         public double TotalWeightInGram { get; set; }
         public string UserId { get; set; }
 
-        public MealForListVm[] mealList = new MealForListVm[5];
+        public List<MealForListVm> mealList = new List<MealForListVm>();
 
 
         public void Mapping(Profile profile)

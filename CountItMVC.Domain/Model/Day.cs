@@ -17,7 +17,7 @@ namespace CountItMVC.Domain.Model
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
-        public Meal[] mealList = new Meal[5];
+        public List<Meal> mealList = new List<Meal>();
 
         public virtual ICollection<DayTag> DaysTags { get; set; }
 

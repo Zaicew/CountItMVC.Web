@@ -15,6 +15,8 @@ namespace CountItMVC.Application.Interfaces
         void UpdateMeal(NewMealVm model);
         ListMealForListVm GetAllMealsFromUserForList(int pageNo, int pageSize, string userId);
         IQueryable<Meal> GetAllMeals();
+        List<MealForListVm> GenerateMealViews(int id);
+        MealForListVm GetMeal(int mealId);
         //void AddMealsToDay(int id);
     }
 }

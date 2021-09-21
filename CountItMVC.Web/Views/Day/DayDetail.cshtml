@@ -10,55 +10,132 @@
     <h4>DayDetailVm</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Date)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Date)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalKcal)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalKcal)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalFat)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalFat)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalProtein)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalProtein)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalCarbs)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalCarbs)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalWeightInGram)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalWeightInGram)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserId)
         </dd>
     </dl>
+</div>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].TotalKcal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].TotalFat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].TotalProtein)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].TotalCarb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].TotalWeight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].IsVisible)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.mealList[0].DayId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.mealList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalKcal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalFat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalProtein)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalCarb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsVisible)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DayId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", actionName:"EditMeal", controllerName:"Meal", new { id = item.Id }) |
+                        @Html.ActionLink("Details", actionName:"MealDetail",controllerName:"Meal", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
+                        @Html.ActionLink("Add item", "AddItemToMeal", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

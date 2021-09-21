@@ -13,7 +13,7 @@ namespace CountItMVC.Domain.Interface
         int AddMeal(Meal meal);
         Meal GetMeal(int id);
         void UpdateMeal(Meal meal);
-        Meal[] GenerateDomainMealsForDay(int id);
+        List<Meal> GenerateDomainMealsForDay(int id);
         List<Meal> GetAllMealsFromUser(string userId);
     }
 }

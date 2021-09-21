@@ -15,13 +15,15 @@ namespace CountItMVC.Application.Services
     {
         private readonly IItemRepository _itemRepo;
         private readonly ICategoryRepository _categoryRepo;
+        private readonly IItemInMealRepository _itemInMealRepo;
         private readonly IMapper _mapper;
 
-        public ItemService(IItemRepository itemRepo, IMapper mapper, ICategoryRepository categoryRepo)
+        public ItemService(IItemRepository itemRepo, IMapper mapper, ICategoryRepository categoryRepo, IItemInMealRepository itemInMealRepo)
         {
             _itemRepo = itemRepo;
             _mapper = mapper;
             _categoryRepo = categoryRepo;
+            _itemInMealRepo = itemInMealRepo;
         }
         public void UpdateItem(NewItemVm model)
         {
@@ -65,16 +67,17 @@ namespace CountItMVC.Application.Services
         public ItemDetailVm GetItemById(int itemId)
         {
             var item = _itemRepo.GetItemById(itemId);
-            ItemDetailVm result = new ItemDetailVm
-            {
-                Id = itemId,
-                Name = item.Name,
-                CategoryId = item.CategoryId,
-                KcalPerHundredGrams = item.KcalPerHundredGrams,
-                CarbPerHundredGrams = item.CarbPerHundredGrams,
-                ProteinPerHundredGrams = item.ProteinPerHundredGrams,
-                FatPerHundredGrams = item.FatPerHundredGrams
-            };
+            var result = _mapper.Map<ItemDetailVm>(item);
+            //ItemDetailVm result = new ItemDetailVm
+            //{
+            //    Id = itemId,
+            //    Name = item.Name,
+            //    CategoryId = item.CategoryId,
+            //    KcalPerHundredGrams = item.KcalPerHundredGrams,
+            //    CarbPerHundredGrams = item.CarbPerHundredGrams,
+            //    ProteinPerHundredGrams = item.ProteinPerHundredGrams,
+            //    FatPerHundredGrams = item.FatPerHundredGrams
+            //};
 
             return result;
         }
@@ -134,6 +137,18 @@ namespace CountItMVC.Application.Services
         {
             var items = _itemRepo.GetAllItems();
             return items;
+        }
+
+        public List<ItemsForListVm> GenerateItemViewsFromMeal(int mealId)
+        {
+            var itemsInMeal = _itemInMealRepo.GetAllItemsInMeals().Where(i => i.MealId == mealId);
+            var result = new List<ItemsForListVm>();
+            foreach (var e in itemsInMeal)
+            {
+                var item = _itemRepo.GetItemById(e.ItemId);
+                result.Add(_mapper.Map<ItemsForListVm>(item));
+            }
+            return result;
         }
     }
 }

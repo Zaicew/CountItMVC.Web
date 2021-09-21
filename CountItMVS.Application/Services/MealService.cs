@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CountItMVC.Application.Services
 {
@@ -15,12 +12,14 @@ namespace CountItMVC.Application.Services
     {
         private readonly IMealRepository _mealRepo;
         private readonly IDayRepository _dayRepo;
+        private readonly IItemService _itemService;
         private readonly IMapper _mapper;
 
-        public MealService(IMealRepository mealRepo, IDayRepository dayRepo, IMapper mapper)
+        public MealService(IMealRepository mealRepo, IDayRepository dayRepo, IMapper mapper, IItemService itemService)
         {
             _mealRepo = mealRepo;
             _dayRepo = dayRepo;
+            _itemService = itemService;
             _mapper = mapper;
         }
 
@@ -29,6 +28,17 @@ namespace CountItMVC.Application.Services
             var meal = _mapper.Map<Meal>(mealVm);
             var id = _mealRepo.AddMeal(meal);
             return id;
+        }
+
+        public List<ViewModels.MealForListVm> GenerateMealViews(int dayId)
+        {
+            var meals = _mealRepo.GetAllMeals().Where(m => m.DayId == dayId);
+            var mealListVm = new List<ViewModels.MealForListVm>();
+            foreach (var item in meals)
+            {
+                mealListVm.Add(_mapper.Map<ViewModels.MealForListVm>(item));
+            }
+            return mealListVm;
         }
 
         public IQueryable<Meal> GetAllMeals()
@@ -57,7 +67,7 @@ namespace CountItMVC.Application.Services
             var mealsToShow = meals.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             var result = new ListMealForListVm
             {
-                Meals = new List<MealForListVm>(),
+                Meals = new List<ViewModels.MealForListVm>(),
                 Count = meals.Count(),
                 CurrentPage = pageNo,
                 PageSize = pageSize
@@ -88,7 +98,7 @@ namespace CountItMVC.Application.Services
 
             var result = new ListMealForListVm
             {
-                Meals = new List<MealForListVm>(),
+                Meals = new List<ViewModels.MealForListVm>(),
                 Count = mealsTest.Count(),
                 CurrentPage = pageNo,
                 PageSize = pageSize
@@ -100,6 +110,14 @@ namespace CountItMVC.Application.Services
             }
 
             return result;
+        }
+
+        public ViewModels.MealForListVm GetMeal(int mealId)
+        {
+            var meal = _mealRepo.GetMeal(mealId);
+            var mealVm = _mapper.Map<ViewModels.MealForListVm>(meal);
+            mealVm.Items = _itemService.GenerateItemViewsFromMeal(mealVm.Id);
+            return mealVm;
         }
 
         public NewMealVm GetMealForEdit(int id)
@@ -114,9 +132,9 @@ namespace CountItMVC.Application.Services
             _mealRepo.UpdateMeal(meal);
         }
 
-        private MealForListVm CreateMealVm(Meal meal)
+        private ViewModels.MealForListVm CreateMealVm(Meal meal)
         {
-            var mealVm = new MealForListVm()
+            var mealVm = new ViewModels.MealForListVm()
             {
                 Id = meal.Id,
                 Name = meal.Name,

@@ -11,10 +11,12 @@ namespace CountItMVC.Infrastructure.Repositories
     {
         private readonly Context _context;
         private readonly IDayRepository _dayRepo;
-        public ItemInMealRepository(Context context, IDayRepository dayRepo)
+        private readonly IItemRepository _itemRepo;
+        public ItemInMealRepository(Context context, IDayRepository dayRepo, IItemRepository itemRepo)
         {
             _context = context;
             _dayRepo = dayRepo;
+            _itemRepo = itemRepo;
         }
         public int AddItemToMeal(ItemInMeal item)
         {
@@ -58,7 +60,17 @@ namespace CountItMVC.Infrastructure.Repositories
             }
             _context.SaveChanges();
         }
-
+        public List<Item> GetAllItemsFromMeal(int mealId)
+        {
+            var itemInMeals = _context.ItemInMeals.Where(i => i.MealId == mealId);
+            var items = new List<Item>();
+            foreach (var element in itemInMeals)
+            {
+                var item = _itemRepo.GetItemById(element.ItemId);
+                items.Add(item);
+            }
+            return items;
+        }
         private void RecalculateMacroForMeal(int mealId)
         {
             var meal = _context.Meals.Find(mealId);
@@ -75,12 +87,19 @@ namespace CountItMVC.Infrastructure.Repositories
             foreach (var e in meal.ItemsInMeal)
             {
                 var item = _context.Items.Find(e.ItemId);
-                meal.TotalCarb += Math.Round(item.CarbPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
-                meal.TotalFat += Math.Round(item.FatPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
-                meal.TotalKcal += Math.Round(item.KcalPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
-                meal.TotalProtein += Math.Round(item.ProteinPerHundredGrams * (e.HowManyGramsCurrentProduct / 100), 2);
-                meal.TotalWeight += Math.Round((e.HowManyGramsCurrentProduct), 2);
+                meal.TotalCarb += item.CarbPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
+                meal.TotalFat += item.FatPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
+                meal.TotalKcal += item.KcalPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
+                meal.TotalWeight += e.HowManyGramsCurrentProduct / 100 * e.HowManyGramsCurrentProduct;
+                meal.TotalProtein += item.ProteinPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
+
+                meal.TotalCarb = Math.Round(meal.TotalCarb, 2);
+                meal.TotalFat = Math.Round(meal.TotalCarb, 2);
+                meal.TotalKcal = Math.Round(meal.TotalCarb, 2);
+                meal.TotalWeight = Math.Round(meal.TotalCarb, 2);
+                meal.TotalProtein = Math.Round(meal.TotalCarb, 2);
             }
+
             return meal;
         }
 
@@ -104,5 +123,7 @@ namespace CountItMVC.Infrastructure.Repositories
             meal.TotalWeight = 0;
             return meal;
         }
+
+
     }
 }

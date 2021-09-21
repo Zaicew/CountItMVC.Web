@@ -47,7 +47,7 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public Item GetItemById(int itemId)
         {
-            var output = _context.Items.FirstOrDefault(i => i.Id == itemId);
+            var output = _context.Items.Find(itemId);
             return output;
         }
         public IQueryable<Tag> GetAllTags()

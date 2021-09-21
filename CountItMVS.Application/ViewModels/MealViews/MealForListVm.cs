@@ -18,10 +18,11 @@ namespace CountItMVC.Application.ViewModels
         public double TotalWeight { get; set; }
         public bool IsVisible { get; set; }
         public int DayId { get; set; }
+        public List<ItemsForListVm> Items { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Meal, MealForListVm>();
+            profile.CreateMap<Meal, MealForListVm>().ForMember(i => i.Items, opt => opt.Ignore());
         }
     }
 }

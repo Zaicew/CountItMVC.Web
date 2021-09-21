@@ -61,7 +61,7 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             var day = _context.Days.Find(meal.DayId);
             var meals = _context.Meals.Where(m => m.DayId == day.Id);
-            day.mealList = meals.ToArray();
+            day.mealList = meals.ToList();
             day = MakeZeroForAllProperties(day);
             day = RecalculateDayMacros(day);
             UpdateMacroInDay(day);
@@ -73,11 +73,16 @@ namespace CountItMVC.Infrastructure.Repositories
             foreach (var e in day.mealList)
             {
                 var meal = _context.Meals.Find(e.Id);
-                day.TotalCarbs += Math.Round(meal.TotalCarb, 2);
-                day.TotalFat += Math.Round(meal.TotalFat, 2);
-                day.TotalKcal += Math.Round(meal.TotalKcal, 2);
-                day.TotalProtein += Math.Round(meal.TotalProtein, 2);
-                day.TotalWeightInGram += Math.Round(meal.TotalWeight, 2);
+                day.TotalCarbs += meal.TotalCarb;
+                day.TotalCarbs = Math.Round(day.TotalCarbs, 2);
+                day.TotalFat += meal.TotalFat;
+                day.TotalFat = Math.Round(day.TotalFat, 2);
+                day.TotalKcal += meal.TotalKcal;
+                day.TotalKcal = Math.Round(day.TotalKcal, 2);
+                day.TotalProtein += meal.TotalProtein;
+                day.TotalProtein = Math.Round(day.TotalProtein, 2);
+                day.TotalWeightInGram += meal.TotalWeight;
+                day.TotalWeightInGram = Math.Round(day.TotalWeightInGram, 2);
             }
             return day;
         }
