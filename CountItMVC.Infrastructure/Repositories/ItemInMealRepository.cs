@@ -45,9 +45,9 @@ namespace CountItMVC.Infrastructure.Repositories
             return _context.ItemInMeals.Find(id);
         }
         //check this below if it works:
-        public ICollection<ItemInMeal> GetAllItemsInMeal(int mealId)
+        public IQueryable<ItemInMeal> GetAllItemsInMeal(int mealId)
         {
-            var meal = _context.Meals.Find(mealId).ItemsInMeal;
+            var meal = _context.ItemInMeals.Where(i => i.MealId == mealId);
             return meal;
         }
         //check if this works actually!
@@ -63,6 +63,7 @@ namespace CountItMVC.Infrastructure.Repositories
         public List<Item> GetAllItemsFromMeal(int mealId)
         {
             var itemInMeals = _context.ItemInMeals.Where(i => i.MealId == mealId);
+            _context.SaveChanges();
             var items = new List<Item>();
             foreach (var element in itemInMeals)
             {
@@ -124,6 +125,10 @@ namespace CountItMVC.Infrastructure.Repositories
             return meal;
         }
 
-
+        public void UpdateItemInMeal(ItemInMeal itemInMeal)
+        {
+            _context.Attach(itemInMeal);
+            _context.Entry(itemInMeal).Property("HowManyGramsCurrentProduct").IsModified = true;
+        }
     }
 }

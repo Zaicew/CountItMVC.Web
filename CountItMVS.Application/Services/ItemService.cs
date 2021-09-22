@@ -139,14 +139,14 @@ namespace CountItMVC.Application.Services
             return items;
         }
 
-        public List<ItemsForListVm> GenerateItemViewsFromMeal(int mealId)
+        public List<Item> GenerateItemViewsFromMeal(int mealId)
         {
             var itemsInMeal = _itemInMealRepo.GetAllItemsInMeals().Where(i => i.MealId == mealId);
-            var result = new List<ItemsForListVm>();
+            var result = new List<Item>();
             foreach (var e in itemsInMeal)
             {
                 var item = _itemRepo.GetItemById(e.ItemId);
-                result.Add(_mapper.Map<ItemsForListVm>(item));
+                result.Add(_mapper.Map<Item>(item));
             }
             return result;
         }

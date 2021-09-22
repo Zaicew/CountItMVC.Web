@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CountItMVC.Web.Controllers
 {
@@ -51,5 +53,25 @@ namespace CountItMVC.Web.Controllers
             var id = _itemInMealService.AddItemToMeal(model);
             return RedirectToAction(controllerName: "Meal", actionName: "Index");
         }
+        [HttpGet]
+        [Route("ItemInMeal/EditItemInMeal/{itemInMealId}")]
+        public IActionResult EditItemInMeal(int itemInMealId)
+        {
+            //ViewModel viewModel = Load(itemInMealId);
+            var itemInMeal = _itemInMealService.GetItemInMealForEdit(itemInMealId);
+            itemInMeal.PreviousUrl = HttpContext.Request.Path;
+            //itemInMeal.PreviousUrl = Request.urlreferrer
+            return View(itemInMeal);
+        }
+
+        [HttpPost]
+        public IActionResult EditItemInMeal(AddItemToMealVm model, Microsoft.AspNetCore.Http.PathString redirectUrl)
+        {
+            _itemInMealService.UpdateItemInMeal(model);
+            //string redirectUrl = Path.Combine(@"Meal//MealDetail//");
+            //redirectUrl += model.MealId;
+            return RedirectToAction(model.PreviousUrl);
+        }
+
     }
 }

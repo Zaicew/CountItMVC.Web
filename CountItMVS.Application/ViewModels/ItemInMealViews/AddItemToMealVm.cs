@@ -16,12 +16,14 @@ namespace CountItMVC.Application.ViewModels.ItemViews
         public int MealId { get; set; }
         public List<SelectListItem> Items { get; set; }
         public List<SelectListItem> Meals { get; set; }
+        public string PreviousUrl { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<AddItemToMealVm, ItemInMeal>().ReverseMap()
                 .ForMember(c => c.Items, opt => opt.Ignore())
-                .ForMember(c => c.Meals, opt => opt.Ignore());
+                .ForMember(c => c.Meals, opt => opt.Ignore())
+                .ForMember(c => c.PreviousUrl, opt => opt.Ignore());
         }
     }
 }

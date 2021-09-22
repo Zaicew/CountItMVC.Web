@@ -5,6 +5,7 @@ using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CountItMVC.Application.Services
@@ -40,6 +41,23 @@ namespace CountItMVC.Application.Services
             return id;
         }
 
-        
+        public IQueryable<ItemInMeal> GetAllItemsInMeal(int mealId)
+        {
+            var itemsInMeal = _itemInMealRepo.GetAllItemsInMeal(mealId);
+            return itemsInMeal;
+        }
+
+        public AddItemToMealVm GetItemInMealForEdit(int itemInMealId)
+        {
+            var itemInMeal = _itemInMealRepo.GetItemInMeal(itemInMealId);
+            var itemInMealVm = _mapper.Map<AddItemToMealVm>(itemInMeal);
+            return itemInMealVm;
+        }
+
+        public void UpdateItemInMeal(AddItemToMealVm model)
+        {
+            var itemInMeal = _mapper.Map<ItemInMeal>(model);
+            _itemInMealRepo.UpdateItemInMeal(itemInMeal);
+        }
     }
 }

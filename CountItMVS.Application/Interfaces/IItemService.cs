@@ -19,6 +19,6 @@ namespace CountItMVC.Application.Interfaces
         void DeleteItem(int itemId);
         void ChangeCategoryForAllItemsFromDeletingCategory(int categoryId);
         IQueryable<Item> GetAllItems();
-        List<ItemsForListVm> GenerateItemViewsFromMeal(int mealId);
+        List<Item> GenerateItemViewsFromMeal(int mealId);
     }
 }

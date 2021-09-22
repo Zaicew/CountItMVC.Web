@@ -927,3 +927,4 @@ D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreap
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Day\DayDetail.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\ItemInMeal\AddItemToMeal.cshtml.g.cs
 D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\Meal\MealDetail.cshtml.g.cs
+D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web\obj\Debug\netcoreapp3.1\Razor\Views\ItemInMeal\EditItemInMeal.cshtml.g.cs

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using CountItMVC.Application.Interfaces;
 using CountItMVC.Application.ViewModels;
+using CountItMVC.Application.ViewModels.ItemInMealViews;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,13 +15,15 @@ namespace CountItMVC.Application.Services
         private readonly IMealRepository _mealRepo;
         private readonly IDayRepository _dayRepo;
         private readonly IItemService _itemService;
+        private readonly IItemInMealService _itemInMealService;
         private readonly IMapper _mapper;
 
-        public MealService(IMealRepository mealRepo, IDayRepository dayRepo, IMapper mapper, IItemService itemService)
+        public MealService(IMealRepository mealRepo, IDayRepository dayRepo, IMapper mapper, IItemService itemService, IItemInMealService itemInMealService)
         {
             _mealRepo = mealRepo;
             _dayRepo = dayRepo;
             _itemService = itemService;
+            _itemInMealService = itemInMealService;
             _mapper = mapper;
         }
 
@@ -116,9 +120,43 @@ namespace CountItMVC.Application.Services
         {
             var meal = _mealRepo.GetMeal(mealId);
             var mealVm = _mapper.Map<ViewModels.MealForListVm>(meal);
-            mealVm.Items = _itemService.GenerateItemViewsFromMeal(mealVm.Id);
+            mealVm.Items = new List<ItemInMealDetailVm>();
+            var itemsInMeal = _itemInMealService.GetAllItemsInMeal(mealVm.Id);
+            foreach (var e in itemsInMeal)
+            {
+                var item = _itemService.GetItemById(e.ItemId);
+                var itemInMealDetailVm = CreateItemInMealDetailVm(item, itemsInMeal);
+                mealVm.Items.Add(itemInMealDetailVm);
+            }
             return mealVm;
         }
+
+        private ItemInMealDetailVm CreateItemInMealDetailVm(ItemDetailVm item, IQueryable<ItemInMeal> itemsInMeal)
+        {
+            var itemInMeal = itemsInMeal.FirstOrDefault(i => i.ItemId == item.Id);
+            var itemInMealDetailVm = new ItemInMealDetailVm()
+            {
+                Id = itemInMeal.Id,
+                Name = item.Name,
+                TotalCarb = Math.Round(item.CarbPerHundredGrams * itemInMeal.HowManyGramsCurrentProduct / 100, 2),
+                TotalFat = Math.Round(item.FatPerHundredGrams * itemInMeal.HowManyGramsCurrentProduct / 100, 2),
+                TotalProteins = Math.Round(item.ProteinPerHundredGrams * itemInMeal.HowManyGramsCurrentProduct / 100, 2),
+                TotalKcal = Math.Round(item.KcalPerHundredGrams * (itemInMeal.HowManyGramsCurrentProduct / 100), 2),
+                TotalWeight = Math.Round(itemInMeal.HowManyGramsCurrentProduct, 2)
+        };
+            return itemInMealDetailVm;
+        }
+
+        //private ItemInMealDetailVm RecalculateMacrosByWeightToVm(ItemDetailVm item, IQueryable<ItemInMeal> itemsInMeal)
+        //{
+        //    var itemInMeal = itemsInMeal.FirstOrDefault(i => i.ItemId == item.Id);
+        //    var itemInMealDetailVm = new ItemInMealDetailVm()
+        //    {
+
+        //    };
+
+        //    return item;
+        //}
 
         public NewMealVm GetMealForEdit(int id)
         {
