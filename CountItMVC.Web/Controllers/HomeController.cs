@@ -24,8 +24,10 @@ namespace CountItMVC.Web.Controllers
 
         public IActionResult Index()
         {
+
             _logger.LogInformation("I'm in home/index");
-            return View();
+            //return View();
+            return RedirectToAction(controllerName:"Meal", actionName:"Index");
         }
 
     public IActionResult Privacy()

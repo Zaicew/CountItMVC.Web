@@ -55,7 +55,8 @@ namespace CountItMVC.Infrastructure.Repositories
         {
             _context.Attach(day);
             _context.Entry(day).Property("Date").IsModified = true;
-                }
+            _context.SaveChanges();
+        }
 
         public void UpdateDayMacro(Meal meal)
         {

@@ -82,7 +82,6 @@ namespace CountItMVC.Infrastructure.Repositories
             UpdateMealMacros(meal);
             _dayRepo.UpdateDayMacro(meal);
         }
-
         private Meal RecalculateAllMacrosInMeal(Meal meal)
         {
             foreach (var e in meal.ItemsInMeal)
@@ -103,7 +102,6 @@ namespace CountItMVC.Infrastructure.Repositories
 
             return meal;
         }
-
         private void UpdateMealMacros(Meal meal)
         {
             _context.Attach(meal);
@@ -114,7 +112,6 @@ namespace CountItMVC.Infrastructure.Repositories
             _context.Entry(meal).Property("TotalWeight").IsModified = true;
             _context.SaveChanges();
         }
-
         private Meal MakeZeroForAllProperties(Meal meal)
         {
             meal.TotalCarb = 0;
@@ -124,11 +121,12 @@ namespace CountItMVC.Infrastructure.Repositories
             meal.TotalWeight = 0;
             return meal;
         }
-
         public void UpdateItemInMeal(ItemInMeal itemInMeal)
         {
             _context.Attach(itemInMeal);
             _context.Entry(itemInMeal).Property("HowManyGramsCurrentProduct").IsModified = true;
+            _context.SaveChanges();
+            RecalculateMacroForMeal(itemInMeal.MealId);
         }
     }
 }

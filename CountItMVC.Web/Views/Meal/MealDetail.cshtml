@@ -65,6 +65,21 @@
             @Html.DisplayFor(model => model.DayId)
         </dd>
     </dl>
+    <div class="form-group">
+        @Html.ActionLink("AddItem", "AddItemToMeal", "ItemInMeal", new { id = Model.Id }) 
+        @*<p>
+            <a asp-action="AddItemToMeal" asp-controller="ItemInMeal" id="@Model.Id">Create New</a>
+        </p>*@
+        @*<input type="submit" value="Add new item" class="btn btn-primary" asp-controller="ItemInMeal" asp-action="AddItemToMeal" formmethod="get" />*@
+        @*<form action="nextpage.php" method="Get">
+            <input type="submit" />
+        </form>*@
+        @*@{ using (Html.BeginForm("additemtomeal", "iteminmeal", Model.Id, method:"")) {
+        <input type="submit" value="Add new item" />
+                } }*@
+        @*<input type="submit" value="Add new item" class="btn btn-primary" />*@
+        @*@Html.ActionLink("Change Weight", actionName: "EditItemInMeal", controllerName: "ItemInMeal", new { id = item.Id }) |*@
+    </div>
 </div>
 
 

@@ -37,7 +37,7 @@ namespace CountItMVC.Web.Controllers
 
         [HttpGet]
         [Route("ItemInMeal/AddItemToMeal")]
-        public IActionResult AddItemToMeal()
+        public IActionResult AddItemToMeal(int id)
         {
             var items = _itemService.GetAllItems();
             ViewBag.items = new SelectList(items, "Id", "Name");
@@ -50,27 +50,35 @@ namespace CountItMVC.Web.Controllers
         [Route("ItemInMeal/AddItemToMeal")]
         public IActionResult AddItemToMeal(AddItemToMealVm model)
         {
-            var id = _itemInMealService.AddItemToMeal(model);
-            return RedirectToAction(controllerName: "Meal", actionName: "Index");
+            var itemsInMeal = _itemInMealService.GetAllItemsInMeal(model.MealId);
+            if(!itemsInMeal.Contains(itemsInMeal.FirstOrDefault(i => i.ItemId == model.ItemId)))
+            {
+                var id = _itemInMealService.AddItemToMeal(model);
+                TempData["Success"] = "Item has been added to meal!";
+                return RedirectToAction(controllerName: "Meal", actionName: "Index");
+            }
+            else
+            {
+                TempData["Error"] = "You have arleady added this product to choosen meal!";
+                return RedirectToAction(controllerName:"ItemInMeal", actionName:"AddItemToMeal");
+            }
+
         }
         [HttpGet]
-        [Route("ItemInMeal/EditItemInMeal/{itemInMealId}")]
-        public IActionResult EditItemInMeal(int itemInMealId)
+        [Route("ItemInMeal/EditItemInMeal")]
+        public IActionResult EditItemInMeal(int id)
         {
-            //ViewModel viewModel = Load(itemInMealId);
-            var itemInMeal = _itemInMealService.GetItemInMealForEdit(itemInMealId);
-            itemInMeal.PreviousUrl = HttpContext.Request.Path;
-            //itemInMeal.PreviousUrl = Request.urlreferrer
+            var itemInMeal = _itemInMealService.GetItemInMealForEdit(id);
+            ViewBag.returnUrl = Request.Headers["Referer"].ToString();
             return View(itemInMeal);
         }
 
         [HttpPost]
-        public IActionResult EditItemInMeal(AddItemToMealVm model, Microsoft.AspNetCore.Http.PathString redirectUrl)
+        [Route("ItemInMeal/EditItemInMeal")]
+        public IActionResult EditItemInMeal(AddItemToMealVm model, string returnUrl)
         {
             _itemInMealService.UpdateItemInMeal(model);
-            //string redirectUrl = Path.Combine(@"Meal//MealDetail//");
-            //redirectUrl += model.MealId;
-            return RedirectToAction(model.PreviousUrl);
+            return Redirect(returnUrl);
         }
 
     }
