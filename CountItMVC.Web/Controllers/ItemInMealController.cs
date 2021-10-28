@@ -39,11 +39,15 @@ namespace CountItMVC.Web.Controllers
         [Route("ItemInMeal/AddItemToMeal")]
         public IActionResult AddItemToMeal(int id)
         {
-            var items = _itemService.GetAllItems();
-            ViewBag.items = new SelectList(items, "Id", "Name");
-            var meals = _mealService.GetAllMeals();
-            ViewBag.meals = new SelectList(meals, "Id", "Id");
-            return View(new AddItemToMealVm());
+            //var items = _itemService.GetAllItems();
+            //ViewBag.items = new SelectList(items, "Id", "Name");
+            //var meals = _mealService.GetAllMeals();
+            //ViewBag.meals = new SelectList(meals, "Id", "Id");
+            //var addItemToMealVm = new AddItemToMealVm();
+            //addItemToMealVm.MealId = id;
+            var itemsVm = _itemService.GetAllItemsForList(2, 1, "");
+            var itemInMealVm = new AddItemToMealVm() { Items = itemsVm , MealId = id};
+            return View(itemInMealVm);
         }
 
         [HttpPost]
@@ -55,7 +59,8 @@ namespace CountItMVC.Web.Controllers
             {
                 var id = _itemInMealService.AddItemToMeal(model);
                 TempData["Success"] = "Item has been added to meal!";
-                return RedirectToAction(controllerName: "Meal", actionName: "Index");
+                return RedirectToAction("AddItemToMeal", "ItemInMeal", id = model.MealId);
+                //return RedirectToAction("AddItemToMeal", "ItemInMeal", id = model.MealId);
             }
             else
             {

@@ -90,14 +90,14 @@ namespace CountItMVC.Infrastructure.Repositories
                 meal.TotalCarb += item.CarbPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
                 meal.TotalFat += item.FatPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
                 meal.TotalKcal += item.KcalPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
-                meal.TotalWeight += e.HowManyGramsCurrentProduct / 100 * e.HowManyGramsCurrentProduct;
+                meal.TotalWeight += e.HowManyGramsCurrentProduct;
                 meal.TotalProtein += item.ProteinPerHundredGrams / 100 * e.HowManyGramsCurrentProduct;
 
                 meal.TotalCarb = Math.Round(meal.TotalCarb, 2);
-                meal.TotalFat = Math.Round(meal.TotalCarb, 2);
-                meal.TotalKcal = Math.Round(meal.TotalCarb, 2);
-                meal.TotalWeight = Math.Round(meal.TotalCarb, 2);
-                meal.TotalProtein = Math.Round(meal.TotalCarb, 2);
+                meal.TotalFat = Math.Round(meal.TotalFat, 2);
+                meal.TotalKcal = Math.Round(meal.TotalKcal, 2);
+                meal.TotalWeight = Math.Round(meal.TotalWeight, 2);
+                meal.TotalProtein = Math.Round(meal.TotalProtein, 2);
             }
 
             return meal;
@@ -124,9 +124,12 @@ namespace CountItMVC.Infrastructure.Repositories
         public void UpdateItemInMeal(ItemInMeal itemInMeal)
         {
             _context.Attach(itemInMeal);
-            _context.Entry(itemInMeal).Property("HowManyGramsCurrentProduct").IsModified = true;
+            _context.Entry(itemInMeal).Property("HowManyGramsCurrentProduct").IsModified = true; 
             _context.SaveChanges();
             RecalculateMacroForMeal(itemInMeal.MealId);
+            _context.SaveChanges();
+
+
         }
     }
 }

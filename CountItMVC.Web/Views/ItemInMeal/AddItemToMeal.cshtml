@@ -6,66 +6,107 @@
 
 <h1>AddItemToMeal</h1>
 
-@*<h4>AddItemToMealVm</h4>*@
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddItemToMeal">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="HowManyGramsCurrentProduct" class="control-label"></label>
-                <input asp-for="HowManyGramsCurrentProduct" class="form-control" />
-                <span asp-validation-for="HowManyGramsCurrentProduct" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="ItemId" id="txt" />
-                <label asp-for="ItemId" class="control-label"></label>
-                @*<input asp-for="ItemId" class="form-control" />*@
-                @Html.DropDownListFor(m => m.ItemId
-           , ViewBag.items as SelectList, "Select Item"
-           , new { @onChange = "selectedtext(this)", @class = "form-control" })
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Kcal/100g
+            </th>
+            <th>
+                Fat/100g
+            </th>
+            <th>
+                Protein/100g
+            </th>
+            <th>
+                Carb/100g
+            </th>
+            <th>
+                CategoryId
+            </th>
+            <th>
+                CategoryName
+            </th>
+            <th>
+                How many grams of product
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items.Items)
+        {
+            <form asp-action="AddItemToMeal">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KcalPerHundredGrams)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FatPerHundredGrams)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProteinPerHundredGrams)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarbPerHundredGrams)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
 
-                @*<span asp-validation-for="ItemId" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="MealId" id="txt2" />
-                <label asp-for="MealId" class="control-label"></label>
-                @*<input asp-for="MealId" class="form-control" />*@
-                @Html.DropDownListFor(m => m.MealId
-, ViewBag.meals as SelectList, "Select Meal"
-, new { @onChange = "selectedtext2(this)", @class = "form-control" })
+                <td>
+                    <label asp-for="HowManyGramsCurrentProduct" class="control-label"></label>
+                    <input asp-for="HowManyGramsCurrentProduct" class="form-control" />
+                    <span asp-validation-for="HowManyGramsCurrentProduct" class="text-danger"></span>
+                </td>
+                <td>
+                    <label asp-for="ItemId" class="control-label"></label>
+                    <input asp-for="ItemId" value="@item.Id" class="form-control" />
+                </td>
+                <td>
+                    <label asp-for="MealId" class="control-label"></label>
+                    <input asp-for="MealId" value="@Model.MealId" class="form-control" />
+                </td>
+                @* <input type="hidden" asp-for="ItemId" />*@
 
 
-                @*<span asp-validation-for="MealId" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                <td>
+                    @*@Html.ActionLink("Add", "AddItemToMeal", "ItemInMeal")*@
+                    @*<div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" asp-controller="ItemInMeal" asp-action="AddItemToMeal" asp-for="ItemId" />
+            </div>*@
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
 
-        <script>
-            function selectedtext(ddlitem) {
-                var selvalue = ddlitem.value;
-                var seltext = ddlitem.options[ddlitem.selectedIndex].innerHTML;
-                $('#txt').val(selvalue);
-            }
-        </script>
 
-        <script>
-            function selectedtext2(ddlitem) {
-                var selvalue = ddlitem.value;
-                var seltext = ddlitem.options[ddlitem.selectedIndex].innerHTML;
-                $('#txt2').val(selvalue);
-            }
-        </script>
-    }
-}
+
+
+
+                </td>
+            </tr>
+            </form>
+        }
+
+    </tbody>
+</table>

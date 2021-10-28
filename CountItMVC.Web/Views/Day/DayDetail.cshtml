@@ -127,10 +127,11 @@
                         @Html.DisplayFor(modelItem => item.DayId)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", actionName:"EditMeal", controllerName:"Meal", new { id = item.Id }) |
-                        @Html.ActionLink("Details", actionName:"MealDetail",controllerName:"Meal", new { id=item.Id }) |
+                        @Html.ActionLink("Edit", actionName: "EditMeal", controllerName: "Meal", new { id = item.Id }) |
+                        @Html.ActionLink("Details", actionName: "MealDetail", controllerName: "Meal", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
-                        @Html.ActionLink("Add item", "AddItemToMeal", new { id = item.Id })
+                        @Html.ActionLink("AddItemToMeal", actionName: "AddItemToMeal", controllerName: "ItemInMeal", new { id = item.Id })
+                        @*@Html.ActionLink("Add item", "AddItemToMeal", new { id = item.Id })*@
                     </td>
                 </tr>
             }

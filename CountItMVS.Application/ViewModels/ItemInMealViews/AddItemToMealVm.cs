@@ -14,7 +14,8 @@ namespace CountItMVC.Application.ViewModels.ItemViews
         public double HowManyGramsCurrentProduct { get; set; }
         public int ItemId { get; set; }
         public int MealId { get; set; }
-        public List<SelectListItem> Items { get; set; }
+        public ListItemForListVm Items { get; set; }
+       // public List<SelectListItem> Items { get; set; }
         public List<SelectListItem> Meals { get; set; }
 
         public void Mapping(Profile profile)

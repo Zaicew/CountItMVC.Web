@@ -310,3 +310,7 @@ Error Number:547,State:0,Class:16
 2021-09-23T14:25:17.9557852+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2021-09-23T14:25:17.9568396+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
 2021-09-23T14:25:18.0527201+02:00 800000d4-000f-ff00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)
+2021-09-23T15:56:29.3044118+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-23T15:56:29.3114807+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-23T15:56:29.3125022+02:00  [INF] Content root path: "D:\VisualStudioProjects\GitHub\CountItMVC.Web\CountItMVC.Web" (b5d60022)
+2021-09-23T15:56:29.4091219+02:00 80000016-0003-fe00-b63f-84710c7967bb [INF] I'm in home/index (f778bec6)

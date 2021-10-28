@@ -77,9 +77,10 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "EditMeal", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "MealDetail", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "MealDetail", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "DeleteMeal", new { id = item.Id }) |
-                        @Html.ActionLink("AddItemToMeal", "AddItemToMeal", new { id = item.Id })
+                        @*@Html.ActionLink("AddItemToMeal", controllerName: "ItemInMeal", actionName: "AddItemToMeal", new { id = item.Id })*@
+                        @Html.ActionLink("AddItemToMeal", actionName: "AddItemToMeal", controllerName:"ItemInMeal", new {id = item.Id})
                     </td>
                 </tr>
                 }

@@ -47,7 +47,7 @@ namespace CountItMVC.Infrastructure.Repositories
         public List<Meal> GenerateDomainMealsForDay(int dayId)
         {
             var meals = new List<Meal>();
-            for (int i = 0; i < meals.Count; i++) 
+            for (int i = 0; i < 5; i++) 
             {
                 meals.Add(new Meal()
                 {
