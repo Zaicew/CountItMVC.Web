@@ -1,8 +1,5 @@
 ﻿using CountItMVC.Domain.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CountItMVC.Domain.Interface
 {
@@ -10,9 +7,9 @@ namespace CountItMVC.Domain.Interface
     {
         void DeleteCategory(int categoryId);
         int AddCategory(Category category); 
-        IQueryable<Category> GetAllCategories();
+        IReadOnlyCollection<Category> GetAllCategories();
+        IReadOnlyCollection<Tag> GetAllTags();
         Category GetCategoryById(int categoryId);
-        IQueryable<Tag> GetAllTags();
         void UpdateCategory(Category category);
     }
 }

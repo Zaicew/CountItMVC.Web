@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using CountItMVC.Domain.Interface;
 using CountItMVC.Domain.Model;
@@ -24,16 +25,18 @@ namespace CountItMVC.Infrastructure.Repositories
         }
         public void DeleteCategory(int categoryId)
         {
-            _context.Categories.Remove(_context.Categories.FirstOrDefault(p => p.Id == categoryId));
+            var categoryToRemove = _context.Categories.FirstOrDefault(p => p.Id == categoryId);
+            if (categoryToRemove == null) return;
+            _context.Categories.Remove(categoryToRemove);
             _context.SaveChanges();
         }
-        public IQueryable<Category> GetAllCategories()
+        public IReadOnlyCollection<Category> GetAllCategories()
         {
-            return _context.Categories;
+            return _context.Categories.ToArray();
         }
-        public IQueryable<Tag> GetAllTags()
+        public IReadOnlyCollection<Tag> GetAllTags()
         {
-            return _context.Tags;
+            return _context.Tags.ToArray();
         }
         public Category GetCategoryById(int categoryId)
         {

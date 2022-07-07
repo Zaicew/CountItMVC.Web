@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CountItMVC.Web.Models;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Item = CountItMVC.Domain.Model.Item;
-using CountItMVC.Application.Interfaces;
 
 namespace CountItMVC.Web.Controllers
 {
@@ -26,8 +18,8 @@ namespace CountItMVC.Web.Controllers
         {
 
             _logger.LogInformation("I'm in home/index");
-            //return View();
-            return RedirectToAction(controllerName:"Meal", actionName:"Index");
+            return View();
+            //return RedirectToAction(controllerName:"Meal", actionName:"Index");
         }
 
     public IActionResult Privacy()

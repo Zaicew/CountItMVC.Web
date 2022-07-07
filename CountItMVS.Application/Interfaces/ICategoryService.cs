@@ -14,7 +14,7 @@ namespace CountItMVC.Application.Interfaces
         int AddCategory(NewCategoryVm model);
         NewCategoryVm GetCategoryForEdit(int id);
         void UpdateCategory(NewCategoryVm model);
-        IQueryable<Category> GetAllCategories();
+        IReadOnlyCollection<Category> GetAllCategories();
         void DeleteCategory(int categoryId);
     }
 }
